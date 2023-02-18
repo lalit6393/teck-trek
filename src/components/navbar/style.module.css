@@ -12,8 +12,12 @@
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  padding:1.2rem 5rem;
+  padding:0rem 5rem;
   background-color: #1c0f35;
+}
+
+.appName{
+  cursor: pointer;
 }
 
 .navigation {
@@ -35,11 +39,49 @@
 }
 
 .navigation > ul {
+  position: relative;
   display: flex;
   list-style: none;
-  gap: 3rem;
   margin: 0;
   box-sizing: border-box;
+}
+
+ul>li{
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.anchor{
+  position: absolute;
+  box-sizing: border-box;
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  padding: 1.2rem 1rem;
+  margin: 0 1rem;
+  padding-top: 2.3rem;
+  z-index: 1;
+  color: white;
+  text-decoration: none;
+}
+
+.backgroundBlur{
+  box-sizing: border-box;
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  padding: 1.2rem 1rem;
+  margin: 0 1rem;
+  color: rgba(255, 255, 255, 0);
+  padding-top: 2.3rem;
+}
+
+.anchor:hover + .backgroundBlur{
+  background: radial-gradient(80.95% 49.95% at 50% 100.57%, #08AC70 0%, rgba(14, 174, 115, 0) 100%);
+  filter: blur(14px);
+}
+
+ul>li>.anchor:hover{
+  border-bottom: 5px solid rgb(34, 139, 34);
 }
 
 .userProfile{
@@ -61,8 +103,7 @@
 .icons{
   display: flex;
   align-items: center;
-  padding-left: 1rem;
-  gap: 2rem;
+  padding-left: 2rem;
   box-sizing: border-box;
 }
 
@@ -70,14 +111,53 @@
   cursor: pointer;
 }
 
-/* .leftDiv{
-      
+@media screen and (max-width:992px) and (min-width:768px){
+  .anchor{
+    margin: 0;
+  }
+  .backgroundBlur{
+    margin: 0;
+  }
+  .rightDiv{
+    gap:3rem
+  }
+  .userProfile{
+    gap:0.6rem
+  }
 }
 
-.appName{
-    
+@media screen and (max-width:992px) and (min-width:768px){
+  .anchor{
+    margin: 0;
+  }
+  .backgroundBlur{
+    margin: 0;
+  }
+  .rightDiv{
+    gap:3rem
+  }
+  .userProfile{
+    gap:1rem
+  }
 }
 
-.navIcon{
-
-} */
+@media screen and (max-width:766px){
+  .anchor{
+    margin: 0;
+  }
+  .backgroundBlur{
+    margin: 0;
+  }
+  .rightDiv{
+    gap:1rem
+  }
+  .userProfile{
+    gap:1rem
+  }
+  .icons{
+    padding-left: 1rem;
+  }
+  .navbar{
+    padding: 0rem 2rem;
+  }
+}
