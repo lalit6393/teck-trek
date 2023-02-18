@@ -1,0 +1,83 @@
+.outermostDiv {
+  color: var(--text_color);
+  background: var( --main_background_url) no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding:1.2rem 5rem;
+  background-color: #1c0f35;
+}
+
+.navigation {
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  font-family: 'Avenir';
+  line-height: 100%;
+  box-sizing: border-box;
+}
+
+.rightDiv{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 6rem;
+}
+
+.navigation > ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.userProfile{
+  color: white;
+  display: flex;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  box-sizing: border-box;
+  gap: 1.3rem;
+  align-items: center;
+}
+
+.userProfile>p{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.icons{
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.icons>img{
+  cursor: pointer;
+}
+
+/* .leftDiv{
+      
+}
+
+.appName{
+    
+}
+
+.navIcon{
+
+} */
