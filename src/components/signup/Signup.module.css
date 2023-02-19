@@ -1,4 +1,4 @@
-.main {
+.Main {
   background-image: url("../../static_files/BG_darkg.svg");
   background-size: cover;
   height: 100%;
@@ -8,21 +8,21 @@
   padding: 0;
 }
 
-.container2 {
+.Container2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 77vh;
   width: 100%;
 
   font-size: 1.4vmin;
 }
-.image {
+.Image {
   width: 100%;
   margin-bottom: -29px;
 }
 
-.form {
+.Form {
   position: relative;
 
   height: 500px;
@@ -41,42 +41,28 @@ textarea {
   color: #ffffff;
   font-size: 16px;
 }
-.input {
+
+.Input {
   padding: 6px;
   color: #ffffff;
-}
-
-.forgot {
-  height: 25px;
-  float: right;
-  margin-right: 75px;
-  text-decoration: none;
-  padding-top: 11px;
-  padding-bottom: 22px;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 25px;
-  /* identical to box height */
-
-  color: #08ac70;
 }
 
 a {
   text-decoration: none;
   color: #08ac70;
 }
+
 button {
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
   gap: 10px;
-
+  cursor: pointer;
   width: 74%;
   height: 56px;
   left: 512px;
   top: 681.19px;
-
+  margin-top: 20px;
   background: #08ac70;
   font-family: "Avenir";
   font-style: normal;
@@ -87,24 +73,13 @@ button {
   border-style: hidden;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
+button:hover {
+  background: #013421;
+  color: #e4ec9d;
+}
 
 p {
   font-size: 16px;
   color: #ffffff;
   padding-top: 10px;
-}
-
-.Pass {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 67px;
-  width: 97.8%;
-}
-
-.eye {
-  position: absolute;
-  cursor: pointer;
-  margin-left: 380px;
-  font-size: 20px;
 }
