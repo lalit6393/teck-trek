@@ -5,6 +5,7 @@ import LeaderBoard from "./components/leader_board/LeaderBoard";
 import Login from "./components/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import Page_not_found from "./components/page_not_found/Page_not_found";
+import Rules_page from "./components/rules_page/Rules_page";
 import Signup from "./components/signup/Signup";
 import { UserAuthProvider } from "./context/UseUserAuth";
 
@@ -19,6 +20,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="leaderboard" element={<LeaderBoard/>} />
+            <Route path="rules" element={<Rules_page/>} />
           </Route>
           <Route path="*" element={<Page_not_found />} />
         </Routes>
