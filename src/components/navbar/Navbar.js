@@ -1,21 +1,20 @@
 import React from "react";
 import navStyle from "./style.module.css";
 import { Avatar } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import appNameImg from "../../static_files/tecktrek.svg";
-import toggleIcon from "../../static_files/toggle.png";
 import logoutIcon from "../../static_files/logoutIcon.svg";
 
-const Navbar = ({switchTheme}) => {
-
-  console.log(switchTheme);
+const Navbar = () => {
+  
+  const navigate = useNavigate();
 
   return (
     <div className={navStyle.outermostDiv}>
       <div className={navStyle.navbar}>
         <div className={navStyle.leftDiv}>
           <div className={navStyle.navIcon}></div>
-          <div className={navStyle.appName}>
+          <div className={navStyle.appName} onClick={() => navigate('/')}>
             <img src={appNameImg} alt={"TeckTrek"} width="80px"></img>
           </div>
         </div>
@@ -23,11 +22,21 @@ const Navbar = ({switchTheme}) => {
         <div className={navStyle.rightDiv}>
           <div className={navStyle.navigation}>
             <ul>
-              <li>Dashboard</li>
-              <li>Rules</li>
-              <li>Leaderboard</li>
+              <li>
+                <a className={navStyle.anchor} href="/dashboard">Dashboard</a>
+                <div className={navStyle.backgroundBlur}>Dashboard</div>
+              </li>
+              <li>
+                <a className={navStyle.anchor} href="/rules ">Rules</a>
+                <div className={navStyle.backgroundBlur}>Rules</div>
+              </li>
+              <li>
+                <a className={navStyle.anchor} href="/leaderboard">Leaderboard</a>
+                <div className={navStyle.backgroundBlur}>Leaderboard</div>
+              </li>
             </ul>
           </div>
+          <div style={{ flex: "1" }} />
           <div className={navStyle.userProfile}>
             <p>{"White fang".toUpperCase()}</p>
             <Avatar
@@ -44,8 +53,7 @@ const Navbar = ({switchTheme}) => {
               {"White fang".slice(0, 1)}
             </Avatar>
             <div className={navStyle.icons}>
-              <img onClick={switchTheme} src={toggleIcon} alt="toggleIcon" width={'40px'}></img>
-              <img src={logoutIcon} alt="logoutIcon" width={'20px'}></img>
+              <img src={logoutIcon} alt="logoutIcon" width={"20px"}></img>
             </div>
           </div>
         </div>
