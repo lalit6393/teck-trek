@@ -10,7 +10,7 @@ export default function PasswordInput() {
       <input
         value={password}
         id="password"
-        placeholder="Password GOeesssafd"
+        placeholder="Password goes here"
         type={visible ? "text" : "password"}
         onChange={(e) => setPassword(e.target.value)}
         className={styles.passInput}
