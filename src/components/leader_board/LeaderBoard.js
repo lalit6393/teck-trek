@@ -25,7 +25,6 @@ const LeaderBoard = () => {
     <div className={LeaderStyle.outermostDiv}>
       <div className={LeaderStyle.innermostDiv}>
         <div className={LeaderStyle.mainHeading}>LeaderBoard</div>
-
         <div className={LeaderStyle.LeaderBoard}>
           <div className={LeaderStyle.headerRowMain}>
             <div className={(LeaderStyle.headerColumn, LeaderStyle.rank)}>
