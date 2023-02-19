@@ -8,6 +8,7 @@
   --text_color: black;
   --background_url: url("./static_files/BG_Light.svg");
   --main_background_url: url("./static_files/bg_main_light.svg");
+  --main_background_url_dark: url("./static_files/BG_Main_Dark.svg");
 
 }
 
