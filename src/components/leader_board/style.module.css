@@ -1,0 +1,275 @@
+.outermostDiv {
+    color: var(--text_color);
+    background: var(--main_background_url_dark) no-repeat center fixed;
+    background-size: cover;
+    height: 100%;
+    /* display: flex;
+      flex-direction: column; */
+  }
+  .innermostDiv {
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 846px;
+    height: 600px;
+    /* left: 297px; */
+    /* top: 136px; */
+  
+    background: rgba(128, 130, 188, 0.06);
+    border: 3.60383px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16.2173px);
+    /* Note: backdrop-filter has minimal browser support */
+  
+    border-radius: 14.4153px;
+    margin: 40px auto 0px auto;
+  }
+  
+  .mainHeading {
+    margin: auto;
+    width: 186px;
+    height: 34px;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 850;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #f78a20;
+    margin-top: 20px;
+  }
+  .LeaderBoard {
+      margin: auto;
+      width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .headerRow {
+    display: flex;
+    width: 100%;
+    margin: 5px;
+    /* border: 1px solid red; */
+      padding: 10px;
+  }
+  .headerRowMain {
+    border-bottom: 1.5px solid white;
+    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+    margin: 10px;
+  }
+  
+  .rank {
+    flex: 1;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .name {
+    flex: 3;
+    gap: 10px;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .score {
+    flex: 1.5;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .badge {
+    flex: 1.5;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .rankContent {
+    flex: 1;
+    width: 11px;
+    height: 18px;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    order: 0;
+    flex-grow: 0;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .nameContent {
+    flex: 3;
+    width: 124px;
+    height: 20px;
+    left: 203px;
+    top: 12px;
+  
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    /* identical to box height, or 20px */
+  
+    text-align: center;
+    text-transform: uppercase;
+  
+    color: #fdf3e7;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .scoreContent {
+    flex: 1.5;
+    width: 21px;
+    height: 18px;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fdf3e7;
+    order: 2;
+    flex-grow: 0;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .badgeContent {
+    flex: 1.5;
+    width: 44px;
+    height: 44px;
+    background: #c4c4c4;
+    order: 3;
+    flex-grow: 0;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .buttonContainer{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 35px;
+  
+  }
+  .prev{
+      /* position: absolute; */
+  width: 128px;
+  height: 22px;
+  /* left: 385px; */
+  /* top: 882px; */
+  
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+  
+  letter-spacing: 0.03em;
+  text-decoration-line: underline;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  color: #FFFFFF;
+  
+  }
+  
+  .next{
+      /* position: absolute; */
+      width: 128px;
+      height: 22px;
+      /* left: 385px; */
+      /* top: 882px; */
+      
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      /* or 22px */
+      
+      letter-spacing: 0.03em;
+      text-decoration-line: underline;
+      text-transform: uppercase;
+      background: none;
+      outline: none;
+      border: 0;
+      cursor: pointer;
+      color: #FFFFFF;
+  }
+  
+  @media screen and (max-width: 992px) and (min-width: 768px) {
+    .innermostDiv {
+      width: 90%;
+    }
+  }
+  
+  @media screen and (max-width: 766px) {
+    .innermostDiv {
+      width: 95%;
+    }
+  }
+  
+  /* @media screen and (min-width: 768px) {
+    .headerColumn {
+      flex: 2;
+    }
+    .dataColumn {
+      flex: 2;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .headerColumn {
+      flex: 3;
+    }
+    .dataColumn {
+      flex: 3;
+    }
+  } */
+  
