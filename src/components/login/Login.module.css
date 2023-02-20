@@ -1,14 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .main {
   background-image: url("../../static_files/BG_darkg.svg");
   background-size: cover;
   height: 100%;
   font-size: 50px;
   background-repeat: no-repeat;
+
+  margin: 0;
+  padding: 0;
 }
 
 .container2 {
@@ -47,7 +45,7 @@
   color: #08ac70;
 }
 
-a {
+.a2 {
   text-decoration: none;
   color: #08ac70;
 }
@@ -73,7 +71,7 @@ a {
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
 
-p {
+.para {
   font-size: 16px;
   color: #ffffff;
   padding-top: 10px;

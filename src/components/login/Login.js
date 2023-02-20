@@ -62,15 +62,17 @@ const Login = () => {
               <input type="password" placeholder="Password goes here" />
             </div> */}
             <div className={styles.forgot}>
-              <a href="#">Forgot Password?</a>
+              <a className={styles.a2} href="#">
+                Forgot Password?
+              </a>
             </div>
             <button type="submit" className={styles.logBtn}>
               Login &rarr;
             </button>
             <div className={styles.noAccount}>
-              <p>
+              <p className={styles.para}>
                 Don't Have an account?{" "}
-                <a className={styles.register} href="/Signup">
+                <a className={styles.register + " " + styles.a2} href="/Signup">
                   Register
                 </a>
               </p>
