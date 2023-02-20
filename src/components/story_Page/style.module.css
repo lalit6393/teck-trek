@@ -1,0 +1,168 @@
+.outermostDiv {
+  color: var(--text_color);
+  background: var(--main_background_url_dark) no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+}
+.InnerPaddingDiv{
+  padding-top: 60px;
+}
+.innermostDiv {
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 1280px;
+  /* height: 650px; */
+  background: rgba(128, 130, 188, 0.06);
+  border: 3.60383px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16.2173px);
+  border-radius: 14.4153px;
+  width: 90%;
+}
+.innerDiv {
+  margin: auto;
+  width: 90%;
+}
+.heading {
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 160%;
+  text-align: center;
+  color: #ffffff;
+}
+.para {
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 160%;
+  color: #ffffff;
+  text-align: left;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 35px;
+}
+
+.button {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 8px;
+  isolation: isolate;
+  width: 173px;
+  height: 62px;
+  background: #08ac70;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.text{
+font-family: 'Avenir';
+font-style: normal;
+font-weight: 900;
+font-size: 20px;
+line-height: 16px;
+display: flex;
+align-items: center;
+letter-spacing: 0.2px;
+color: #FFFFFF;
+mix-blend-mode: normal;
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+}
+.link{
+    text-decoration: none;
+}
+
+
+
+@media screen and (max-width:1200px) and (min-width:993px) {
+  .heading{
+    font-size: 4rem;
+  }
+  .para{
+    font-size: 2.85rem;
+  } 
+  .innermostDiv {
+    width: 90%;
+  }
+}
+
+
+@media screen and (max-width:992px) and (min-width:769px){
+  .innermostDiv {
+    width: 90%;
+  }
+  .heading{
+    font-size: 3.25rem;
+  }
+  .para{
+    font-size: 2.75rem;
+  }
+  .InnerPaddingDiv{
+    padding-top: 50px;
+  }
+}
+
+
+@media screen and (max-width:768px) and (min-width:609px){
+
+  .innermostDiv {
+    width: 95%;
+  }
+  .heading{
+    font-size: 2.75rem;
+  }
+  .para{
+    font-size: 2.25rem;
+  }
+  .InnerPaddingDiv{
+    padding-top: 50px;
+  } 
+}
+
+@media screen and (max-width:609px) and (min-width:481px){
+  .innermostDiv {
+    width: 95%;
+  }
+  .heading{
+    font-size: 2.15rem;
+  }
+  .para{
+    font-size: 1.85rem;
+  }
+  .InnerPaddingDiv{
+    padding-top: 90px;
+  }
+
+}
+@media screen and (max-width: 480px) {
+  .innermostDiv {
+    width: 90%;
+  }
+  .heading{
+    font-size: 2.25rem;
+  }
+  .para{
+    font-size: 1.75rem;
+  }
+  .InnerPaddingDiv{
+    padding-top: 40px;
+  }
+  .button{
+padding: 0px;
+width: 140px;
+height: 40px;
+  }
+}
