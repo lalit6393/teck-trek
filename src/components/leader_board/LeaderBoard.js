@@ -8,9 +8,9 @@ const data = [
   { rank: 3, name: "White fang", score: "27", badge: "dhruv" },
   { rank: 4, name: "White fang", score: "27", badge: "dhruv" },
   { rank: 5, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 6, name: "White fang", score: "27", badge: "dhruv" },
+  { rank: 6, name: "White fang", score: "29", badge: "dhruv" },
   { rank: 7, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 8, name: "White fang", score: "27", badge: "dhruv" }
+  { rank: 8, name: "White fang", score: "30", badge: "dhruv" }
 ];
 
 console.log(data);
@@ -25,6 +25,7 @@ const LeaderBoard = () => {
     <div className={LeaderStyle.outermostDiv}>
       <div className={LeaderStyle.innermostDiv}>
         <div className={LeaderStyle.mainHeading}>LeaderBoard</div>
+
         <div className={LeaderStyle.LeaderBoard}>
           <div className={LeaderStyle.headerRowMain}>
             <div className={(LeaderStyle.headerColumn, LeaderStyle.rank)}>

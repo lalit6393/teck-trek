@@ -56,7 +56,7 @@ const Rules_page = () => {
             11. In recognition of an outstanding achievement, the top 5 winners
             will be rewarded with exciting goodies and the winners of first and
             second year will also be given a chance to sit directly in the
-            second round of the NCS recruitment session.
+            second round of the NCS recruitment session .
           </span>
         </div>
       </div>
