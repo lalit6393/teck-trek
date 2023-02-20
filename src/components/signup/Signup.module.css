@@ -24,6 +24,8 @@
 
 .Form {
   position: relative;
+  justify-content: center;
+  align-items: center;
 
   height: 500px;
 }
@@ -31,7 +33,7 @@
 input {
   width: 69%;
   padding: 16px;
-
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.27);
 }
@@ -47,12 +49,12 @@ textarea {
   color: #ffffff;
 }
 
-a {
+.login {
   text-decoration: none;
   color: #08ac70;
 }
 
-button {
+.button {
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
@@ -73,12 +75,12 @@ button {
   border-style: hidden;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
-button:hover {
+.button:hover {
   background: #013421;
   color: #e4ec9d;
 }
 
-p {
+.paragraph {
   font-size: 16px;
   color: #ffffff;
   padding-top: 10px;

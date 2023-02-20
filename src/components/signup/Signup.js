@@ -91,9 +91,11 @@ const Signup = () => {
             />
           </div>
 
-          <button type="submit">Continue &rarr;</button>
+          <button className={styles.button} type="submit">
+            Continue &rarr;
+          </button>
           <div className={styles.HaveAccount}>
-            <p>
+            <p className={styles.paragraph}>
               Already have an account?{" "}
               <a className={styles.login} href="/login">
                 Login
