@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import Page_not_found from "./components/page_not_found/Page_not_found";
 import Rules_page from "./components/rules_page/Rules_page";
 import Signup from "./components/signup/Signup";
+import StoryPage from "./components/story_Page/StoryPage";
 import { UserAuthProvider } from "./context/UseUserAuth";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="story" element={<StoryPage />} />
           <Route path="/" element={<Navbar/>}>
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
