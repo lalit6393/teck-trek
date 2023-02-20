@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Avatar from "./components/avatar/avatar";
 import Dashboard from "./components/dashboard/Dashboard";
 import LeaderBoard from "./components/leader_board/LeaderBoard";
 import Login from "./components/login/Login";
@@ -22,6 +23,7 @@ function App() {
             <Route path="leaderboard" element={<LeaderBoard/>} />
             <Route path="rules" element={<Rules_page/>} />
           </Route>
+          <Route path="avatar" element={<Avatar />} />
           <Route path="*" element={<Page_not_found />} />
         </Routes>
       </UserAuthProvider>
