@@ -1,11 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   background-image: url("../../static_files/BG_darkg.svg");
   background-size: cover;
   height: 100%;
   font-size: 50px;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
 }
 
 .container2 {
@@ -23,27 +26,9 @@
 }
 
 .form {
-  position: relative;
+  position: absolute;
 
   height: 500px;
-}
-
-input {
-  width: 69%;
-  padding: 16px;
-
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.27);
-}
-input,
-select,
-textarea {
-  color: #ffffff;
-  font-size: 16px;
-}
-.input {
-  padding: 6px;
-  color: #ffffff;
 }
 
 .forgot {
@@ -66,7 +51,7 @@ a {
   text-decoration: none;
   color: #08ac70;
 }
-button {
+.logBtn {
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
@@ -93,18 +78,41 @@ p {
   color: #ffffff;
   padding-top: 10px;
 }
+input {
+  width: 69%;
+  padding: 16px;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.27);
+}
+input,
+select,
+textarea {
+  color: #ffffff;
+  font-size: 16px;
+}
+.input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  color: #ffffff;
+}
 
-.Pass {
+.pass {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 67px;
-  width: 97.8%;
+}
+
+.iconDiv {
+  position: absolute;
+  margin-left: 60%;
+  float: right;
+  font-size: 22px;
 }
 
 .eye {
-  position: absolute;
-  cursor: pointer;
-  margin-left: 380px;
-  font-size: 20px;
+  float: right;
 }
