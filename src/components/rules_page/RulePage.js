@@ -1,7 +1,7 @@
 import React from "react";
 import RuleStyle from "./style.module.css";
 
-const Rules_page = () => {
+const RulesPage = () => {
   return (
     <div className={RuleStyle.outermostDiv}>
       <div className={RuleStyle.innermostDiv}>
@@ -64,4 +64,4 @@ const Rules_page = () => {
   );
 };
 
-export default Rules_page;
+export default RulesPage;
