@@ -46,7 +46,6 @@ const Login = () => {
                 id="password"
                 placeholder="Password goes here"
                 type={visible ? "text" : "password"}
-                onChange={(e) => setPassword(e.target.value)}
                 className={styles.passInput}
               />
               <div className={styles.iconDiv}>
