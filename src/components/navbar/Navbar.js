@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className={navStyle.leftDiv}>
           <div className={navStyle.navIcon}></div>
           <div className={navStyle.appName} onClick={() => navigate('/')}>
-            <img src={appNameImg} alt={"TeckTrek"} width="80px"></img>
+            <img src={appNameImg} alt={"TeckTrek"} height="20vh"></img>
           </div>
         </div>
         <div style={{ flex: "1" }} />
@@ -44,9 +44,10 @@ const Navbar = () => {
                 bgcolor: "grey",
                 cursor: "pointer",
                 fontWeight: "bold",
-                width: "35px",
-                height: "35px",
+                width: "5vh",
+                height: "5vh",
                 fontFamily: "Avenir",
+                fontSize:"2vh"
               }}
               src="#"
             >

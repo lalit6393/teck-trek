@@ -20,10 +20,14 @@
   cursor: pointer;
 }
 
+.appName>img{
+  height: 3.2vh;
+}
+
 .navigation {
   display: flex;
   color: white;
-  font-size: 1.5rem;
+  font-size: 2.2vh;
   font-style: normal;
   font-weight: 500;
   font-family: 'Avenir';
@@ -58,9 +62,9 @@ ul>li{
   position: absolute;
   box-sizing: border-box;
   border-bottom: 5px solid rgba(255, 255, 255, 0);
-  padding: 1.2rem 1rem;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  padding: 2rem 1rem;
   margin: 0 1rem;
-  padding-top: 2.3rem;
   z-index: 1;
   color: white;
   text-decoration: none;
@@ -69,10 +73,10 @@ ul>li{
 .backgroundBlur{
   box-sizing: border-box;
   border-bottom: 5px solid rgba(255, 255, 255, 0);
-  padding: 1.2rem 1rem;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  padding: 2rem 1rem;
   margin: 0 1rem;
   color: rgba(255, 255, 255, 0);
-  padding-top: 2.3rem;
 }
 
 .anchor:hover + .backgroundBlur{
