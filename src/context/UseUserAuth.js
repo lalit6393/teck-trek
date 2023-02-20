@@ -6,6 +6,7 @@ export const UserAuthProvider = ({ children }) => {
   
   const backendUrl = 'http://localhost:3000';
 
+
   return (
     <UserAuthContext.Provider
       value={{
