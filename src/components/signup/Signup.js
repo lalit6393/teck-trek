@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import background from "../../static_files/BG_Main_Dark.svg";
-import signup from "../../static_files/login.png";
+import signup from "../../static_files/signup.svg";
 
 const Signup = () => {
   const [userRegistration, setuserRegistration] = useState({
@@ -104,6 +104,14 @@ const Signup = () => {
           </div>
         </form>
       </div>
+      <footer className={styles.foot}>
+        <div>
+          Designed & Developed by: <span>Nibble Computer Society</span>
+        </div>
+        <div>
+          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
+        </div>
+      </footer>
     </div>
   );
 };
