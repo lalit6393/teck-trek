@@ -103,7 +103,6 @@
 }
 
 .terms{
-  width: 95%;
   color: white;
   display: flex;
   font-size: 16px;
@@ -130,14 +129,29 @@ footer {
   display: flex;
   justify-content: space-between;
   color: #F78A20;
-  font-size: 1.5rem;
+  font-size: 14px;
 }
 
 footer span {
   color: white;
 }
 
-@media (max-width : 1000px) {
+@media (min-height:670px) {
+  .logo img{
+    width: 95%;
+  }
+}
+
+@media (max-width:1100px) {
+  .avatarSelection{
+    /* width: 35vw; */
+  }
+  .terms{
+    font-size: 14px;
+  }
+}
+
+@media (max-width : 720px) {
   footer{
     flex-direction: column;
     position: relative;
