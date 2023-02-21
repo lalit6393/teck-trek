@@ -1,0 +1,101 @@
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  height: 100%;
+}
+
+.pnfcontentPart {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.pnfImg > img {
+  width: 40rem;
+}
+
+.pnftext {
+  font-family: "Avenir";
+  font-style: normal;
+  font-size: 1rem;
+  box-sizing: border-box;
+  padding: 1rem 0;
+}
+
+.pnfButton {
+  font-family: "Avenir";
+  font-style: normal;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+  padding: 1rem 0;
+  background: #08ac70;
+  width: 30rem;
+  cursor: pointer;
+}
+
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    padding: 2rem;
+    justify-content: space-around;
+    font-size: 1.3rem;
+}
+
+.footer p{
+    color: #F78A20;
+}
+
+.footer p span{
+    color: white;
+}
+
+@media screen and (max-width: 618px) {
+    .pnfImg > img {
+        width: 30rem;
+      }
+
+      .pnftext{
+        font-size: 0.8rem;
+      }
+
+      .pnfButton{
+        width: 24rem;
+        font-size: 1.4rem;
+      }
+}
+
+
+@media screen and (min-width: 1600px) and (max-width: 1850px){
+    .pnfImg > img {
+        width: 50rem;
+      }
+
+      .pnftext{
+        font-size: 1.3rem;
+      }
+
+      .pnfButton{
+        width: 36rem;
+        font-size: 2rem;
+      }
+}
+
+@media screen and (min-width: 1851px) {
+    .pnfImg > img {
+        width: 60rem;
+      }
+
+      .pnftext{
+        font-size: 1.6rem;
+      }
+
+      .pnfButton{
+        width: 40rem;
+        font-size: 2.8rem;
+      }
+}

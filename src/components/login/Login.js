@@ -4,7 +4,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 import { useState } from "react";
 
-import login from "../../static_files/login.png";
+import login from "../../static_files/signup.svg";
 const Login = () => {
   ////////////id password
   const [email, setEmail] = useState("");
@@ -80,6 +80,14 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <footer className={styles.foot2}>
+        <div>
+          Designed & Developed by: <span>Nibble Computer Society</span>
+        </div>
+        <div>
+          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
+        </div>
+      </footer>
     </div>
   );
 };

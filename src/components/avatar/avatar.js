@@ -46,10 +46,12 @@ const Avatar = () => {
                   onClick={() => {
                     setSelectedId(avatar.id);
                   }}
-                  className={(selectedId)?(
-                    (selectedId === avatar.id)
-                      ? styles.selectedAvatar
-                      : styles.notSelectedAvatar):null
+                  className={
+                    selectedId
+                      ? selectedId === avatar.id
+                        ? styles.selectedAvatar
+                        : styles.notSelectedAvatar
+                      : null
                   }
                 ></img>
               );
@@ -60,16 +62,35 @@ const Avatar = () => {
               Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
             </button>
             <div className={styles.terms}>
-            <input type="checkbox"/> <span>I agree to the <a style={{color
-            :"#08AC70",textDecoration:"none"}} href="/">terms of use</a>  and acknowledge the <a style={{color
-            :"#08AC70",textDecoration:"none"}} href="/"> privacy policy</a> </span>
+              <input type="checkbox" />{" "}
+              <span>
+                I agree to the{" "}
+                <a
+                  style={{ color: "#08AC70", textDecoration: "none" }}
+                  href="/"
+                >
+                  terms of use
+                </a>{" "}
+                and acknowledge the{" "}
+                <a
+                  style={{ color: "#08AC70", textDecoration: "none" }}
+                  href="/"
+                >
+                  {" "}
+                  privacy policy
+                </a>{" "}
+              </span>
             </div>
           </div>
         </div>
-        <footer>
-            <div>Designed & Developed by: <span>Nibble Computer Society</span></div>
-            <div>Alumni & Faculty, Visit: <span>Forum for Trekking</span></div>
-          </footer>
+        <footer className={styles.foot3}>
+          <div>
+            Designed & Developed by: <span>Nibble Computer Society</span>
+          </div>
+          <div>
+            Alumni & Faculty, Visit: <span>Forum for Trekking</span>
+          </div>
+        </footer>
       </section>
     </>
   );
