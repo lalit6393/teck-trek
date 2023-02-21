@@ -5,7 +5,7 @@ const UserAuthContext = createContext();
 
 export const UserAuthProvider = ({ children }) => {
 
-  const [visited, setVisited] = useState(localStorage.getItem("visited"));
+  const [visited, setVisited] = useState(localStorage.getItem("visited") || null);
   const [user, setUser] = useState({username: localStorage.getItem('username')} ||null);
   const [loading, setLoading] = useState(false);
   const backendUrl = "http://localhost:3000";
@@ -55,7 +55,8 @@ export const UserAuthProvider = ({ children }) => {
         signup,
         login,
         setUser,
-        visited
+        visited,
+        setVisited
       }}
     >
       {children}

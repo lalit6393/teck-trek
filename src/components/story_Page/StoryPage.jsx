@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import StoryStyle from "./style.module.css";
 import Arrow from "../../static_files/Group.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../context/UseUserAuth";
 
 const TypingContent = ({ text, show, setIsAnimationFinished }) => {
   const [index, setIndex] = useState(0);
@@ -65,6 +66,7 @@ const TypingButton = ({ text, show, clickFunction }) => {
 const StoryPage = () => {
 
   const navigate = useNavigate();
+  const {setVisited} = useUserAuth();
   const [showContent, setShowContent] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -84,6 +86,7 @@ const StoryPage = () => {
 
   // Lalit Redirect function 
   function handleClick() {
+    setVisited(true);
     localStorage.setItem('visited', true);
     navigate('/signup');
     console.log('Button clicked');
