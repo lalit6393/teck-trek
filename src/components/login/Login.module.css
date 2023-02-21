@@ -50,11 +50,12 @@
   text-decoration: none;
   color: #08ac70;
 }
-button {
+.logBtn {
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
   gap: 10px;
+  cursor: pointer;
 
   width: 74%;
   height: 56px;
