@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StoryStyle from "./style.module.css";
 import Arrow from "../../static_files/Group.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TypingContent = ({ text, show, setIsAnimationFinished }) => {
   const [index, setIndex] = useState(0);
@@ -35,6 +35,13 @@ const Typewriter = ({ text }) => {
 
 const TypingButton = ({ text, show }) => {
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const continueButton = () => {
+    localStorage.setItem('visited', true);
+    navigate('/signup');
+}
+
   useEffect(() => {
     if (show) {
       const interval = setInterval(() => {
@@ -43,10 +50,11 @@ const TypingButton = ({ text, show }) => {
       return () => clearInterval(interval);
     }
   }, [show]);
+
   return (
     <div className={StoryStyle.buttonContainer}>
       <div style={{ display: show ? "block" : "none" }}>
-        <button className={StoryStyle.button}>
+        <button onClick={continueButton} className={StoryStyle.button}>
           <span className={StoryStyle.text}>{text}</span>
           <img src={Arrow} />
         </button>
@@ -56,9 +64,11 @@ const TypingButton = ({ text, show }) => {
 };
 
 const StoryPage = () => {
+
   const [showContent, setShowContent] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -70,6 +80,8 @@ const StoryPage = () => {
     }, 4000);
     return () => clearTimeout(timeout);
   }, []);
+
+  
   return (
     <div className={StoryStyle.outermostDiv}>
       <div className={StoryStyle.InnerPaddingDiv}>
@@ -87,12 +99,12 @@ const StoryPage = () => {
           </p>
 
           {isAnimationFinished && (
-            <Link to="/login" className={StoryStyle.link}>
+            <div className={StoryStyle.link}>
               <TypingButton
                 text="Continue"
                 show={showButton}
               />
-            </Link>
+            </div>
           )}
         </div>
       </div>
