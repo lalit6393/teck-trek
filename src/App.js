@@ -9,6 +9,7 @@ import PageNotFound from "./components/page_not_found/PageNotFound";
 import RulesPage from "./components/rules_page/RulePage";
 import Signup from "./components/signup/Signup";
 import StoryPage from "./components/story_Page/StoryPage";
+import Timer from "./components/timer/timer";
 import { UserAuthProvider } from "./context/UseUserAuth";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="rules" element={<RulesPage/>} />
           </Route>
           <Route path="avatar" element={<Avatar />} />
+          <Route path="timer" element={<Timer />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </UserAuthProvider>
