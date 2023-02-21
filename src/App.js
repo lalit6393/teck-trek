@@ -6,6 +6,7 @@ import LeaderBoard from "./components/leader_board/LeaderBoard";
 import Login from "./components/login/Login";
 import Navbar from "./components/navbar/Navbar";
 import PageNotFound from "./components/page_not_found/PageNotFound";
+import Prevent from "./components/Prevent";
 import RulesPage from "./components/rules_page/RulePage";
 import Signup from "./components/signup/Signup";
 import StoryPage from "./components/story_Page/StoryPage";
@@ -20,7 +21,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="story" element={<StoryPage />} />
-          <Route path="/" element={<Navbar/>}>
+          <Route path="/" element={<Prevent><Navbar/></Prevent>}>
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="leaderboard" element={<LeaderBoard/>} />

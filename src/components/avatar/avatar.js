@@ -9,6 +9,7 @@ import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
 import check from "../../static_files/check.svg"
 import { useState } from "react";
+import Cloud from "../clouds/Cloud";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
 
@@ -31,6 +32,7 @@ const Avatar = () => {
   return (
     <>
       <section className={styles.container}>
+        <Cloud/>
         <div className={styles.avatarSelection}>
           <div className={styles.logo}>
             <div></div>

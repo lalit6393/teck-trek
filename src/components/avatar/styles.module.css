@@ -10,6 +10,8 @@
   min-height: 600px;
   width: 100vw;
   box-sizing: border-box;
+  position: relative;
+  background: #0A0A12;
 }
 
 .avatarSelection {
