@@ -154,7 +154,7 @@ footer span {
 @media (max-width : 720px) {
   footer{
     flex-direction: column;
-    position: relative;
+    /* position: relative; */
     justify-content: flex-start;
     font-size: 14px;
     text-align: left;
