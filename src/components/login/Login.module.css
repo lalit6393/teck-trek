@@ -8,6 +8,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
+  background: #0A0A12;
 }
 
 .container2 {

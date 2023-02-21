@@ -152,8 +152,13 @@ ul > li {
   padding: 1.6rem 3rem;
 }
 
+.drawerContent>ul>li>a{
+  color: white;
+  text-decoration: none;
+}
+
 .drawerContent>ul>li:nth-child(6){
-  font-size: 1rem;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

@@ -4,6 +4,9 @@
   justify-content: center;
   color: white;
   height: 100%;
+  width: 100%;
+  position: relative;
+  background: #0A0A12;
 }
 
 .pnfcontentPart {
@@ -12,6 +15,7 @@
   justify-content: center;
   flex-direction: column;
   box-sizing: border-box;
+  margin-bottom: 7.4rem;
 }
 
 .pnfImg > img {
@@ -37,65 +41,123 @@
   cursor: pointer;
 }
 
-.footer{
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 2rem;
-    padding: 2rem;
-    justify-content: space-around;
-    font-size: 1.3rem;
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  padding: 2rem;
+  justify-content: space-around;
+  font-size: 1.3rem;
 }
 
-.footer p{
-    color: #F78A20;
+.footer p {
+  color: #f78a20;
 }
 
-.footer p span{
-    color: white;
+.footer p span {
+  color: white;
+}
+
+/* cloud animation */
+
+.cloud {
+  position: fixed;
+   /* Animate the cloud */
+}
+
+.cloud:nth-child(1) {
+  top: 19%;
+  left: 3.5%;
+  animation: float1 8s ease infinite;
+}
+
+.cloud:nth-child(1) > img {
+  width: 31rem;
+}
+
+.cloud:nth-child(2) {
+  top: 59%;
+  left: 15.7%;
+  animation: float2 6s ease infinite;
+}
+
+.cloud:nth-child(3) {
+  top: 28%;
+  left: 84%;
+  animation: float1 6s ease infinite;
+}
+
+.cloud:nth-child(3) > img {
+  width: 33rem;
+}
+
+@keyframes float1 {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float2 {
+  50% {
+    transform: translateY(15px);
+  }
 }
 
 @media screen and (max-width: 618px) {
-    .pnfImg > img {
-        width: 30rem;
-      }
+  .pnfImg > img {
+    width: 30rem;
+  }
 
-      .pnftext{
-        font-size: 0.8rem;
-      }
+  .pnftext {
+    font-size: 0.8rem;
+  }
 
-      .pnfButton{
-        width: 24rem;
-        font-size: 1.4rem;
-      }
+  .pnfButton {
+    width: 24rem;
+    font-size: 1.4rem;
+  }
+
+  .cloud:nth-child(1) {
+    left: -44.5%;
+  }
+
+  .cloud:nth-child(2) {
+    top: 12%;
+    left: 51.7%;
+  }
+
+  .cloud:nth-child(3){
+    top: 69%;
+    left: 80%;
+  }
 }
 
+@media screen and (min-width: 1600px) and (max-width: 1850px) {
+  .pnfImg > img {
+    width: 50rem;
+  }
 
-@media screen and (min-width: 1600px) and (max-width: 1850px){
-    .pnfImg > img {
-        width: 50rem;
-      }
+  .pnftext {
+    font-size: 1.3rem;
+  }
 
-      .pnftext{
-        font-size: 1.3rem;
-      }
-
-      .pnfButton{
-        width: 36rem;
-        font-size: 2rem;
-      }
+  .pnfButton {
+    width: 36rem;
+    font-size: 2rem;
+  }
 }
 
 @media screen and (min-width: 1851px) {
-    .pnfImg > img {
-        width: 60rem;
-      }
+  .pnfImg > img {
+    width: 60rem;
+  }
 
-      .pnftext{
-        font-size: 1.6rem;
-      }
+  .pnftext {
+    font-size: 1.6rem;
+  }
 
-      .pnfButton{
-        width: 40rem;
-        font-size: 2.8rem;
-      }
+  .pnfButton {
+    width: 40rem;
+    font-size: 2.8rem;
+  }
 }

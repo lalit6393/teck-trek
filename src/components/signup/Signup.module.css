@@ -8,6 +8,8 @@
   padding: 0;
   box-sizing: border-box;
   overflow-y: scroll;
+  position: relative;
+  background: #0A0A12;
 }
 
 .Container2 {

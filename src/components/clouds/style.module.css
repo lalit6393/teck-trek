@@ -1,0 +1,61 @@
+/* cloud animation */
+
+.cloud {
+  position: fixed;
+   /* Animate the cloud */
+}
+
+.cloud:nth-child(1) {
+  top: 19%;
+  left: 3.5%;
+  animation: float1 8s ease infinite;
+}
+
+.cloud:nth-child(1) > img {
+  width: 31rem;
+}
+
+.cloud:nth-child(2) {
+  top: 59%;
+  left: 15.7%;
+  animation: float2 6s ease infinite;
+}
+
+.cloud:nth-child(3) {
+  top: 28%;
+  left: 84%;
+  animation: float1 6s ease infinite;
+}
+
+.cloud:nth-child(3) > img {
+  width: 33rem;
+}
+
+@keyframes float1 {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float2 {
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+@media screen and (max-width: 618px) {
+
+  .cloud:nth-child(1) {
+    left: -44.5%;
+  }
+
+  .cloud:nth-child(2) {
+    top: 12%;
+    left: 51.7%;
+  }
+
+  .cloud:nth-child(3){
+    top: 69%;
+    left: 80%;
+  }
+}

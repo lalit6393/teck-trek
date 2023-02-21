@@ -3,6 +3,7 @@ import timeLeft from './timeleft';
 import timeImg from '../../static_files/time.svg'
 import styles from './styles.module.css'
 import arrow from '../../static_files/arrow2.svg'
+import Cloud from '../clouds/Cloud';
 
 const Timer = () => {
     const [time, setTime] = useState(timeLeft('Tue Feb 22 2023 10:37:05 GMT+0530 (India Standard Time)'));
@@ -11,6 +12,7 @@ const Timer = () => {
     },(1000))
     return ( 
     <section className={styles.container}>
+        <Cloud/>
         <button className={styles.logout}>
             <span>Logout</span>
             <img src={arrow} alt="" srcset="" />

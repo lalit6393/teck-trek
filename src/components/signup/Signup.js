@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import background from "../../static_files/BG_Main_Dark.svg";
 import signup from "../../static_files/signup.svg";
+import Cloud from "../clouds/Cloud";
 
 const Signup = () => {
   const [userRegistration, setuserRegistration] = useState({
@@ -32,6 +33,7 @@ const Signup = () => {
   };
   return (
     <div className={styles.Main}>
+      <Cloud/>
       <div className={styles.Container2}>
         <form action="" onSubmit={handleSubmit} className={styles.Form}>
           <img className={styles.Image} src={signup} alt="login" />

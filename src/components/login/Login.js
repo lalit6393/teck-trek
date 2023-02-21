@@ -5,6 +5,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 import login from "../../static_files/signup.svg";
+import Cloud from "../clouds/Cloud";
 const Login = () => {
   ////////////id password
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ const Login = () => {
   const [visible, setVisible] = useState(false);
   return (
     <div className={styles.main}>
+      <Cloud/>
       <div className={styles.container1}>
         <div className={styles.container2}>
           <form action="" onSubmit={submitForm} className={styles.form}>
