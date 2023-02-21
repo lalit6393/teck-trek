@@ -77,19 +77,6 @@
     font-size: 1vw;
     font-weight: 400;
 }
-
-footer{
-    box-sizing: border-box;
-    padding: 20px 30px;
-    width: 100%;
-    position: absolute;
-    bottom:0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    color: #F78A20;
-    /* font-size: 14px; */
-  }
   
   footer span{
     color: white;

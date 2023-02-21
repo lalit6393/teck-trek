@@ -80,13 +80,9 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <footer className={styles.foot2}>
-        <div>
-          Designed & Developed by: <span>Nibble Computer Society</span>
-        </div>
-        <div>
-          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
-        </div>
+      <footer>
+            <div>Designed & Developed by: <span>Nibble Computer Society</span></div>
+            <div>Alumni & Faculty, Visit: <span>Forum for Trekking</span></div>
       </footer>
     </div>
   );

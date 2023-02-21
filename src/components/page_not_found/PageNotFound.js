@@ -21,14 +21,18 @@ const PageNotFound = () => {
         </div>
       </div>
       <div style={{ flex: "1" }} />
-      <div className={pnfStyle.footer}>
+      {/* <div className={pnfStyle.footer}>
         <p>
           Designed & Developed by: <span>Nibble Computer Society</span>
         </p>
         <p>
           Alumni & Faculty, Visit: <span>Forum for Trekking</span>
         </p>
-      </div>
+      </div> */}
+      <footer>
+            <div>Designed & Developed by: <span>Nibble Computer Society</span></div>
+            <div>Alumni & Faculty, Visit: <span>Forum for Trekking</span></div>
+      </footer>
     </div>
   );
 };
