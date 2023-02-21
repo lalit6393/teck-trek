@@ -7,6 +7,7 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
+import check from "../../static_files/check.svg"
 import { useState } from "react";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
@@ -62,7 +63,10 @@ const Avatar = () => {
               Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
             </button>
             <div className={styles.terms}>
-              <input type="checkbox" />{" "}
+              <div className={styles.input}>
+                <input type="checkbox" />
+                <span><img src={check} alt="" /></span>
+              </div>{" "}
               <span>
                 I agree to the{" "}
                 <a
