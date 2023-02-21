@@ -311,3 +311,10 @@ ul > li {
     height: 2.2rem;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .outermostDiv{
+    background: var(--mobile_background) no-repeat center fixed;
+    background-size: cover;
+  }
+}

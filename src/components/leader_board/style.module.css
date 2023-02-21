@@ -309,6 +309,10 @@
 }
 
 @media screen and (max-width: 480px) {
+  .outermostDiv{
+    background: var(--mobile_background) no-repeat center fixed;
+    background-size: cover;
+  }
   .innermostDiv {
     width: 90%;
     margin: 20px auto 0px auto;

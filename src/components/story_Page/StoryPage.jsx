@@ -37,11 +37,6 @@ const TypingButton = ({ text, show, clickFunction }) => {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
-  const continueButton = () => {
-    localStorage.setItem('visited', true);
-    navigate('/signup');
-}
-
   useEffect(() => {
     if (show) {
       const interval = setInterval(() => {
@@ -66,10 +61,14 @@ const TypingButton = ({ text, show, clickFunction }) => {
 const StoryPage = () => {
 
   const navigate = useNavigate();
-  const {setVisited} = useUserAuth();
+  const {setVisited, visited} = useUserAuth();
   const [showContent, setShowContent] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  if(visited){
+    navigate('/');
+  }
 
 
   useEffect(() => {

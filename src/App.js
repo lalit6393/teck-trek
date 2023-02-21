@@ -28,7 +28,7 @@ function App() {
             <Route path="rules" element={<RulesPage/>} />
           </Route>
           <Route path="avatar" element={<Avatar />} />
-          <Route path="timer" element={<Timer />} />
+          <Route path="timer" element={<Prevent><Timer /></Prevent>} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </UserAuthProvider>

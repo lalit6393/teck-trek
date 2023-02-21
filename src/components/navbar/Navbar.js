@@ -8,6 +8,10 @@ import logoutIcon from "../../static_files/logoutIcon.svg";
 import crossIcon from "../../static_files/crossIcon.svg";
 import volume_up from "../../static_files/volume_up.svg";
 import Prevent from "../Prevent";
+import dayjs from "dayjs";
+import Timer from "../timer/timer";
+var isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+dayjs.extend(isSameOrAfter);
 
 const Navbar = () => {
   const location = useLocation();
@@ -32,6 +36,9 @@ const Navbar = () => {
     navigate('/login');
   }
 
+  if(!dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
+    return <Timer/>
+  }else{
   return (
     <div className={navStyle.outermostDiv}>
       <div className={navStyle.navbar}>
@@ -247,6 +254,6 @@ const Navbar = () => {
       <Prevent><Outlet /></Prevent>
     </div>
   );
-};
+}};
 
 export default Navbar;
