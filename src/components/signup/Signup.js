@@ -91,7 +91,7 @@ const Signup = () => {
             />
           </div>
 
-          <button className={styles.button} type="submit">
+          <button className={styles.buttonSubmit} type="submit">
             Continue &rarr;
           </button>
           <div className={styles.HaveAccount}>

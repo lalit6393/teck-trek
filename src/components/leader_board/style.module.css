@@ -7,7 +7,7 @@
 .innermostDiv {
   box-sizing: border-box;
   width: 846px;
-  height: 600px;
+  /* height: 600px; */
   background: rgba(128, 130, 188, 0.06);
   border: 3.60383px solid rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16.2173px);
@@ -41,7 +41,7 @@
 .headerRow {
   display: flex;
   width: 100%;
-  margin: 5px;
+  height: 44px;
   padding: 10px;
 }
 .headerRowMain {
@@ -177,7 +177,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 35px;
+  margin-top: 30px;
+    margin-bottom: 10px;
 }
 .prev {
   width: 128px;
@@ -273,7 +274,7 @@
 @media screen and (max-width:768px) and (min-width:481px){
 
   .innermostDiv {
-    width: 95%;
+    width: 90%;
   }
   .mainHeading{
     font-size: 22px;
@@ -303,10 +304,12 @@
 
 @media screen and (max-width: 480px) {
   .innermostDiv {
-    width: 98%;
+    width: 90%;
+    margin: 20px auto 0px auto;
   }
   .mainHeading{
     font-size: 20px;
+    margin-top: 10px;
   }
   .rank{
     font-size: 13px;
@@ -327,6 +330,6 @@
     font-size: 13px;
   }
   .LeaderBoard{
-    width: 95%;
+    width: 90%;
   }
 }

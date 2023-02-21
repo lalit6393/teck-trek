@@ -99,6 +99,7 @@ color: #FDF3E7;
 @media screen and (max-width: 480px) {
   .innermostDiv {
     width: 98%;
+    margin: 20px auto 0px auto;
   }
   .mainHeading{
     font-size: 1.5rem;
