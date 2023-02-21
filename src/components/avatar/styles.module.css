@@ -187,7 +187,6 @@ footer span {
   color: white;
 }
 
-@m
 
 @media (max-width:1100px) {
   .terms{
@@ -195,15 +194,13 @@ footer span {
   }
 }
 
-@media (max-width : 720px) {
+@media (max-width:750px) {
   footer{
-    flex-direction: column;
-    /* position: relative; */
-    justify-content: flex-start;
-    font-size: 14px;
-    text-align: left;
-    gap: 5px;
+    display: none;
   }
+}
+
+@media (max-width : 720px) {
 
   .terms{
     margin:0 auto;
