@@ -22,7 +22,7 @@ const PageNotFound = () => {
           <span onClick={() => navigate("/")}>Go to home</span>
         </div>
       </div>
-      <div style={{ flex: "1" }} />
+      <div className={pnfStyle.secondFlexDiv} style={{ flex: "1" }} />
       {/* <div className={pnfStyle.footer}>
         <p>
           Designed & Developed by: <span>Nibble Computer Society</span>

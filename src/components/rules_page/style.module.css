@@ -3,6 +3,7 @@
   background: var(--main_background_url_dark) no-repeat center fixed;
   background-size: cover;
   height: 100%;
+  overflow-y: auto;
 }
 .innermostDiv {
   box-sizing: border-box;

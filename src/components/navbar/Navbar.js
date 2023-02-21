@@ -163,6 +163,7 @@ const Navbar = () => {
                     height: "3.8rem",
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
+                    fontWeight: "600"
                   }}
                   src="#"
                 >
