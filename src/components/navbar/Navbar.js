@@ -36,7 +36,7 @@ const Navbar = () => {
     navigate('/login');
   }
 
-  if(!dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
+  if(dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
     return <Timer/>
   }else{
   return (
@@ -171,7 +171,6 @@ const Navbar = () => {
                   sx={{
                     bgcolor: "grey",
                     cursor: "pointer",
-                    fontWeight: "bold",
                     width: "3.8rem",
                     height: "3.8rem",
                     fontFamily: "Avenir",
