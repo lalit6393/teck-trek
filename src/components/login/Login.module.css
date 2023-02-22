@@ -178,6 +178,12 @@ textarea {
   .form{
     gap: 1.2rem;
   }
+  .input>input{
+    padding: 13px;
+  }
+  .logBtn{
+    padding: 13px 20px;
+  }
 }
 
 @media screen and (min-width:561px) and (max-width:768px){
