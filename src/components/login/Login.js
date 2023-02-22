@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-
-import { useState } from "react";
-
-import loginImg from "../../static_files/signup.svg";
+import LoginImg from "../../static_files/LoginImg.png";
 import Cloud from "../clouds/Cloud";
 import { useUserAuth } from "../../context/UseUserAuth";
 import { useNavigate } from "react-router-dom";
@@ -22,15 +19,15 @@ const Login = () => {
     e.preventDefault();
     const newEntry = { email: email.trim(), password: password.trim() };
     setallEntry([...allEntry, newEntry]);
-    if(email && password){
+    if (email && password) {
       login(newEntry)
-      .then((res) => {
+        .then((res) => {
           console.log("login page", res);
-          localStorage.setItem('username', 'Lalit');
-          setUser({username: 'Lalit'});
-          navigate('/dashboard');
-      })
-      .catch((err) => console.log("login page error",err));
+          localStorage.setItem("username", "Lalit");
+          setUser({ username: "Lalit" });
+          navigate("/dashboard");
+        })
+        .catch((err) => console.log("login page error", err));
     }
   };
   const [visible, setVisible] = useState(false);
@@ -41,7 +38,7 @@ const Login = () => {
       <div className={styles.container1}>
         <div className={styles.container2}>
           <form action="" onSubmit={submitForm} className={styles.form}>
-            <img className={styles.image} src={loginImg} alt="login" />
+            <img src={LoginImg} width={"300px"} alt="login" />
             <div className={styles.input}>
               <input
                 value={email}
@@ -80,7 +77,7 @@ const Login = () => {
               <input type="password" placeholder="Password goes here" />
             </div> */}
             <div className={styles.forgot}>
-              <a className={styles.a2} href="#">
+              <a className={styles.a2} href="/login">
                 Forgot Password?
               </a>
             </div>
