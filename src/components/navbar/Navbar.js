@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <div className={navStyle.outermostDiv}>
-      <div className={navStyle.navbar} id={'nav'}>
+      <div className={navStyle.navbar} id={"nav"}>
         <div className={navStyle.leftDiv}>
           <div className={navStyle.appName} onClick={() => navigate("/")}>
             <img src={appNameImg} alt={"TeckTrek"} height="23px"></img>
@@ -137,7 +137,11 @@ const Navbar = () => {
               {"White fang".slice(0, 1)}
             </Avatar>
             <div className={navStyle.icons}>
-              <img onClick={() => navigate('/login')} src={logoutIcon} alt="logoutIcon"></img>
+              <img
+                onClick={() => navigate("/login")}
+                src={logoutIcon}
+                alt="logoutIcon"
+              ></img>
             </div>
           </div>
         </div>
@@ -169,7 +173,7 @@ const Navbar = () => {
                     height: "3.8rem",
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
-                    fontWeight: "600"
+                    fontWeight: "600",
                   }}
                   src="#"
                 >
@@ -206,7 +210,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate("/dashboard")}
               >
                 Dashboard
               </li>
@@ -216,7 +220,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/rules')}
+                onClick={() => navigate("/rules")}
               >
                 Rules
               </li>
@@ -226,7 +230,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/leaderboard')}
+                onClick={() => navigate("/leaderboard")}
               >
                 Leaderboard
               </li>
