@@ -144,7 +144,11 @@ const Navbar = () => {
               {"White fang".slice(0, 1)}
             </Avatar>
             <div className={navStyle.icons}>
-              <img onClick={logout} src={logoutIcon} alt="logoutIcon"></img>
+              <img
+                onClick={() => navigate("/login")}
+                src={logoutIcon}
+                alt="logoutIcon"
+              ></img>
             </div>
           </div>
         </div>
