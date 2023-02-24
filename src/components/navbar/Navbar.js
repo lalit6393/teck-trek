@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -26,9 +26,15 @@ const Navbar = () => {
     setOpenDrawer(false);
   };
 
+  // useEffect(() => {
+  //   const navElement = document.querySelector("#nav");
+  //   const navHeight = navElement.offsetHeight;
+  //   console.log(navElement, navHeight)
+  // }, []);
+
   return (
     <div className={navStyle.outermostDiv}>
-      <div className={navStyle.navbar}>
+      <div className={navStyle.navbar} id={'nav'}>
         <div className={navStyle.leftDiv}>
           <div className={navStyle.appName} onClick={() => navigate("/")}>
             <img src={appNameImg} alt={"TeckTrek"} height="23px"></img>

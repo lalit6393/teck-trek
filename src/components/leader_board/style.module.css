@@ -312,7 +312,7 @@
 @media screen and (max-width: 480px) {
   .innermostDiv {
     width: 90%;
-    margin: 20px auto 0px auto;
+    /* margin: 20px auto 0px auto; */
   }
   .mainHeading{
     font-size: 20px;
