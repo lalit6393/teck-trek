@@ -26,12 +26,6 @@ const Navbar = () => {
     setOpenDrawer(false);
   };
 
-  // useEffect(() => {
-  //   const navElement = document.querySelector("#nav");
-  //   const navHeight = navElement.offsetHeight;
-  //   console.log(navElement, navHeight)
-  // }, []);
-
   return (
     <div className={navStyle.outermostDiv}>
       <div className={navStyle.navbar} id={"nav"}>
