@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import appNameImg from "../../static_files/tecktrek.svg";
 import coolicon from "../../static_files/coolicon.svg";
 import logoutIcon from "../../static_files/logoutIcon.svg";
 import crossIcon from "../../static_files/crossIcon.svg";
 import volume_up from "../../static_files/volume_up.svg";
+import Prevent from "../Prevent";
+import dayjs from "dayjs";
+import Timer from "../timer/timer";
+var isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+dayjs.extend(isSameOrAfter);
 
 const Navbar = () => {
   const location = useLocation();
@@ -26,6 +31,14 @@ const Navbar = () => {
     setOpenDrawer(false);
   };
 
+  const logout = () => {
+    localStorage.removeItem("username");
+    navigate('/login');
+  }
+
+  if(!dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
+    return <Timer/>
+  }else{
   return (
     <div className={navStyle.outermostDiv}>
       <div className={navStyle.navbar} id={"nav"}>
@@ -39,7 +52,7 @@ const Navbar = () => {
           <div className={navStyle.navigation}>
             <ul>
               <li>
-                <a
+                <Link
                   style={
                     (location.pathname.match("/dashboard") ||
                       location.pathname.match("/")) &&
@@ -49,10 +62,10 @@ const Navbar = () => {
                       : null
                   }
                   className={navStyle.anchor}
-                  href="/dashboard"
+                  to="dashboard"
                 >
                   Dashboard
-                </a>
+                </Link>
                 <div
                   style={
                     (location.pathname.match("/dashboard") ||
@@ -68,17 +81,17 @@ const Navbar = () => {
                 </div>
               </li>
               <li>
-                <a
+                <Link
                   style={
                     location.pathname.match("/rules")
                       ? { borderBottom: "0.6rem solid rgb(34, 139, 34)" }
                       : null
                   }
                   className={navStyle.anchor}
-                  href="/rules"
+                  to='rules'
                 >
                   Rules
-                </a>
+                </Link>
                 <div
                   style={
                     location.pathname.match("/rules") ? backgroundBlur : null
@@ -89,17 +102,17 @@ const Navbar = () => {
                 </div>
               </li>
               <li>
-                <a
+                <Link
                   style={
                     location.pathname.match("/leaderboard")
                       ? { borderBottom: "0.6rem solid rgb(34, 139, 34)" }
                       : null
                   }
                   className={navStyle.anchor}
-                  href="/leaderboard"
+                  to="leaderboard"
                 >
                   Leaderboard
-                </a>
+                </Link>
                 <div
                   style={
                     location.pathname.match("/leaderboard")
@@ -131,11 +144,7 @@ const Navbar = () => {
               {"White fang".slice(0, 1)}
             </Avatar>
             <div className={navStyle.icons}>
-              <img
-                onClick={() => navigate("/login")}
-                src={logoutIcon}
-                alt="logoutIcon"
-              ></img>
+              <img onClick={logout} src={logoutIcon} alt="logoutIcon"></img>
             </div>
           </div>
         </div>
@@ -162,7 +171,6 @@ const Navbar = () => {
                   sx={{
                     bgcolor: "grey",
                     cursor: "pointer",
-                    fontWeight: "bold",
                     width: "3.8rem",
                     height: "3.8rem",
                     fontFamily: "Avenir",
@@ -228,8 +236,8 @@ const Navbar = () => {
               >
                 Leaderboard
               </li>
-              <li>
-                <a href="/login">Logout</a>
+              <li onClick={logout}>
+                <span >Logout</span>
               </li>
               <li>
                 <img src={volume_up} alt="sound"></img>
@@ -242,9 +250,9 @@ const Navbar = () => {
           </div>
         </>
       </Drawer>
-      <Outlet />
+      <Prevent><Outlet /></Prevent>
     </div>
   );
-};
+}};
 
 export default Navbar;
