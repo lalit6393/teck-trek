@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import StoryStyle from "./style.module.css";
 import Arrow from "../../static_files/Group.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../context/UseUserAuth";
 
 const TypingContent = ({ text, show, setIsAnimationFinished }) => {
   const [index, setIndex] = useState(0);
@@ -34,6 +35,8 @@ const Typewriter = ({ text }) => {
 
 const TypingButton = ({ text, show, clickFunction }) => {
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (show) {
       const interval = setInterval(() => {
@@ -42,6 +45,7 @@ const TypingButton = ({ text, show, clickFunction }) => {
       return () => clearInterval(interval);
     }
   }, [show]);
+
   return (
     <div className={StoryStyle.buttonContainer}>
       <div style={{ display: show ? "block" : "none" }}>
@@ -55,9 +59,17 @@ const TypingButton = ({ text, show, clickFunction }) => {
 };
 
 const StoryPage = () => {
+
+  const navigate = useNavigate();
+  const {setVisited, visited} = useUserAuth();
   const [showContent, setShowContent] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  if(visited){
+    navigate('/');
+  }
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -73,6 +85,9 @@ const StoryPage = () => {
 
   // Lalit Redirect function 
   function handleClick() {
+    setVisited(true);
+    localStorage.setItem('visited', true);
+    navigate('/signup');
     console.log('Button clicked');
   }
 

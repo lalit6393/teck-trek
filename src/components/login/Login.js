@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-
-import { useState } from "react";
-
-import login from "../../static_files/signup.svg";
+import LoginImg from "../../static_files/LoginImg.png";
 import Cloud from "../clouds/Cloud";
+import { useUserAuth } from "../../context/UseUserAuth";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   ////////////id password
+  const { login, setUser } = useUserAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
@@ -15,17 +17,28 @@ const Login = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    const newEntry = { email: email, password: password };
+    const newEntry = { email: email.trim(), password: password.trim() };
     setallEntry([...allEntry, newEntry]);
+    if (email && password) {
+      login(newEntry)
+        .then((res) => {
+          console.log("login page", res);
+          localStorage.setItem("username", "Lalit");
+          setUser({ username: "Lalit" });
+          navigate("/dashboard");
+        })
+        .catch((err) => console.log("login page error", err));
+    }
   };
   const [visible, setVisible] = useState(false);
+
   return (
     <div className={styles.main}>
-      <Cloud/>
+      <Cloud />
       <div className={styles.container1}>
         <div className={styles.container2}>
           <form action="" onSubmit={submitForm} className={styles.form}>
-            <img className={styles.image} src={login} alt="login" />
+            <img src={LoginImg} width={"300px"} alt="login" />
             <div className={styles.input}>
               <input
                 value={email}
@@ -64,7 +77,7 @@ const Login = () => {
               <input type="password" placeholder="Password goes here" />
             </div> */}
             <div className={styles.forgot}>
-              <a className={styles.a2} href="#">
+              <a className={styles.a2} href="/login">
                 Forgot Password?
               </a>
             </div>
@@ -83,8 +96,12 @@ const Login = () => {
         </div>
       </div>
       <footer>
-            <div>Designed & Developed by: <span>Nibble Computer Society</span></div>
-            <div>Alumni & Faculty, Visit: <span>Forum for Trekking</span></div>
+        <div>
+          Designed & Developed by: <span>Nibble Computer Society</span>
+        </div>
+        <div>
+          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
+        </div>
       </footer>
     </div>
   );

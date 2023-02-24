@@ -30,7 +30,7 @@ const LeaderBoard = () => {
 
     window.addEventListener("resize", (event) => {
       var screenHeight = window.innerHeight;
-      // console.log("Dhru" , event.currentTarget.outerHeight);
+      // console.log("Dhruv" , event.currentTarget.outerHeight);
       screenHeight = event.currentTarget.outerHeight;
       // console.log("lalit" , screenHeight);
       const rowElement = document.querySelector("#row");

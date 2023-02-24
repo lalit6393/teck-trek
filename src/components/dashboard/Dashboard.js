@@ -62,8 +62,8 @@ const Dashboard = () => {
             {
               achievements.map((achievement,i)=>{
                 return (
-                  <div>
-                    <img src={achievement.stage} key={i} />
+                  <div key={i} >
+                    <img src={achievement.stage}/>
                     <span style={{marginTop:"7px"}}>stage {i+1}</span>
                   </div>
                 )
