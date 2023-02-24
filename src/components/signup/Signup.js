@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
-import background from "../../static_files/BG_Main_Dark.svg";
-import signupImg from "../../static_files/signup.svg";
+import LoginImg from "../../static_files/LoginImg.png";
 import Cloud from "../clouds/Cloud";
 import { useUserAuth } from "../../context/UseUserAuth";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +54,7 @@ const Signup = () => {
       <Cloud/>
       <div className={styles.Container2}>
         <form action="" onSubmit={handleSubmit} className={styles.Form}>
-          <img className={styles.Image} src={signupImg} alt="login" />
+          <img className={styles.Image} src={LoginImg} alt="login" />
           <div className={styles.Input}>
             <input
               type="text"

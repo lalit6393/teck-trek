@@ -1,37 +1,38 @@
 .Main {
-  background-image: url("../../static_files/BG_darkg.svg");
-  background-size: cover;
+  display: flex;
   height: 100%;
+  width: 100%;
   font-size: 50px;
-  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   background: #0A0A12;
+  justify-content: center;
+  min-height: 55rem;
 }
 
 .Container2 {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 87vh;
-  height: 100%;
-
   font-size: 1.4vmin;
-}
-.Image {
-  width: 100%;
-  margin-bottom: -29px;
+  height: 100%;
+  width: 40%;
+  min-width: 30rem;
+  max-width: 38rem;
 }
 
 .Form {
-  position: relative;
-  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1.2rem;
+}
 
-  height: 80vh;
+.Form>img{
+  width: 100%;
 }
 
 input {
@@ -49,8 +50,17 @@ textarea {
 }
 
 .Input {
-  padding: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
   color: #ffffff;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.Input>input{
+  width: 100%;
+  position: relative;
 }
 
 .login {
@@ -59,26 +69,21 @@ textarea {
 }
 
 .buttonSubmit {
+  width: 100%;
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
-  gap: 10px;
   cursor: pointer;
-  width: 74%;
-  height: 56px;
-  left: 512px;
-  top: 681.19px;
-  margin-top: 20px;
   background: #08ac70;
   font-family: "Avenir";
   font-style: normal;
   font-weight: 850;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 1.6rem;
   color: #ffffff;
   border-style: hidden;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
+
 .buttonSubmit:hover {
   background: #013421;
   color: #e4ec9d;
@@ -87,8 +92,93 @@ textarea {
 .paragraph {
   font-size: 16px;
   color: #ffffff;
-  padding-top: 10px;
 }
-.HaveAccount {
-  padding-bottom: 40px;
+
+@media screen and (min-width: 2001px){
+  .Container2{
+   font-size: 2rem;
+    max-width: 55rem;
+  }
+  .Input>input{
+    font-size: 2rem;
+  }
+  .buttonSubmit{
+    font-size: 1.8rem;
+  }
+  .paragraph{
+    font-size: 1.8rem;
+  }
+}
+
+
+@media screen and (min-width: 1800px) and (max-width:2000px){
+  .Container2{
+    max-width: 48rem;
+  }
+  .Input>input{
+    font-size: 2rem;
+  }
+  .buttonSubmit{
+    font-size: 1.8rem;
+  }
+  .paragraph{
+    font-size: 1.8rem;
+  }
+}
+
+
+
+@media screen and (max-width:560px) {
+  .Form{
+    gap: 1.2rem;
+  }
+  .Input>input{
+    padding: 13px;
+  }
+  .buttonSubmit{
+    padding: 13px 20px;
+  }
+}
+
+@media screen and (max-width:310px) {
+  .Container2{
+    min-width: auto;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width:561px) and (max-width:768px){
+  .Container2{
+    min-width: 34rem;
+  }
+  .Form{
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-height:620px) {
+  .Form{
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-height:570px) {
+  .Container2{
+    max-width: 30rem;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-height:500px) {
+  .Container2{
+    min-width: auto;
+    width: 25rem;
+  }
+  .Input>input{
+    padding: 11px;
+  }
+  .buttonSubmit{
+    padding: 11px 20px;
+  }
 }

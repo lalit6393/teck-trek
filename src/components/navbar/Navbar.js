@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
