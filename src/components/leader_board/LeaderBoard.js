@@ -32,7 +32,7 @@ const LeaderBoard = () => {
       var screenHeight = window.innerHeight;
       // console.log("Dhruv K" , event.currentTarget.outerHeight);
       screenHeight = event.currentTarget.outerHeight;
-      // console.log("lalit" , screenHeight);
+      // console.log("lalit V" , screenHeight);
       const rowElement = document.querySelector("#row");
       const rowHeight = rowElement?.offsetHeight || 64;
       const calculatedLimit = Math.floor((screenHeight - 300) / rowHeight);
