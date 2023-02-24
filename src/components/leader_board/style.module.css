@@ -84,8 +84,9 @@
   text-transform: uppercase;
   color: #fdf3e7;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  padding-left: 2rem;
 }
 .score {
   flex: 1.5;
@@ -329,6 +330,8 @@
   }
   .name{
     font-size: 13px;
+    padding-left: 1rem;
+    gap: 5px;
   }
   .badge{
     font-size: 13px;

@@ -4,7 +4,7 @@ import { Avatar } from "@mui/material";
 
 const data = [
   { rank: 1, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 2, name: "White fang", score: "27", badge: "dhruv" },
+  { rank: 2, name: "White fang DHucv", score: "27", badge: "dhruv" },
   { rank: 3, name: "White fang", score: "27", badge: "dhruv" },
   { rank: 4, name: "White fang", score: "27", badge: "dhruv" },
   { rank: 5, name: "White fang", score: "27", badge: "dhruv" },
@@ -12,9 +12,6 @@ const data = [
   { rank: 7, name: "White fang", score: "27", badge: "dhruv" },
   { rank: 8, name: "White fang", score: "30", badge: "dhruv" }
 ];
-
-console.log(data);
-
 const LeaderBoard = () => {
   const [page,setPage] = useState(1);
   const itemsPerPage = 6;
@@ -31,7 +28,7 @@ const LeaderBoard = () => {
             <div className={(LeaderStyle.headerColumn, LeaderStyle.rank)}>
               Rank
             </div>
-            <div className={(LeaderStyle.headerColumn, LeaderStyle.name)}>
+            <div className={(LeaderStyle.headerColumn, LeaderStyle.name)} style={{justifyContent: "center", paddingLeft: "0rem"}}>
               name
             </div>
             <div className={(LeaderStyle.headerColumn, LeaderStyle.score)}>
