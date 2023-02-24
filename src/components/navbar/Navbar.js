@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -41,7 +41,7 @@ const Navbar = () => {
   }else{
   return (
     <div className={navStyle.outermostDiv}>
-      <div className={navStyle.navbar}>
+      <div className={navStyle.navbar} id={"nav"}>
         <div className={navStyle.leftDiv}>
           <div className={navStyle.appName} onClick={() => navigate("/")}>
             <img src={appNameImg} alt={"TeckTrek"} height="23px"></img>
@@ -175,7 +175,7 @@ const Navbar = () => {
                     height: "3.8rem",
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
-                    fontWeight: "600"
+                    fontWeight: "600",
                   }}
                   src="#"
                 >
@@ -212,7 +212,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate("/dashboard")}
               >
                 Dashboard
               </li>
@@ -222,7 +222,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/rules')}
+                onClick={() => navigate("/rules")}
               >
                 Rules
               </li>
@@ -232,7 +232,7 @@ const Navbar = () => {
                     ? { background: "#08AC70" }
                     : null
                 }
-                onClick={() => navigate('/leaderboard')}
+                onClick={() => navigate("/leaderboard")}
               >
                 Leaderboard
               </li>
