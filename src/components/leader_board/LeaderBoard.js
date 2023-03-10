@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from "react";
 import LeaderStyle from "./style.module.css";
 import { Avatar } from "@mui/material";
+import axios from "axios";
+import { useUserAuth } from "../../context/UseUserAuth";
+import avatar1 from "../../static_files/avatar1.svg";
+import avatar2 from "../../static_files/avatar2.svg";
+import avatar3 from "../../static_files/avatar3.svg";
+import avatar4 from "../../static_files/avatar4.svg";
+import avatar5 from "../../static_files/avatar5.svg";
+import avatar6 from "../../static_files/avatar6.svg";
 
-const data = [
-  { rank: 1, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 2, name: "White fang DHucv", score: "27", badge: "dhruv" },
-  { rank: 3, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 4, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 5, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 6, name: "White fang", score: "29", badge: "dhruv" },
-  { rank: 7, name: "White fang", score: "27", badge: "dhruv" },
-  { rank: 8, name: "White fang", score: "30", badge: "dhruv" },
-];
+
 const LeaderBoard = () => {
+  const { accessToken, backendUrl} = useUserAuth();
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemPerPage] = useState(6);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   const start = (page - 1) * itemsPerPage;
   const end = page * itemsPerPage;
   const slicedData = data.slice(start, end);
+
+  const avatars = [
+    { id: 1, img: avatar1 },
+    { id: 2, img: avatar2 },
+    { id: 3, img: avatar3 },
+    { id: 4, img: avatar4 },
+    { id: 5, img: avatar5 },
+    { id: 6, img: avatar6 },
+  ];
+
 
   // const [limit, setLimit] = useState(0);
 
@@ -40,9 +52,21 @@ const LeaderBoard = () => {
       // console.log(screenHeight);
     });
     // const screenHeight = window.innerHeight;
+    const getLeaderboard = async () =>{
+      const res = await axios.get(`${backendUrl}/questions/leaderboard`,{
+        headers : {
+          'Authorization' : `Bearer ${accessToken}`
+        }
+      })
+      const sortedArr = res.data.sort((a,b) => b.score - a.score);
+      setIsLoading((res.data)? false : true);
+      setData(sortedArr);
+    }
+    getLeaderboard();
   }, []);
 
   return (
+    !isLoading &&
     <div className={LeaderStyle.outermostDiv}>
       <div className={LeaderStyle.innermostDiv}>
         <div className={LeaderStyle.mainHeading}>LeaderBoard</div>
@@ -75,7 +99,7 @@ const LeaderBoard = () => {
                   background: index % 2 === 0 ? "" : "rgba(15, 48, 53, 0.4)",
                 }}
               >
-                <div className={LeaderStyle.rank}>{entry.rank}</div>
+                <div className={LeaderStyle.rank}>{index+1}</div>
                 <div className={LeaderStyle.name}>
                   <Avatar
                     sx={{
@@ -88,10 +112,10 @@ const LeaderBoard = () => {
                     }}
                     src="#"
                   >
-                    {"Dhruv".slice(0, 1)}
+                    <img style={{width:"100%"}} src={avatars[entry.avatar_no - 1].img}></img>
                   </Avatar>
 
-                  <span>{entry.name}</span>
+                  <span>{entry.player_name}</span>
                 </div>
                 <div className={LeaderStyle.score}>{entry.score}</div>
                 <div className={LeaderStyle.badge}>
