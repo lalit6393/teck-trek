@@ -7,9 +7,17 @@ import coolicon from "../../static_files/coolicon.svg";
 import logoutIcon from "../../static_files/logoutIcon.svg";
 import crossIcon from "../../static_files/crossIcon.svg";
 import volume_up from "../../static_files/volume_up.svg";
+import avatar1 from "../../static_files/avatar1.svg";
+import avatar2 from "../../static_files/avatar2.svg";
+import avatar3 from "../../static_files/avatar3.svg";
+import avatar4 from "../../static_files/avatar4.svg";
+import avatar5 from "../../static_files/avatar5.svg";
+import avatar6 from "../../static_files/avatar6.svg";
+import { useUserAuth } from "../../context/UseUserAuth";
 import Prevent from "../Prevent";
 import dayjs from "dayjs";
 import Timer from "../timer/timer";
+import axios from "axios";
 var isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
 dayjs.extend(isSameOrAfter);
 
@@ -17,12 +25,35 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const backgroundBlur = {
     background:
       "radial-gradient(80.95% 49.95% at 50% 100.57%, #08ac70 0%, rgba(14, 174, 115, 0) 100%)",
     filter: "blur(14px)",
   };
 
+  const {accessToken, backendUrl} = useUserAuth();
+
+  const avatars = [
+    { id: 1, img: avatar1 },
+    { id: 2, img: avatar2 },
+    { id: 3, img: avatar3 },
+    { id: 4, img: avatar4 },
+    { id: 5, img: avatar5 },
+    { id: 6, img: avatar6 },
+  ];
+
+  useEffect(()=>{
+      axios.get(`${backendUrl}/accounts/api`,{
+        headers : {
+          "Authorization" : `Bearer ${accessToken}`
+        }
+      }).then((res) => {setUser(res.data);setIsLoading(false);});
+    
+  },[setUser])
+  
+  console.log(user);
   const handleClickOpen = () => {
     setOpenDrawer(true);
   };
@@ -40,6 +71,7 @@ const Navbar = () => {
     return <Timer/>
   }else{
   return (
+    !isLoading &&
     <div className={navStyle.outermostDiv}>
       <div className={navStyle.navbar} id={"nav"}>
         <div className={navStyle.leftDiv}>
@@ -128,7 +160,7 @@ const Navbar = () => {
           </div>
           <div style={{ flex: "1" }} />
           <div className={navStyle.userProfile}>
-            <p>{"White fang".toUpperCase()}</p>
+            <p>{user?.username?.toUpperCase()}</p>
             <Avatar
               sx={{
                 bgcolor: "grey",
@@ -141,7 +173,7 @@ const Navbar = () => {
               }}
               src="#"
             >
-              {"White fang".slice(0, 1)}
+              <img style={{width:"100%"}} src={avatars[user.avatar_no - 1].img}></img>
             </Avatar>
             <div className={navStyle.icons}>
               <img
@@ -183,10 +215,10 @@ const Navbar = () => {
                   }}
                   src="#"
                 >
-                  {"White fang".slice(0, 1)}
+                  <img style={{width:"100%"}} src={avatars[user.avatar_no - 1].img}></img>
                 </Avatar>
                 <p>
-                  {"White fang"
+                  { user.username
                     .split(" ")
                     .map(
                       (w) => w[0].toUpperCase() + w.substring(1).toLowerCase()

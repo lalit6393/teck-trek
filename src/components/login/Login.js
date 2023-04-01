@@ -10,22 +10,23 @@ const Login = () => {
   ////////////id password
   const { login, setUser } = useUserAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
   const [allEntry, setallEntry] = useState([]);
 
   const submitForm = (e) => {
     e.preventDefault();
-    const newEntry = { email: email.trim(), password: password.trim() };
+    const newEntry = { username: username.trim(), password: password.trim() };
     setallEntry([...allEntry, newEntry]);
-    if (email && password) {
+    if (username && password) {
+      console.log(newEntry);
       login(newEntry)
         .then((res) => {
-          console.log("login page", res);
-          localStorage.setItem("username", "Lalit");
-          setUser({ username: "Lalit" });
+          if(res.status/100 === 2){
+          setUser({ username: username });
           navigate("/dashboard");
+          }
         })
         .catch((err) => console.log("login page error", err));
     }
@@ -41,13 +42,13 @@ const Login = () => {
             <img src={LoginImg} width={"300px"} alt="login" />
             <div className={styles.input}>
               <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 autoComplete="off"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter your email here"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter your username here"
                 required
               />
             </div>
