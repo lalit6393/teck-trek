@@ -10,6 +10,8 @@ import avatar6 from "../../static_files/avatar6.svg";
 import check from "../../static_files/check.svg"
 import { useState } from "react";
 import Cloud from "../clouds/Cloud";
+import Razorpay from "razorpay"
+
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
 
@@ -27,6 +29,26 @@ const Avatar = () => {
 
   function selectAvatar(id) {
     setSelectedId(id);
+  }
+
+  function initiatePayment(){
+    const key = "rzp_test_ufXQtd6DRYYjQi";
+    const secret = "UUBFKXWOGqnGKj4w37JcKExD";
+
+    var instance = new Razorpay({
+      key_id:key,
+      key_secret:secret,
+    });
+
+    var options = {
+      amount: 50,  // amount in the smallest currency unit
+      currency: "INR",
+      receipt: "order_rcptid_11"
+    };
+
+    instance.orders.create(options, function(err, order) {
+      console.log(order);
+    });
   }
 
   return (
@@ -62,7 +84,7 @@ const Avatar = () => {
           </div>
           <div className={styles.paybtn}>
             <button disabled={true}>
-              Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
+              Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" onClick={intiatePayment}/>
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>
