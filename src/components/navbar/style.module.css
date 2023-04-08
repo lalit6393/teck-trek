@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding-top: 6.4rem;
+  padding-top: 6rem;
   padding-bottom: 1rem;
 }
 
@@ -309,5 +309,12 @@ ul > li {
 
   .appName>img{    
     height: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .outermostDiv{
+    background: var(--mobile_background) no-repeat center fixed;
+    background-size: cover;
   }
 }

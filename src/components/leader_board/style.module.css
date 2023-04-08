@@ -84,8 +84,9 @@
   text-transform: uppercase;
   color: #fdf3e7;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  padding-left: 2rem;
 }
 .score {
   flex: 1.5;
@@ -309,9 +310,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .outermostDiv{
+    background: var(--mobile_background) no-repeat center fixed;
+    background-size: cover;
+  }
   .innermostDiv {
     width: 90%;
-    margin: 20px auto 0px auto;
+    /* margin: 20px auto 0px auto; */
   }
   .mainHeading{
     font-size: 20px;
@@ -325,6 +330,8 @@
   }
   .name{
     font-size: 13px;
+    padding-left: 1rem;
+    gap: 5px;
   }
   .badge{
     font-size: 13px;

@@ -10,6 +10,7 @@
   --main_background_url: url("./static_files/BG_Main_Dark.svg");
   --main_background_url_dark: url("./static_files/BG_Main_Dark.svg");
   --main_story_dark: url("./static_files/Story_BG.svg");
+  --mobile_background: url("./static_files/BG_Mobile.svg");
 }
 
 [data-theme="dark"] {

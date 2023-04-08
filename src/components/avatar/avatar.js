@@ -9,17 +9,16 @@ import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
 import check from "../../static_files/check.svg"
 import { useState } from "react";
+import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
 import Razorpay from "razorpay"
 
+import { useNavigate } from "react-router-dom";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
-
+  const navigate = useNavigate();
   const avatars = [
-    {
-      id: 1,
-      img: avatar1,
-    },
+    { id: 1, img: avatar1 },
     { id: 2, img: avatar2 },
     { id: 3, img: avatar3 },
     { id: 4, img: avatar4 },
@@ -27,8 +26,12 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-  function selectAvatar(id) {
-    setSelectedId(id);
+  const {newUser, setNewUser, setUser, signup} = useUserAuth();
+
+  async function handlePayment(){
+    setNewUser((prev) => {return { ...prev, avatar_no : selectedId}});
+    console.log(newUser);
+    signup()
   }
 
   function initiatePayment(){

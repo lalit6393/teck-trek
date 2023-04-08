@@ -8,15 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
 
-  const {signup, setUser} = useUserAuth();
+  const {signup, setUser, newUser, setNewUser} = useUserAuth();
   const navigate = useNavigate();
 
   const [userRegistration, setuserRegistration] = useState({
-    Username: "",
-    Email: "",
-    Password: "",
-    Admission: "",
-    Phone: "",
+    username: "",
+    email: "",
+    password: "",
+    admission_no: "",
+    contact_no: "",
   });
   
   const handleInput = (e) => {
@@ -30,22 +30,22 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setNewUser(userRegistration);
+    navigate("/avatar")
     const newRecord = {
       ...userRegistration,
       id: new Date().getTime().toString(),
     };
-    console.log(newRecord);
-    signup(newRecord)
-    .then((res) => {
-      console.log(res);
-      localStorage.setItem('username', 'Lalit');
-      setUser({username: 'Lalit'});
-      navigate('/dashboard');
-    })
-    .catch((err) => {
-     console.log(err);
-    });
+    // signup(newRecord)
+    // .then((res) => {
+    //   if(res.status/100 === 2){
+    //     setUser({username: newRecord.username});
+    //     navigate('/dashboard');
+    //   }
+    // })
+    // .catch((err) => {
+    //  console.log(err);
+    // });
     setRecords([...records, newRecord]);
   };
 
@@ -59,33 +59,33 @@ const Signup = () => {
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Username}
+              value={userRegistration.username}
               onChange={handleInput}
               autoComplete="off"
-              name="Username"
-              placeholder="Username"
+              name="username"
+              placeholder="username"
               required
             />
           </div>
           <div className={styles.Input}>
             <input
               type="email"
-              value={userRegistration.Email}
+              value={userRegistration.email}
               onChange={handleInput}
               autoComplete="off"
-              name="Email"
-              placeholder="Email"
+              name="email"
+              placeholder="email"
               required
             />
           </div>
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Password}
+              value={userRegistration.password}
               onChange={handleInput}
-              name="Password"
+              name="password"
               autoComplete="off"
-              placeholder="Password"
+              placeholder="password"
               required
             />
           </div>
@@ -93,9 +93,9 @@ const Signup = () => {
             <input
               type="text"
               autoComplete="off"
-              value={userRegistration.Admission}
+              value={userRegistration.admission_no}
               onChange={handleInput}
-              name="Admission"
+              name="admission_no"
               placeholder="Admission no."
               required
             />
@@ -103,10 +103,10 @@ const Signup = () => {
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Phone}
+              value={userRegistration.contact_no}
               onChange={handleInput}
               autoComplete="off"
-              name="Phone"
+              name="contact_no"
               placeholder="Phone"
               required
             />
