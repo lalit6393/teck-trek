@@ -1,38 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import LoginImg from "../../static_files/LoginImg.png";
+import Cloud from "../clouds/Cloud";
+import { useUserAuth } from "../../context/UseUserAuth";
+import { useNavigate } from "react-router-dom";
 
-import { useState } from "react";
-
-import login from "../../static_files/signup.svg";
 const Login = () => {
   ////////////id password
-  const [email, setEmail] = useState("");
+  const { login, setUser } = useUserAuth();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
   const [allEntry, setallEntry] = useState([]);
 
   const submitForm = (e) => {
     e.preventDefault();
-    const newEntry = { email: email, password: password };
+    const newEntry = { username: username.trim(), password: password.trim() };
     setallEntry([...allEntry, newEntry]);
+    if (username && password) {
+      console.log(newEntry);
+      login(newEntry)
+        .then((res) => {
+          if(res.status/100 === 2){
+          setUser({ username: username });
+          navigate("/dashboard");
+          }
+        })
+        .catch((err) => console.log("login page error", err));
+    }
   };
   const [visible, setVisible] = useState(false);
+
   return (
     <div className={styles.main}>
+      <Cloud />
       <div className={styles.container1}>
         <div className={styles.container2}>
           <form action="" onSubmit={submitForm} className={styles.form}>
-            <img className={styles.image} src={login} alt="login" />
+            <img src={LoginImg} width={"300px"} alt="login" />
             <div className={styles.input}>
               <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 autoComplete="off"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter your email here"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter your username here"
                 required
               />
             </div>
@@ -62,7 +78,7 @@ const Login = () => {
               <input type="password" placeholder="Password goes here" />
             </div> */}
             <div className={styles.forgot}>
-              <a className={styles.a2} href="#">
+              <a className={styles.a2} href="/login">
                 Forgot Password?
               </a>
             </div>
@@ -80,7 +96,11 @@ const Login = () => {
           </form>
         </div>
       </div>
+<<<<<<< HEAD
       <footer className={styles.foote}>
+=======
+      <footer>
+>>>>>>> cd5d80c6159c81d79fb2c3fd17429e24cf3211c0
         <div>
           Designed & Developed by: <span>Nibble Computer Society</span>
         </div>

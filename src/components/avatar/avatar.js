@@ -7,15 +7,16 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
+import check from "../../static_files/check.svg"
 import { useState } from "react";
+import { useUserAuth } from "../../context/UseUserAuth";
+import Cloud from "../clouds/Cloud";
+import { useNavigate } from "react-router-dom";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
-
+  const navigate = useNavigate();
   const avatars = [
-    {
-      id: 1,
-      img: avatar1,
-    },
+    { id: 1, img: avatar1 },
     { id: 2, img: avatar2 },
     { id: 3, img: avatar3 },
     { id: 4, img: avatar4 },
@@ -23,13 +24,19 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-  function selectAvatar(id) {
-    setSelectedId(id);
+  const {newUser, setNewUser, setUser, signup} = useUserAuth();
+
+  async function handlePayment(){
+    setNewUser((prev) => {return { ...prev, avatar_no : selectedId}});
+    console.log(newUser);
+    signup()
   }
+
 
   return (
     <>
       <section className={styles.container}>
+        <Cloud/>
         <div className={styles.avatarSelection}>
           <div className={styles.logo}>
             <div></div>
@@ -58,11 +65,14 @@ const Avatar = () => {
             })}
           </div>
           <div className={styles.paybtn}>
-            <button disabled={true}>
+            <button disabled={(selectedId)? false:true} onClick={handlePayment}>
               Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
             </button>
             <div className={styles.terms}>
-              <input type="checkbox" />{" "}
+              <div className={styles.input}>
+                <input type="checkbox" />
+                <span><img src={check} alt="" /></span>
+              </div>{" "}
               <span>
                 I agree to the{" "}
                 <a

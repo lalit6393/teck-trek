@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import background from "../../static_files/BG_Main_Dark.svg";
-import signup from "../../static_files/signup.svg";
+import signupImg from "../../static_files/signup.svg";
+import Cloud from "../clouds/Cloud";
+import { useUserAuth } from "../../context/UseUserAuth";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+
+  const {signup, setUser, newUser, setNewUser} = useUserAuth();
+  const navigate = useNavigate();
+
   const [userRegistration, setuserRegistration] = useState({
-    Username: "",
-    Email: "",
-    Password: "",
-    Admission: "",
-    Phone: "",
+    username: "",
+    email: "",
+    password: "",
+    admission_no: "",
+    contact_no: "",
   });
+  
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -22,49 +30,62 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setNewUser(userRegistration);
+    navigate("/avatar")
     const newRecord = {
       ...userRegistration,
       id: new Date().getTime().toString(),
     };
-    console.log(records);
+    // signup(newRecord)
+    // .then((res) => {
+    //   if(res.status/100 === 2){
+    //     setUser({username: newRecord.username});
+    //     navigate('/dashboard');
+    //   }
+    // })
+    // .catch((err) => {
+    //  console.log(err);
+    // });
     setRecords([...records, newRecord]);
   };
+
+
   return (
     <div className={styles.Main}>
+      <Cloud/>
       <div className={styles.Container2}>
         <form action="" onSubmit={handleSubmit} className={styles.Form}>
-          <img className={styles.Image} src={signup} alt="login" />
+          <img className={styles.Image} src={signupImg} alt="login" />
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Username}
+              value={userRegistration.username}
               onChange={handleInput}
               autoComplete="off"
-              name="Username"
-              placeholder="Username"
+              name="username"
+              placeholder="username"
               required
             />
           </div>
           <div className={styles.Input}>
             <input
               type="email"
-              value={userRegistration.Email}
+              value={userRegistration.email}
               onChange={handleInput}
               autoComplete="off"
-              name="Email"
-              placeholder="Email"
+              name="email"
+              placeholder="email"
               required
             />
           </div>
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Password}
+              value={userRegistration.password}
               onChange={handleInput}
-              name="Password"
+              name="password"
               autoComplete="off"
-              placeholder="Password"
+              placeholder="password"
               required
             />
           </div>
@@ -72,9 +93,9 @@ const Signup = () => {
             <input
               type="text"
               autoComplete="off"
-              value={userRegistration.Admission}
+              value={userRegistration.admission_no}
               onChange={handleInput}
-              name="Admission"
+              name="admission_no"
               placeholder="Admission no."
               required
             />
@@ -82,10 +103,10 @@ const Signup = () => {
           <div className={styles.Input}>
             <input
               type="text"
-              value={userRegistration.Phone}
+              value={userRegistration.contact_no}
               onChange={handleInput}
               autoComplete="off"
-              name="Phone"
+              name="contact_no"
               placeholder="Phone"
               required
             />

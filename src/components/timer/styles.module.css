@@ -1,10 +1,12 @@
 .container{
     width: 100vw;
-    height: 100vh !important;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    background: #0A0A12;
 }
 
 .logout{
@@ -121,6 +123,7 @@
         font-size: 12px;
         width: 100px;
         height: 40px;
+        right: 30px;
     }
     .logout img{
         width: 30%;

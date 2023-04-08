@@ -15,10 +15,15 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  overflow-y: scroll;
+  position: relative;
+  background: #0a0a12;
 }
 
 .Container2 {
