@@ -14,9 +14,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 92vh;
   width: 100%;
   height: 100%;
+
   font-size: 1.4vmin;
 }
 .image {
@@ -25,9 +26,11 @@
 }
 
 .form {
-  position: absolute;
-
-  height: 500px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 180px;
+  height: 47vh;
 }
 
 .forgot {
@@ -116,4 +119,10 @@ textarea {
 .eye {
   float: right;
   cursor: pointer;
+}
+
+.foote {
+  position: relative;
+  bottom: 0;
+  padding-bottom: 0px;
 }
