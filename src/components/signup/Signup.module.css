@@ -1,12 +1,26 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .Main {
   background-image: url("../../static_files/BG_darkg.svg");
   background-size: cover;
-  height: 100%;
+  min-height: 100vh;
   font-size: 50px;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   overflow-y: scroll;
   position: relative;
   background: #0a0a12;
@@ -16,7 +30,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 87vh;
+  min-height: 67vh;
   height: 100%;
   font-size: 1.4vmin;
 }
@@ -29,8 +43,8 @@
   position: relative;
   justify-content: center;
   align-items: center;
-
-  height: 80vh;
+  padding-bottom: 70px;
+  height: 85vh;
 }
 
 input {
@@ -111,6 +125,12 @@ textarea {
   padding-bottom: 40px;
 }
 
+.foot {
+  position: absolute;
+  bottom: 0;
+  font-size: 2.3vmin;
+  padding: 0 0 0 0;
+}
 .errorText {
   width: calc(69% + 32px);
   color: rgba(217, 95, 95, 1);
