@@ -23,9 +23,9 @@ const Login = () => {
       console.log(newEntry);
       login(newEntry)
         .then((res) => {
-          if(res.status/100 === 2){
-          setUser({ username: username });
-          navigate("/dashboard");
+          if (res.status / 100 === 2) {
+            setUser({ username: username });
+            navigate("/dashboard");
           }
         })
         .catch((err) => console.log("login page error", err));
@@ -96,11 +96,8 @@ const Login = () => {
           </form>
         </div>
       </div>
-<<<<<<< HEAD
+
       <footer className={styles.foote}>
-=======
-      <footer>
->>>>>>> cd5d80c6159c81d79fb2c3fd17429e24cf3211c0
         <div>
           Designed & Developed by: <span>Nibble Computer Society</span>
         </div>
