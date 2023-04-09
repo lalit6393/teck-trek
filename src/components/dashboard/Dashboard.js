@@ -8,6 +8,7 @@ import stage3 from '../../static_files/stage3.svg'
 import stage4 from '../../static_files/stage4.svg'
 import stage5 from '../../static_files/stage5.svg'
 import stage6 from '../../static_files/stage6.svg'
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [level, setLevel] = useState();
@@ -16,7 +17,8 @@ const Dashboard = () => {
   const [question, setQuestion] = useState();
   const [displayMsg,setDisplayMsg] = useState();
   const [isCorrect, setIsCorrect] = useState();
-  const { backendUrl, accessToken} = useUserAuth();
+  const { backendUrl, accessToken, setIsCooldown, setCoolDownTimer} = useUserAuth();
+  const navigate = useNavigate();
 
   const successMsg = ['Bingo!!!','Amazing!',"True Warrior",'Correct!'];
   const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing','Incorrect'];
@@ -43,11 +45,18 @@ const Dashboard = () => {
         setQuestion(res.data.detail.question);
         setLevel(res.data.player_info.current_question);
         setScore(res.data.player_info.score);
+        setIsCooldown(false)
       }
       else{
+        if(res.data.detail.time_left == 1)
         setTimeout(()=>{
           getQuestion()
         },500)
+        else{
+          setIsCooldown(true)
+          setCoolDownTimer(res.data.detail.time_left)
+          navigate('/timer')
+        }
       }
     })
   }
