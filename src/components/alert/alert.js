@@ -7,6 +7,7 @@ const AlertMsg = (props) => {
     <>
       {alert.isOpen && (
         <Alert
+          sx={{fontSize:"14px"}}
           severity={alert.status == 200 ? "success" : "error"}
           color={alert.status == 200 ? "success" : "error"}
           style={{

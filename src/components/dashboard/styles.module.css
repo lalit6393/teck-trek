@@ -221,6 +221,9 @@ hr{
         padding: 0 8px;
         height: 48px;
     }
+    .answer::placeholder{
+        font-size: 14px;
+    }
     .progress{
         font-size: 12px;
     }

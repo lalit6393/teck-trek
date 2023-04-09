@@ -8,12 +8,14 @@ import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
 import check from "../../static_files/check.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 const Avatar = () => {
+  const { newUser, setNewUser, setUser, signup } = useUserAuth();
   const [selectedId, setSelectedId] = useState();
+  const navigate = useNavigate();
   const avatars = [
     { id: 1, img: avatar1 },
     { id: 2, img: avatar2 },
@@ -23,7 +25,15 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-  const { newUser, setNewUser, setUser, signup } = useUserAuth();
+
+  useEffect(()=>{
+    if(newUser?.email){
+      console.log(newUser);
+    }else{
+      console.log('navigate');
+      navigate('/signup')
+    }
+  },[])
 
   async function handlePayment() {
     setNewUser((prev) => {
@@ -64,12 +74,13 @@ const Avatar = () => {
               );
             })}
           </div>
-          <div className={styles.paybtn}>
+          <div className={selectedId && newUser.email ? styles.paybtn : styles.paybtn +" " + styles.buttonDisabled}>
             <button
+              className={selectedId && newUser.email ? null : styles.buttonDisabled}
               disabled={selectedId && newUser.email ? false : true}
               onClick={handlePayment}
             >
-              Submit <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
+              Submit &rarr;
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>

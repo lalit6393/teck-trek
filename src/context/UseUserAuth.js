@@ -49,7 +49,7 @@ export const UserAuthProvider = ({ children }) => {
       const response = await axios
         .post(`${backendUrl}/accounts/api/register/`, user)
         .then((res) => {
-          console.log(res.status);
+          console.log(res);
           if (Math.floor(res.status / 100) === 2) {
             console.log("navigate");
             setAccessToken(res.data.token.access);
@@ -58,13 +58,13 @@ export const UserAuthProvider = ({ children }) => {
             localStorage.setItem("accessToken", res.data.token.access);
             localStorage.setItem("refreshToken", res.data.token.refresh);
             setUser({ username: newUser.username });
-            navigate("/dashboard");
             alertUser("Succesfully created account", 200);
+            navigate("/dashboard");
           }
           return res;
         });
     } catch (e) {
-      alertUser("Failed to create Account, Try Again!");
+      alertUser(e.response.data.contact_no && e.response.data.contact_no[0] || e.response.data.email && e.response.data.email[0] || e.response.data.username && e.response.data.username[0] || e.message);
     }
   };
 
