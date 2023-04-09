@@ -20,6 +20,8 @@ export const UserAuthProvider = ({ children }) => {
   const [refreshToken, setRefreshToken] = useState(
     localStorage.getItem("refreshToken") || null
   );
+  const [isCooldown, setIsCooldown]=useState(false)
+  const [cooldownTimer, setCoolDownTimer] = useState();
   const [alert, setAlert] = useState({
     isOpen: false,
     msg: "",
@@ -101,6 +103,10 @@ export const UserAuthProvider = ({ children }) => {
         setUser,
         visited,
         setVisited,
+        setIsCooldown,
+        isCooldown,
+        cooldownTimer,
+        setCoolDownTimer
       }}
     >
       {children}
