@@ -58,7 +58,7 @@
 .avatarSelection .a_text {
   margin: 5px 0 10px;
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   color: white;
 }
@@ -207,6 +207,10 @@ footer span {
 
   .avatarSelection {
     width: fit-content;
+  }
+
+  .avatarSelection .a_text {
+    font-size: 1.5rem;
   }
 
   .logo {

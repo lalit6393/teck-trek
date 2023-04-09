@@ -14,7 +14,6 @@ import Cloud from "../clouds/Cloud";
 import { useNavigate } from "react-router-dom";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
-  const navigate = useNavigate();
   const avatars = [
     { id: 1, img: avatar1 },
     { id: 2, img: avatar2 },
@@ -67,10 +66,10 @@ const Avatar = () => {
           </div>
           <div className={styles.paybtn}>
             <button
-              disabled={selectedId ? false : true}
+              disabled={selectedId && newUser.email ? false : true}
               onClick={handlePayment}
             >
-              Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
+              Submit <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>

@@ -12,23 +12,39 @@ import Signup from "./components/signup/Signup";
 import StoryPage from "./components/story_Page/StoryPage";
 import Timer from "./components/timer/timer";
 import { UserAuthProvider } from "./context/UseUserAuth";
+import AlertMsg from "./components/alert/alert";
 
 function App() {
   return (
     <div className="App">
       <UserAuthProvider>
+        <AlertMsg />
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="story" element={<StoryPage />} />
-          <Route path="/" element={<Prevent><Navbar/></Prevent>}>
+          <Route
+            path="/"
+            element={
+              <Prevent>
+                <Navbar />
+              </Prevent>
+            }
+          >
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="leaderboard" element={<LeaderBoard/>} />
-            <Route path="rules" element={<RulesPage/>} />
+            <Route path="leaderboard" element={<LeaderBoard />} />
+            <Route path="rules" element={<RulesPage />} />
           </Route>
           <Route path="avatar" element={<Avatar />} />
-          <Route path="timer" element={<Prevent><Timer /></Prevent>} />
+          <Route
+            path="timer"
+            element={
+              <Prevent>
+                <Timer />
+              </Prevent>
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </UserAuthProvider>
