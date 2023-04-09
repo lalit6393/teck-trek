@@ -25,21 +25,18 @@ export const UserAuthProvider = ({ children }) => {
   const signup = async () => {
     const user = { ...newUser, password2: newUser.password };
     console.log(user);
-    const res = await axios
-      .post(`${backendUrl}/accounts/api/register/`, user)
-      .then((res) => {
-        console.log(res.status);
-        if (Math.floor(res.status / 100) === 2) {
-          setAccessToken(res.data.token.access);
-          setRefreshToken(res.data.token.refresh);
-          localStorage.setItem("user", JSON.stringify(res.data));
-          localStorage.setItem("token", res.data.token.access);
-          setUser({ username: newUser.username });
-        }
-        return res;
-      });
-    console.log("signup res", res);
-    return res;
+    axios.post(`${backendUrl}/accounts/api/register/`, user).then((res) => {
+      console.log(res.status);
+      if (Math.floor(res.status / 100) === 2) {
+        console.log("navigate");
+        setAccessToken(res.data.token.access);
+        setRefreshToken(res.data.token.refresh);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        setUser({ username: newUser.username });
+        navigate("/dashboard");
+      }
+      return res;
+    });
   };
 
   const login = async (data) => {

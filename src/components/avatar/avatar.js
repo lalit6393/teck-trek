@@ -12,7 +12,6 @@ import { useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
 import { useNavigate } from "react-router-dom";
-import payment from "../payment.js";
 const Avatar = () => {
   const [selectedId, setSelectedId] = useState();
   const navigate = useNavigate();
@@ -25,16 +24,14 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-  const { newUser, setNewUser, setUser, signup, accessToken } = useUserAuth();
+  const { newUser, setNewUser, setUser, signup } = useUserAuth();
 
   async function handlePayment() {
     setNewUser((prev) => {
       return { ...prev, avatar_no: selectedId };
     });
     console.log(newUser);
-    await signup();
-    console.log("------------payment---------");
-    payment(accessToken);
+    signup();
   }
 
   return (
