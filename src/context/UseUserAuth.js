@@ -14,8 +14,28 @@ export const UserAuthProvider = ({ children }) => {
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
   const backendUrl = "http://localhost:8000";
-  const [accessToken, setAccessToken] = useState();
-  const [refreshToken, setRefreshToken] = useState();
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem("accessToken") || null
+  );
+  const [refreshToken, setRefreshToken] = useState(
+    localStorage.getItem("refreshToken") || null
+  );
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    msg: "",
+    status: "",
+  });
+
+  const alertUser = (msg, status) => {
+    setAlert((prev) => {
+      return { ...prev, isOpen: true, msg, status };
+    });
+    setTimeout(() => {
+      setAlert((prev) => {
+        return { ...prev, isOpen: false };
+      });
+    }, 4000);
+  };
 
   useEffect(() => {
     localStorage.setItem("accessToekn", accessToken);
@@ -25,18 +45,27 @@ export const UserAuthProvider = ({ children }) => {
   const signup = async () => {
     const user = { ...newUser, password2: newUser.password };
     console.log(user);
-    axios.post(`${backendUrl}/accounts/api/register/`, user).then((res) => {
-      console.log(res.status);
-      if (Math.floor(res.status / 100) === 2) {
-        console.log("navigate");
-        setAccessToken(res.data.token.access);
-        setRefreshToken(res.data.token.refresh);
-        localStorage.setItem("user", JSON.stringify(res.data));
-        setUser({ username: newUser.username });
-        navigate("/dashboard");
-      }
-      return res;
-    });
+    try {
+      const response = await axios
+        .post(`${backendUrl}/accounts/api/register/`, user)
+        .then((res) => {
+          console.log(res.status);
+          if (Math.floor(res.status / 100) === 2) {
+            console.log("navigate");
+            setAccessToken(res.data.token.access);
+            setRefreshToken(res.data.token.refresh);
+            localStorage.setItem("user", JSON.stringify(res.data));
+            localStorage.setItem("accessToken", res.data.token.access);
+            localStorage.setItem("refreshToken", res.data.token.refresh);
+            setUser({ username: newUser.username });
+            navigate("/dashboard");
+            alertUser("Succesfully created account", 200);
+          }
+          return res;
+        });
+    } catch (e) {
+      alertUser("Failed to create Account, Try Again!");
+    }
   };
 
   const login = async (data) => {
@@ -49,6 +78,9 @@ export const UserAuthProvider = ({ children }) => {
   return (
     <UserAuthContext.Provider
       value={{
+        setAlert,
+        alert,
+        alertUser,
         backendUrl,
         user,
         newUser,
