@@ -45,11 +45,16 @@ const Navbar = () => {
   ];
 
   useEffect(()=>{
+    try{
       axios.get(`${backendUrl}/accounts/api`,{
         headers : {
           "Authorization" : `Bearer ${accessToken}`
         }
-      }).then((res) => {setUser(res.data);setIsLoading(false);});
+      }).then((res) => {setUser(res.data);setIsLoading(false);}).catch((e)=>{navigate('/login')});
+    }catch(e){
+      console.log(e);
+      navigate('/login')
+    }
     
   },[setUser])
   
@@ -63,7 +68,8 @@ const Navbar = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
     navigate('/login');
   }
 

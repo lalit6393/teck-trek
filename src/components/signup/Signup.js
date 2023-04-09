@@ -5,10 +5,30 @@ import signupImg from "../../static_files/signup.svg";
 import Cloud from "../clouds/Cloud";
 import { useUserAuth } from "../../context/UseUserAuth";
 import { useNavigate } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+
+const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+
+const signupSchema = Yup.object().shape({
+  username: Yup.string().required("Please fill this field").min(4),
+  email: Yup.string()
+    .email("Enter valid email")
+    .required("Please fill this field"),
+  password: Yup.string().required("Please fill this field").min(10),
+  admission_no: Yup.string().required("Please fill this field"),
+  contact_no: Yup.string()
+    .matches(phoneRegex, "Invalid phone no.")
+    .test(
+      "len",
+      "Phone Number needs to be excatly 10 digits",
+      (val) => val.toString().length === 10
+    )
+    .required("Please fill this field"),
+});
 
 const Signup = () => {
-
-  const {signup, setUser, newUser, setNewUser} = useUserAuth();
+  const { signup, setUser, newUser, setNewUser } = useUserAuth();
   const navigate = useNavigate();
 
   const [userRegistration, setuserRegistration] = useState({
@@ -18,20 +38,12 @@ const Signup = () => {
     admission_no: "",
     contact_no: "",
   });
-  
-  const handleInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    setuserRegistration({ ...userRegistration, [name]: value });
-  };
 
   const [records, setRecords] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setNewUser(userRegistration);
-    navigate("/avatar")
+  const handleSubmit = (data) => {
+    setNewUser(data);
+    navigate("/avatar");
     const newRecord = {
       ...userRegistration,
       id: new Date().getTime().toString(),
@@ -49,83 +61,137 @@ const Signup = () => {
     setRecords([...records, newRecord]);
   };
 
-
   return (
     <div className={styles.Main}>
-      <Cloud/>
+      <Cloud />
       <div className={styles.Container2}>
-        <form action="" onSubmit={handleSubmit} className={styles.Form}>
-          <img className={styles.Image} src={signupImg} alt="login" />
-          <div className={styles.Input}>
-            <input
-              type="text"
-              value={userRegistration.username}
-              onChange={handleInput}
-              autoComplete="off"
-              name="username"
-              placeholder="username"
-              required
-            />
-          </div>
-          <div className={styles.Input}>
-            <input
-              type="email"
-              value={userRegistration.email}
-              onChange={handleInput}
-              autoComplete="off"
-              name="email"
-              placeholder="email"
-              required
-            />
-          </div>
-          <div className={styles.Input}>
-            <input
-              type="text"
-              value={userRegistration.password}
-              onChange={handleInput}
-              name="password"
-              autoComplete="off"
-              placeholder="password"
-              required
-            />
-          </div>
-          <div className={styles.Input}>
-            <input
-              type="text"
-              autoComplete="off"
-              value={userRegistration.admission_no}
-              onChange={handleInput}
-              name="admission_no"
-              placeholder="Admission no."
-              required
-            />
-          </div>
-          <div className={styles.Input}>
-            <input
-              type="text"
-              value={userRegistration.contact_no}
-              onChange={handleInput}
-              autoComplete="off"
-              name="contact_no"
-              placeholder="Phone"
-              required
-            />
-          </div>
-
-          <button className={styles.buttonSubmit} type="submit">
-            Continue &rarr;
-          </button>
-          <div className={styles.HaveAccount}>
-            <p className={styles.paragraph}>
-              Already have an account?{" "}
-              <a className={styles.login} href="/login">
-                Login
-              </a>
-            </p>
-          </div>
-        </form>
+        <Formik
+          initialValues={{
+            username: "",
+            email: "",
+            password: "",
+            contact_no: "",
+            admission_no: "",
+          }}
+          validationSchema={signupSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(true);
+            handleSubmit(values);
+          }}
+        >
+          {({ errors, touched, isSubmitting }) => (
+            <Form className={styles.Form}>
+              <img className={styles.Image} src={signupImg} alt="login" />
+              <div className={styles.Input}>
+                <Field
+                  autocomplete="off"
+                  className={
+                    errors.username && touched.username && styles.errorInput
+                  }
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                />
+                {errors.username && touched.username ? (
+                  <div className={styles.errorText}>{errors.username}</div>
+                ) : null}
+              </div>
+              <div className={styles.Input}>
+                <Field
+                  autocomplete="off"
+                  className={errors.email && touched.email && styles.errorInput}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                />
+                {errors.email && touched.email ? (
+                  <div className={styles.errorText}>{errors.email}</div>
+                ) : null}
+              </div>
+              <div className={styles.Input}>
+                <Field
+                  autocomplete="off"
+                  className={
+                    errors.password && touched.password && styles.errorInput
+                  }
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                {errors.password && touched.password ? (
+                  <div className={styles.errorText}>{errors.password}</div>
+                ) : null}
+              </div>
+              <div className={styles.Input}>
+                <Field
+                  autocomplete="off"
+                  className={
+                    errors.admission_no &&
+                    touched.admission_no &&
+                    styles.errorInput
+                  }
+                  type="text"
+                  name="admission_no"
+                  placeholder="Admission no"
+                />
+                {errors.admission_no && touched.admission_no ? (
+                  <div className={styles.errorText}>{errors.admission_no}</div>
+                ) : null}
+              </div>
+              <div className={styles.Input}>
+                <Field
+                  autocomplete="off"
+                  className={
+                    errors.contact_no && touched.contact_no && styles.errorInput
+                  }
+                  type="text"
+                  name="contact_no"
+                  placeholder="Phone no"
+                />
+                {errors.contact_no && touched.contact_no ? (
+                  <div className={styles.errorText}>{errors.contact_no}</div>
+                ) : null}
+              </div>
+              <button
+                type="submit"
+                className={
+                  errors.username ||
+                  errors.admission_no ||
+                  errors.password ||
+                  errors.email ||
+                  errors.contact_no
+                    ? styles.buttonDisabled
+                    : styles.buttonSubmit
+                }
+                disabled={
+                  errors.username ||
+                  errors.admission_no ||
+                  errors.password ||
+                  errors.email ||
+                  errors.contact_no
+                    ? true
+                    : false
+                }
+              >
+                Continue &rarr;
+              </button>
+              <div className={styles.HaveAccount}>
+                <p className={styles.paragraph}>
+                  Already have an account?{" "}
+                  <a className={styles.login} href="/login">
+                    Login
+                  </a>
+                </p>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
+<<<<<<< HEAD
       <footer className={styles.foot}>
+=======
+      <footer>
+>>>>>>> 4f4b1db6eb1cb1d543bf89fdded04f44567d6ac8
         <div>
           Designed & Developed by: <span>Nibble Computer Society</span>
         </div>

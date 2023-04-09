@@ -46,6 +46,7 @@
   margin-bottom: -29px;
 }
 
+<<<<<<< HEAD
 
 .form {
   position: relative;
@@ -55,6 +56,9 @@
   height: 47vh;
 }
 .form{
+=======
+.form {
+>>>>>>> 4f4b1db6eb1cb1d543bf89fdded04f44567d6ac8
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,7 +66,7 @@
   gap: 2rem;
 }
 
-.form>img{
+.form > img {
   width: 100%;
 
 }
@@ -127,7 +131,7 @@ textarea {
   flex-direction: row-reverse;
 }
 
-.input>input{
+.input > input {
   width: 100%;
   position: relative;
 }
@@ -150,6 +154,7 @@ textarea {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 
 .foote {
   position: relative;
@@ -160,85 +165,100 @@ textarea {
 @media screen and (min-width: 2001px){
   .container2{
    font-size: 2rem;
+=======
+.errorText {
+  width: calc(69% + 32px);
+  color: rgba(217, 95, 95, 1);
+  text-align: left;
+  margin: 3px auto 0;
+  font-size: 13px;
+}
+
+.errorInput {
+  border-color: rgba(217, 95, 95, 1);
+  color: rgba(217, 95, 95, 1);
+}
+
+@media screen and (min-width: 2001px) {
+  .container2 {
+    font-size: 2rem;
+>>>>>>> 4f4b1db6eb1cb1d543bf89fdded04f44567d6ac8
     max-width: 55rem;
   }
-  .input>input{
+  .input > input {
     font-size: 2rem;
   }
-  .forgot{
+  .forgot {
     font-size: 2rem;
   }
-  .logBtn{
+  .logBtn {
     font-size: 1.8rem;
   }
-  .para{
+  .para {
     font-size: 1.8rem;
   }
 }
 
-
-@media screen and (min-width: 1800px) and (max-width:2000px){
-  .container2{
+@media screen and (min-width: 1800px) and (max-width: 2000px) {
+  .container2 {
     max-width: 48rem;
   }
-  .input>input{
+  .input > input {
     font-size: 2rem;
   }
-  .forgot{
+  .forgot {
     font-size: 2rem;
   }
-  .logBtn{
+  .logBtn {
     font-size: 1.8rem;
   }
-  .para{
+  .para {
     font-size: 1.8rem;
   }
 }
 
-
-
-@media screen and (max-width:560px) {
-  .form{
+@media screen and (max-width: 560px) {
+  .form {
     gap: 1.2rem;
   }
-  .input>input{
+  .input > input {
     padding: 13px;
   }
-  .logBtn{
+  .logBtn {
     padding: 13px 20px;
   }
 }
 
-@media screen and (min-width:561px) and (max-width:768px){
-  .container2{
+@media screen and (min-width: 561px) and (max-width: 768px) {
+  .container2 {
     min-width: 34rem;
   }
-  .form{
+  .form {
     gap: 1.5rem;
   }
 }
 
-@media screen and (max-height:620px) {
-  .form{
+@media screen and (max-height: 620px) {
+  .form {
     gap: 1rem;
   }
 }
 
-@media screen and (max-height:570px) {
-  .container2{
+@media screen and (max-height: 570px) {
+  .container2 {
     max-width: 30rem;
   }
 }
 
-@media screen and (max-height:500px) {
-  .container2{
+@media screen and (max-height: 500px) {
+  .container2 {
     min-width: auto;
     width: 25rem;
   }
-  .input>input{
+  .input > input {
     padding: 11px;
   }
-  .logBtn{
+  .logBtn {
     padding: 11px 20px;
   }
 }
