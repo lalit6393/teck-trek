@@ -39,17 +39,10 @@ const Signup = () => {
     contact_no: "",
   });
 
-  const handleInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    setuserRegistration({ ...userRegistration, [name]: value });
-  };
-
   const [records, setRecords] = useState([]);
 
-  const handleSubmit = () => {
-    setNewUser(userRegistration);
+  const handleSubmit = (data) => {
+    setNewUser(data);
     navigate("/avatar");
     const newRecord = {
       ...userRegistration,
@@ -83,8 +76,7 @@ const Signup = () => {
           validationSchema={signupSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            setuserRegistration(values);
-            handleSubmit();
+            handleSubmit(values);
           }}
         >
           {({ errors, touched, isSubmitting }) => (
@@ -122,7 +114,7 @@ const Signup = () => {
                   className={
                     errors.password && touched.password && styles.errorInput
                   }
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Password"
                 />

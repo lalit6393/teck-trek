@@ -18,10 +18,10 @@ const Dashboard = () => {
   const [isCorrect, setIsCorrect] = useState();
   const { backendUrl, accessToken} = useUserAuth();
 
-  const successMsg = ['Bingo!!!','Amazing!',"True Warrior"];
-  const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing'];
+  const successMsg = ['Bingo!!!','Amazing!',"True Warrior",'Correct!'];
+  const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing','Incorrect'];
   function setMsg(success){
-    const index = Math.floor(Math.random()*3)
+    const index = Math.floor(Math.random()*(successMsg.length))
     let msg;
     if(success){
        msg = successMsg[index];
@@ -39,9 +39,16 @@ const Dashboard = () => {
          "Authorization" : `Bearer ${accessToken}`
       }
     }).then((res) => {
-      setQuestion(res.data.detail.question);
-      setLevel(res.data.player_info.current_question);
-      setScore(res.data.player_info.score);
+      if(res.data.detail.question){
+        setQuestion(res.data.detail.question);
+        setLevel(res.data.player_info.current_question);
+        setScore(res.data.player_info.score);
+      }
+      else{
+        setTimeout(()=>{
+          getQuestion()
+        },500)
+      }
     })
   }
 
@@ -50,6 +57,7 @@ const Dashboard = () => {
   },[])
 
   const submitHandler = async () => {
+    if(answer){
     const res =  await axios.post(`${backendUrl}/questions/`,{answer:answer},{
       headers : {
         "Authorization" : `Bearer ${accessToken}`
@@ -71,6 +79,7 @@ const Dashboard = () => {
         setDisplayMsg();
       },[4000])
     }
+  }
   }
 
   const achievements = [
