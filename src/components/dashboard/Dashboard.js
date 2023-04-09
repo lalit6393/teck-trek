@@ -10,7 +10,6 @@ import stage5 from '../../static_files/stage5.svg'
 import stage6 from '../../static_files/stage6.svg'
 
 const Dashboard = () => {
-  console.log('dashboard');
   const [level, setLevel] = useState();
   const [score, setScore] = useState();
   const [answer, setAnswer] = useState('');
