@@ -187,11 +187,8 @@ const Signup = () => {
           )}
         </Formik>
       </div>
-<<<<<<< HEAD
+
       <footer className={styles.foot}>
-=======
-      <footer>
->>>>>>> 4f4b1db6eb1cb1d543bf89fdded04f44567d6ac8
         <div>
           Designed & Developed by: <span>Nibble Computer Society</span>
         </div>

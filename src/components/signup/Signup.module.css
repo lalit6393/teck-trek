@@ -125,13 +125,12 @@ textarea {
   padding-bottom: 40px;
 }
 
-<<<<<<< HEAD
 .foot {
   position: absolute;
   bottom: 0;
   font-size: 2.3vmin;
   padding: 0 0 0 0;
-=======
+}
 .errorText {
   width: calc(69% + 32px);
   color: rgba(217, 95, 95, 1);
@@ -143,5 +142,4 @@ textarea {
 .errorInput {
   border-color: rgba(217, 95, 95, 1);
   color: rgba(217, 95, 95, 1);
->>>>>>> 4f4b1db6eb1cb1d543bf89fdded04f44567d6ac8
 }
