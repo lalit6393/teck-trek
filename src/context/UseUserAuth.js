@@ -38,7 +38,7 @@ export const UserAuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("accessToekn", accessToken);
+    localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
   }, [accessToken, refreshToken]);
 
@@ -69,10 +69,18 @@ export const UserAuthProvider = ({ children }) => {
   };
 
   const login = async (data) => {
+    try{
     const res = await axios.post(`${backendUrl}/accounts/api/token/`, data);
-    setAccessToken(res.data.access);
-    setRefreshToken(res.data.refresh);
-    return res;
+    if(Math.floor(res.status/100 ) == 2){
+      setAccessToken(res.data.access);
+      setRefreshToken(res.data.refresh);
+      alertUser("Login Succesful",200);
+      return res;
+    }
+  }catch(e){
+    console.log(e);
+    alertUser(e.response.data.detail || e.message);
+  }
   };
 
   return (
