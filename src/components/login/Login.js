@@ -23,9 +23,9 @@ const Login = () => {
       console.log(newEntry);
       login(newEntry)
         .then((res) => {
-          if(res.status/100 === 2){
-          setUser({ username: username });
-          navigate("/dashboard");
+          if (res.status / 100 === 2) {
+            setUser({ username: username });
+            navigate("/dashboard");
           }
         })
         .catch((err) => console.log("login page error", err));

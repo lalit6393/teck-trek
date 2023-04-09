@@ -7,7 +7,7 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
-import check from "../../static_files/check.svg"
+import check from "../../static_files/check.svg";
 import { useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
@@ -24,19 +24,20 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-  const {newUser, setNewUser, setUser, signup} = useUserAuth();
+  const { newUser, setNewUser, setUser, signup } = useUserAuth();
 
-  async function handlePayment(){
-    setNewUser((prev) => {return { ...prev, avatar_no : selectedId}});
+  async function handlePayment() {
+    setNewUser((prev) => {
+      return { ...prev, avatar_no: selectedId };
+    });
     console.log(newUser);
-    signup()
+    signup();
   }
-
 
   return (
     <>
       <section className={styles.container}>
-        <Cloud/>
+        <Cloud />
         <div className={styles.avatarSelection}>
           <div className={styles.logo}>
             <div></div>
@@ -65,13 +66,18 @@ const Avatar = () => {
             })}
           </div>
           <div className={styles.paybtn}>
-            <button disabled={(selectedId)? false:true} onClick={handlePayment}>
+            <button
+              disabled={selectedId ? false : true}
+              onClick={handlePayment}
+            >
               Pay now <img src={arrow} style={{ marginLeft: "10px" }} alt="" />
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>
                 <input type="checkbox" />
-                <span><img src={check} alt="" /></span>
+                <span>
+                  <img src={check} alt="" />
+                </span>
               </div>{" "}
               <span>
                 I agree to the{" "}

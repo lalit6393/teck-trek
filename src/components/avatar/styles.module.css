@@ -1,5 +1,5 @@
 .container {
-  font-family: 'Avenir';
+  font-family: "Avenir";
   /* padding: 0 36vw; */
   position: relative;
   display: flex;
@@ -11,7 +11,7 @@
   width: 100vw;
   box-sizing: border-box;
   position: relative;
-  background: #0A0A12;
+  background: #0a0a12;
 }
 
 .avatarSelection {
@@ -107,12 +107,12 @@
   border-bottom: 1px solid #005435;
 }
 
-.paybtn button:active{
-  background-color:#094B38;
+.paybtn button:active {
+  background-color: #094b38;
   border-right: 1px solid #005435;
 }
 
-.terms{
+.terms {
   color: white;
   display: flex;
   font-size: 16px;
@@ -121,7 +121,7 @@
   margin: 0 0 20px;
 }
 
-.input{
+.input {
   position: relative;
   width: 25px;
   height: 25px;
@@ -129,7 +129,7 @@
   cursor: pointer;
 }
 
-.input span{
+.input span {
   position: absolute;
   top: 0;
   left: 0;
@@ -138,12 +138,12 @@
   width: 20px;
 }
 
-.input img{
+.input img {
   position: absolute;
   top: 50%;
   left: 50%;
   display: none;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 80%;
 }
 
@@ -161,74 +161,72 @@
   cursor: pointer;
 }
 
-.input input:checked ~ span{
-  background-color: #08AC70;
+.input input:checked ~ span {
+  background-color: #08ac70;
 }
 
-.input input:checked ~ span img{
+.input input:checked ~ span img {
   display: block;
 }
-
 
 footer {
   box-sizing: border-box;
   padding: 20px 30px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
-  color: #F78A20;
+  color: #f78a20;
   font-size: 14px;
+  pointer-events: none;
 }
 
 footer span {
   color: white;
 }
 
-
-@media (max-width:1100px) {
-  .terms{
+@media (max-width: 1100px) {
+  .terms {
     font-size: 14px;
   }
 }
 
-@media (max-width:750px) {
-  footer{
+@media (max-width: 750px) {
+  footer {
     display: none;
   }
 }
 
-@media (max-width : 720px) {
-
-  .terms{
-    margin:0 auto;
+@media (max-width: 720px) {
+  .terms {
+    margin: 0 auto;
     width: 80%;
   }
 
-  .avatarSelection{
+  .avatarSelection {
     width: fit-content;
   }
 
-  .logo{
+  .logo {
     width: 75vw;
   }
 
-  .container{
+  .container {
     padding: 40px 20px;
   }
 
-  .avatarGroup{
+  .avatarGroup {
     width: 90%;
     margin: 0 auto;
   }
 
-  .avatarGroup img{
+  .avatarGroup img {
     width: 20vw;
   }
 
-  .paybtn button{
+  .paybtn button {
     height: 5vh;
     padding: 25px;
     width: 80%;
@@ -236,16 +234,16 @@ footer span {
 }
 
 @media (max-width: 650px) {
-  footer{
+  footer {
     font-size: 12px;
   }
 }
 
-@media (max-width : 450px) {
-  .avatarSelection{
+@media (max-width: 450px) {
+  .avatarSelection {
     position: absolute;
     top: 48%;
     left: 50%;
-    transform: translate(-50%,-52%);
+    transform: translate(-50%, -52%);
   }
 }
