@@ -115,6 +115,10 @@
   border-right: 1px solid #005435;
 }
 
+.submit:hover{
+    filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
+}
+
 .achievements{
     box-sizing: border-box;
     /* height: 100%; */

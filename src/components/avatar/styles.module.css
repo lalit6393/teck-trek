@@ -102,8 +102,13 @@
   cursor: pointer;
   width: 95%;
   height: 7vh;
+  max-height: 80px;
   border: none;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
+}
+
+.paybtn button:hover{
+  filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
 }
 
 .paybtn button:active {
