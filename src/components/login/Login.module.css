@@ -141,7 +141,7 @@ textarea {
   position: absolute;
   /* float: right; */
   font-size: 22px;
-  top: 50%;
+  /* top: 50%; */
   right: 0px;
   transform: translateY(-50%);
 }
