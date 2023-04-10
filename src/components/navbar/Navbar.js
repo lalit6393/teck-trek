@@ -73,7 +73,7 @@ const Navbar = () => {
     navigate('/login');
   }
 
-  if(!dayjs().isSameOrAfter(dayjs('April 13, 2023 00:00:00 AM'))){
+  if(!dayjs().isSameOrAfter(dayjs('April 9, 2023 00:00:00 AM'))){
     return <Timer/>
   }else{
   return (
@@ -251,7 +251,7 @@ const Navbar = () => {
                     location.pathname.match("/")) &&
                   !location.pathname.match("/rules") &&
                   !location.pathname.match("/leaderboard")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/dashboard")}
@@ -261,7 +261,7 @@ const Navbar = () => {
               <li
                 style={
                   location.pathname.match("/rules")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/rules")}
@@ -271,7 +271,7 @@ const Navbar = () => {
               <li
                 style={
                   location.pathname.match("/leaderboard")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/leaderboard")}
