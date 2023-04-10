@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import background from "../../static_files/BG_Main_Dark.svg";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import signupImg from "../../static_files/signup.svg";
 import Cloud from "../clouds/Cloud";
 import { useUserAuth } from "../../context/UseUserAuth";
@@ -60,6 +61,7 @@ const Signup = () => {
     // });
     setRecords([...records, newRecord]);
   };
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className={styles.Main}>
@@ -108,19 +110,30 @@ const Signup = () => {
                   <div className={styles.errorText}>{errors.email}</div>
                 ) : null}
               </div>
-              <div className={styles.Input}>
+              <div style={{ position: 'relative' }}>
+                {/* <div className={styles.Pass + " " + styles.input}> */}
+              <div className={styles.Pass + " " + styles.Input}>
                 <Field
                   autocomplete="off"
                   className={
-                    errors.password && touched.password && styles.errorInput
+                    errors.password && touched.password && styles.errorInput &&styles.passInput
                   }
-                  type="password"
+                  type={visible ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                 />
                 {errors.password && touched.password ? (
                   <div className={styles.errorText}>{errors.password}</div>
                 ) : null}
+                <div className={styles.iconDiv}>
+                    <span
+                      className={styles.eye}
+                      onClick={() => setVisible(!visible)}
+                    >
+                      {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                    </span>
+                  </div>
+                  </div>
               </div>
               <div className={styles.Input}>
                 <Field
