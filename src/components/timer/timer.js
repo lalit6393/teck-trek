@@ -2,24 +2,26 @@ import { useState, useEffect, useRef } from "react";
 import timeLeft from "./timeleft";
 import timeImg from "../../static_files/time.svg";
 import styles from "./styles.module.css";
-import arrow from "../../static_files/arrow2.svg";
+import arrow from "../../static_files/Vector.svg";
 import Cloud from "../clouds/Cloud";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UseUserAuth";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 
 const Timer = () => {
-  const {isCooldown, cooldownTimer,setCoolDownTimer, setIsCooldown, backendUrl, accessToken} = useUserAuth();
-  const cooldownTime = useRef((isCooldown) ? new Date().getTime() + cooldownTimer*1000 + 5000 : "Tue Feb 22 2023 10:37:05 GMT+0530 (India Standard Time)")
+  const {isCooldown, cooldownTimer,setCoolDownTimer, setIsCooldown, backendUrl, accessToken, startDate} = useUserAuth();
+  const cooldownTime = useRef((isCooldown) ? new Date().getTime() + cooldownTimer*1000 + 5000 : startDate)
   const navigate = useNavigate();
   const [time, setTime] = useState(
     timeLeft(cooldownTime.current, isCooldown)
   );
+  const isLoading = useRef(true)
 
-  console.log(time.seconds);
-  if(time.seconds == 0 && time.hours == 0 && time.minutes == 0){
+  if(time.seconds == 0 && time.hours == 0 && time.minutes == 0 && !isLoading.current){
     navigate('/dashboard')
   }
+  
 
   useEffect(() => {
     axios.get(`${backendUrl}/questions/`,{
@@ -29,11 +31,15 @@ const Timer = () => {
     }).then((res) => {
       if(res.data.detail?.question || res.data.detail?.time_left == 1){
         setIsCooldown(false)
+        isLoading.current=false
         navigate('/dashboard')
       }
       else{
         if(res.data.detail.time_left > 1){
-          setCoolDownTimer(res.data.detail.time)
+          setIsCooldown(true);
+          setCoolDownTimer(res.data.detail.time_left)
+          cooldownTime.current = new Date().getTime() + res.data.detail.time_left*1000 + 5000
+          isLoading.current = false
         }
       }
     })
@@ -57,7 +63,9 @@ const Timer = () => {
         <span>Logout</span>
         <img src={arrow} alt="arrow" />
       </button>
-      <div className={styles.timer}>
+      {
+        isLoading.current ? (<Loader />) : (
+          <div className={styles.timer}>
         <img src={timeImg} alt="" />
         <div className={styles.time}>
           <p>{isCooldown? 'The next question will be available in' : 'Let the trek for the wisest begin in'}</p>
@@ -76,6 +84,9 @@ const Timer = () => {
           </div>
         </div>
       </div>
+        )
+      }
+      
       <footer>
         <div>
           Designed & Developed by: <span>Nibble Computer Society</span>

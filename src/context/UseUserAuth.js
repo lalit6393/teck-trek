@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const UserAuthContext = createContext();
 
 export const UserAuthProvider = ({ children }) => {
+  const startDate = 'Thu Apr 9 2023 00:00:00 GMT+0530 (India Standard Time)'
   const navigate = useNavigate();
   const [visited, setVisited] = useState(
     localStorage.getItem("visited") || null
@@ -13,7 +14,7 @@ export const UserAuthProvider = ({ children }) => {
   );
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
-  const backendUrl = "http://localhost:8000";
+  const backendUrl = "https://techtrek-api.hackncs.in";
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken") || null
   );
@@ -44,8 +45,8 @@ export const UserAuthProvider = ({ children }) => {
     localStorage.setItem("refreshToken", refreshToken);
   }, [accessToken, refreshToken]);
 
-  const signup = async () => {
-    const user = { ...newUser, password2: newUser.password };
+  const signup = async (id) => {
+    const user = { ...newUser, password2: newUser.password , avatar_no:id};
     console.log(user);
     try {
       const response = await axios
@@ -106,7 +107,8 @@ export const UserAuthProvider = ({ children }) => {
         setIsCooldown,
         isCooldown,
         cooldownTimer,
-        setCoolDownTimer
+        setCoolDownTimer,
+        startDate
       }}
     >
       {children}

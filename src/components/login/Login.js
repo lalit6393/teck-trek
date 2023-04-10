@@ -20,21 +20,16 @@ const Login = () => {
   ////////////id password
   const { login, setUser } = useUserAuth();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-
-  const [password, setPassword] = useState("");
   const [allEntry, setallEntry] = useState([]);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    const newEntry = { username: username.trim(), password: password.trim() };
+  const submitForm = (data) => {
+    const newEntry = {...data}
     setallEntry([...allEntry, newEntry]);
-    if (username && password) {
+    if (data.username && data.password) {
       console.log(newEntry);
       login(newEntry)
         .then((res) => {
           if (res.status / 100 === 2) {
-            setUser({ username: username });
             navigate("/dashboard");
           }
         })
@@ -51,7 +46,6 @@ const Login = () => {
           <Formik
             initialValues={{
               username: "",
-
               password: "",
             }}
             validationSchema={loginSchema}
@@ -61,20 +55,9 @@ const Login = () => {
             }}
           >
             {({ errors, touched, isSubmitting }) => (
-              <Form action="" onSubmit={submitForm} className={styles.form}>
+              <Form className={styles.form}>
                 <img src={LoginImg} width={"300px"} alt="login" />
                 <div className={styles.input}>
-                  {/* <input
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    autoComplete="off"
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Enter your username here"
-                    required
-                  /> */}
-
                   <Field
                     autocomplete="off"
                     className={
@@ -91,16 +74,6 @@ const Login = () => {
 
                   <div style={{ position: 'relative' }}>
                 <div className={styles.Pass + " " + styles.input}>
-                  {/* <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    autoComplete="off"
-                    name="password"
-                    id="password"
-                    placeholder="Password goes here"
-                    type={visible ? "text" : "password"}
-                    className={styles.passInput}
-                  /> */}
 
                   <Field
                     autocomplete="off"
@@ -127,18 +100,11 @@ const Login = () => {
                   </div>
                   </div>
                 </div>
-
-                {/* <div className={styles.input}>
-              <input type="password" placeholder="Password goes here" />
-            </div> */}
                 <div className={styles.forgot}>
                   <a className={styles.a2} href="/login">
                     Forgot Password?
                   </a>
                 </div>
-                {/* <button type="submit" className={styles.logBtn}>
-                  Login &rarr;
-                </button> */}
                 <button
                   type="submit"
                   className={

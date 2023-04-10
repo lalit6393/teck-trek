@@ -113,6 +113,10 @@ textarea {
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
 
+.buttonSubmit:hover{
+  filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
+}
+
 .buttonDisabled {
   justify-content: center;
   align-items: center;
@@ -162,31 +166,4 @@ textarea {
 .errorInput {
   border-color: rgba(217, 95, 95, 1);
   color: rgba(217, 95, 95, 1);
-}
-
-
-@media screen and (max-width:500px) and (min-width:450px){
-.eye{
-  padding: 0 1rem;
-}
-
-}
-@media screen and (max-width:449px) and (min-width:400px){
-.eye{
-  padding: 0 .75rem;
-}
-.iconDiv{
-
-  right: 62.5px;
-}
-
-}
-@media screen and (max-width: 399px) {
-.eye{
-  padding: 0;
-}
-.iconDiv{
-  right: 55px !important;
-}
-
 }
