@@ -40,7 +40,7 @@ const Avatar = () => {
       return { ...prev, avatar_no: selectedId };
     });
     console.log(newUser);
-    signup();
+    signup(selectedId);
   }
 
   return (

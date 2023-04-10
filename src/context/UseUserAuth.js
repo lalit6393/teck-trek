@@ -44,8 +44,8 @@ export const UserAuthProvider = ({ children }) => {
     localStorage.setItem("refreshToken", refreshToken);
   }, [accessToken, refreshToken]);
 
-  const signup = async () => {
-    const user = { ...newUser, password2: newUser.password };
+  const signup = async (id) => {
+    const user = { ...newUser, password2: newUser.password , avatar_no:id};
     console.log(user);
     try {
       const response = await axios

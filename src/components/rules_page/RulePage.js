@@ -9,7 +9,7 @@ const RulesPage = () => {
         <div className={RuleStyle.MainContent}>
           <span className={RuleStyle.para}>
             1. This is an Online event which will be live from 5th April 2022
-            and will last for three days 5th April 2022 to 7th April 2022.
+            and will last for two days 13th April 2022 to 14th April 2022.
           </span>
 
           <span className={RuleStyle.para}>
