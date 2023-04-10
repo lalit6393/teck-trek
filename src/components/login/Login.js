@@ -10,7 +10,7 @@ import * as Yup from "yup";
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
 
-const signupSchema = Yup.object().shape({
+const loginSchema = Yup.object().shape({
   username: Yup.string().required("Please fill this field").min(4),
 
   password: Yup.string().required("Please fill this field").min(10),
@@ -54,7 +54,7 @@ const Login = () => {
 
               password: "",
             }}
-            validationSchema={signupSchema}
+            validationSchema={loginSchema}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               submitForm(values);
@@ -89,6 +89,7 @@ const Login = () => {
                   ) : null}
                 </div>
 
+                  <div style={{ position: 'relative' }}>
                 <div className={styles.Pass + " " + styles.input}>
                   {/* <input
                     value={password}
@@ -100,6 +101,7 @@ const Login = () => {
                     type={visible ? "text" : "password"}
                     className={styles.passInput}
                   /> */}
+
                   <Field
                     autocomplete="off"
                     type={visible ? "text" : "password"}
@@ -123,6 +125,7 @@ const Login = () => {
                       {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                     </span>
                   </div>
+                  </div>
                 </div>
 
                 {/* <div className={styles.input}>
@@ -140,9 +143,10 @@ const Login = () => {
                   type="submit"
                   className={
                     errors.username || errors.password
-                      ? styles.buttonDisabled && styles.logBtn
-                      : styles.buttonSubmit && styles.logBtn
+                      ? styles.buttonDisabled 
+                      : styles.buttonSubmit 
                   }
+                  style={{marginTop: '20px', paddingTop: '11px', paddingBottom: '11px', paddingLeft: '20px', paddingRight: '20px'}}
                   disabled={errors.username || errors.password ? true : false}
                 >
                   Continue &rarr;
