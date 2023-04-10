@@ -99,7 +99,7 @@ const LeaderBoard = () => {
                   background: index % 2 === 0 ? "" : "rgba(15, 48, 53, 0.4)",
                 }}
               >
-                <div className={LeaderStyle.rank}>{index+1}</div>
+                <div className={LeaderStyle.rank}>{(index+1)+(page-1)*10}</div>
                 <div className={LeaderStyle.name}>
                   <Avatar
                     sx={{

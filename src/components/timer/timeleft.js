@@ -1,5 +1,4 @@
 export default function timeLeft(start, isCooldown){
-    console.log(isCooldown, start);
     const startTimestamp = isCooldown? start :  new Date(start).getTime();
     const currentTimestamp = new Date().getTime();
     const timeLeft = ((startTimestamp - currentTimestamp)/1000 > 0) ? (startTimestamp - currentTimestamp)/1000 : 0; //in seconds

@@ -33,7 +33,7 @@ const Navbar = () => {
     filter: "blur(14px)",
   };
 
-  const {accessToken, backendUrl} = useUserAuth();
+  const {accessToken, backendUrl, startDate} = useUserAuth();
 
   const avatars = [
     { id: 1, img: avatar1 },
@@ -73,7 +73,7 @@ const Navbar = () => {
     navigate('/login');
   }
 
-  if(!dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
+  if(!dayjs().isSameOrAfter(dayjs('April 13, 2023 00:00:00 AM'))){
     return <Timer/>
   }else{
   return (

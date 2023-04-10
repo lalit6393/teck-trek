@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import logo from "../../static_files/banner.svg";
+import logo from "../../static_files/LoginImg.png";
 import arrow from "../../static_files/arrow.svg";
 import avatar1 from "../../static_files/avatar1.svg";
 import avatar2 from "../../static_files/avatar2.svg";
@@ -80,7 +80,7 @@ const Avatar = () => {
               disabled={selectedId && newUser.email ? false : true}
               onClick={handlePayment}
             >
-              Submit &rarr;
+              Submit
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>
