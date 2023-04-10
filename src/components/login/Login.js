@@ -117,7 +117,7 @@ const Login = () => {
                   {errors.password && touched.password ? (
                     <div className={styles.errorText}>{errors.password}</div>
                   ) : null}
-                  <div className={styles.iconDiv}>
+                  <div className={styles.iconDiv} style={{top: errors.password && touched.password ? "40%" : "50%"}}>
                     <span
                       className={styles.eye}
                       onClick={() => setVisible(!visible)}
