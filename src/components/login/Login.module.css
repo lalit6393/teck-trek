@@ -8,6 +8,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   position: relative;
   background: #0a0a12;
   min-height: 43rem;
@@ -27,6 +31,7 @@
 .container2 {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   min-height: 92vh;
   width: 100%;
@@ -51,13 +56,13 @@
   padding-bottom: 180px;
   height: 47vh;
 }
-.form {
+/* .form {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-}
+} */
 
 .form > img {
   width: 100%;
@@ -103,7 +108,7 @@
 input {
   width: 69%;
   padding: 16px;
-
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.27);
 }
@@ -115,16 +120,14 @@ textarea {
   font-size: 16px;
 }
 .input {
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-  width: 100%;
-  flex-direction: row-reverse;
+    color: #ffffff;
+    padding: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .input > input {
-  width: 100%;
+  width: 90%;
   position: relative;
 }
 
@@ -136,8 +139,11 @@ textarea {
 
 .iconDiv {
   position: absolute;
-  float: right;
+  /* float: right; */
   font-size: 22px;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
 }
 
 .eye {
@@ -251,6 +257,7 @@ textarea {
   }
   .logBtn {
     padding: 11px 20px;
+    margin-top: 20px;
   }
 }
 
@@ -260,7 +267,7 @@ textarea {
   padding: 16px 20px;
   gap: 10px;
   cursor: pointer;
-  width: 74%;
+  width: 96%;
   height: 56px;
   left: 512px;
   top: 681.19px;
@@ -274,6 +281,7 @@ textarea {
   color: #ffffff;
   border-style: hidden;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
+  margin-top: 20px
 }
 
 .buttonDisabled {
@@ -282,7 +290,7 @@ textarea {
   padding: 16px 20px;
   gap: 10px;
   cursor: pointer;
-  width: 74%;
+  width: 96%;
   height: 56px;
   left: 512px;
   top: 681.19px;
@@ -309,7 +317,7 @@ textarea {
 } */
 
 .errorText {
-  width: calc(69% + 32px);
+  /* width: calc(69% + 32px); */
   color: rgba(217, 95, 95, 1);
   text-align: left;
   margin: 3px auto 0;
@@ -321,10 +329,10 @@ textarea {
   color: rgba(217, 95, 95, 1);
 }
 
-.Form {
+/* .Form {
   position: relative;
   justify-content: center;
   align-items: center;
   padding-bottom: 70px;
   height: 85vh;
-}
+} */
