@@ -66,6 +66,7 @@
 
 .form > img {
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .forgot {
@@ -159,7 +160,6 @@ textarea {
 .foote {
   position: relative;
   bottom: 0;
-  padding-bottom: 0px;
 }
 
 @media screen and (min-width: 2001px) {
