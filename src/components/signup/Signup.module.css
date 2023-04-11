@@ -91,20 +91,20 @@ textarea {
   cursor: pointer;
 }
 
-.inputWithBtn{
+.inputWithBtn {
   position: relative;
 }
 
-.inputBtn{
-  position : absolute;
+.inputBtn {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 10px;
   cursor: pointer;
 }
 
-.info{
-  background-color: #1E1E1E;
+.info {
+  background-color: #1e1e1e;
   padding: 8px;
   color: white;
   font-size: 12px;
@@ -113,7 +113,7 @@ textarea {
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(96%,-127%);
+  transform: translate(96%, -127%);
 }
 
 .buttonSubmit {
@@ -138,7 +138,7 @@ textarea {
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
 
-.buttonSubmit:hover{
+.buttonSubmit:hover {
   filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
 }
 
@@ -193,19 +193,26 @@ textarea {
   color: rgba(217, 95, 95, 1);
 }
 
-@media (max-width : 1000px) {
-  .info{
+@media (max-width: 1100px) {
+  .foot3 div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1000px) {
+  .info {
     border-radius: 8px;
     border-bottom-right-radius: 0;
     font-size: 10px;
     top: 0;
     right: 0;
-    transform: translate(-10%,-127%);
+    transform: translate(-10%, -127%);
   }
 }
 
 @media screen and (max-width: 560px) {
-  .Input  input {
+  .Input input {
     padding: 13px;
   }
 }
