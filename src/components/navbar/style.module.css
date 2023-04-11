@@ -170,27 +170,6 @@ ul > li {
   text-decoration: none;
 }
 
-.drawerContent>ul>li:nth-child(6){
-  font-size: 1.3rem;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  padding: 0rem 3rem;
-  gap: 0.8rem;
-  margin-bottom: 1.6rem;
-  height: auto;
-  justify-content: space-between;
-}
-
-.drawerContent>ul>li:nth-child(6) p{
-   display: flex;
-   flex-direction: column;
-   gap: 0.8rem;
-}
-.drawerContent>ul>li:nth-child(6) p>span:nth-child(1){
-  color: #F78A20;
-}
-
 .drawerComp{
   background-color:rgba(255, 255, 255, 0);
 }
