@@ -30,19 +30,12 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- Add the following code to embed an audio file -->
-    <audio src="%PUBLIC_URL%/audio/audio.mp3" id="background-music" loop></audio>
     <script>
       function preloader() {
         myVar = setTimeout(showPage, 500);
       }
       function showPage() {
         document.getElementById("preloader").style.display = "none";
-      }
-      document.addEventListener("click", musicPlay);
-      function musicPlay() {
-        var audio = document.getElementById("background-music");
-        audio.play();
-        document.removeEventListener("click", musicPlay);
       }
     </script>
   </body>

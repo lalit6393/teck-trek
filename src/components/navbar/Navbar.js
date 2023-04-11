@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
 import mute from "../../static_files/mute.svg";
+import audioMusic from "../../audio/audio.mp3";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Prevent from "../Prevent";
 import dayjs from "dayjs";
@@ -25,6 +26,7 @@ dayjs.extend(isSameOrAfter);
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const audioRef = useRef(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const backgroundBlur = {
@@ -67,7 +69,6 @@ const Navbar = () => {
     }
   }, []);
 
-  console.log(user);
   const handleClickOpen = () => {
     setOpenDrawer(true);
   };
@@ -83,8 +84,26 @@ const Navbar = () => {
   };
 
   const musicPlayer = () => {
-    music ? setMusic(false) : setMusic(true);
+    var audio = audioRef.current;
+    if (music) {
+      setMusic(false);
+      audio.pause();
+    } else {
+      setMusic(true);
+      audio.play();
+    }
   };
+
+  function musicPlay() {
+    var audio = audioRef.current;
+    audio.play();
+    setMusic(true);
+    document.removeEventListener("click", musicPlay);
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", musicPlay);
+  }, []);
 
   if (!dayjs().isSameOrAfter(dayjs("April 9, 2023 00:00:00 AM"))) {
     return <Timer />;
@@ -336,6 +355,7 @@ const Navbar = () => {
           <Prevent>
             <Outlet />
           </Prevent>
+          <audio src={audioMusic} ref={audioRef} autoPlay loop></audio>
         </div>
       )
     );
