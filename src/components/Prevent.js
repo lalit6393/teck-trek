@@ -7,13 +7,12 @@ const Prevent = ({ children }) => {
   var { user, loading, visited, accessToken, refreshToken } = useUserAuth();
 
   useEffect(() => {
-    console.log(loading, user);
     if (visited) {
       if (!accessToken && !loading) {
         navigate("/login");
       }
     } else {
-      console.log('navigating to story');
+      console.log("navigating to story");
       navigate("/story");
     }
   }, [accessToken, loading]);
