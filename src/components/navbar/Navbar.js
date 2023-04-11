@@ -339,16 +339,6 @@ const Navbar = () => {
                       <img src={mute} alt="sound" height={"20px"} />
                     )}
                   </li>
-                  <li>
-                    <p>
-                      <span>Designed & Developed by:</span>
-                      <span>Nibble Computer Society</span>
-                    </p>
-                    <p>
-                      <span>Alumni & Faculty, visit:</span>
-                      <span>Forum for trekking</span>
-                    </p>
-                  </li>
                 </ul>
               </div>
             </>
