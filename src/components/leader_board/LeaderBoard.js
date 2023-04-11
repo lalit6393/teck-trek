@@ -9,6 +9,7 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
+import Loader from "../Loader/Loader";
 
 
 const LeaderBoard = () => {
@@ -58,6 +59,9 @@ const LeaderBoard = () => {
           'Authorization' : `Bearer ${accessToken}`
         }
       })
+      if(Math.floor(res.status / 100) == 2){
+        setIsLoading(false)
+      }
       const sortedArr = res.data.sort((a,b) => b.score - a.score);
       setIsLoading((res.data)? false : true);
       setData(sortedArr);
@@ -66,7 +70,7 @@ const LeaderBoard = () => {
   }, []);
 
   return (
-    !isLoading &&
+    (!isLoading) &&
     <div className={LeaderStyle.outermostDiv}>
       <div className={LeaderStyle.innermostDiv}>
         <div className={LeaderStyle.mainHeading}>LeaderBoard</div>
@@ -89,7 +93,7 @@ const LeaderBoard = () => {
               badge
             </div>
           </div>
-          {slicedData.map((entry, index) => {
+          { slicedData.map((entry, index) => {
             return (
               <div
                 className={LeaderStyle.headerRow}
@@ -99,7 +103,7 @@ const LeaderBoard = () => {
                   background: index % 2 === 0 ? "" : "rgba(15, 48, 53, 0.4)",
                 }}
               >
-                <div className={LeaderStyle.rank}>{(index+1)+(page-1)*10}</div>
+                <div className={LeaderStyle.rank}>{(index+1)+(page-1)*slicedData.length}</div>
                 <div className={LeaderStyle.name}>
                   <Avatar
                     sx={{
