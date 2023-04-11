@@ -80,9 +80,9 @@
 }
 
 .avatarGroup img {
-  /* height: 90%; */
+  height: 90%;
   box-sizing: border-box;
-  border-radius: 500px;
+  border-radius: 50%;
   height: 100%;
   border: 4px solid transparent;
   cursor: pointer;
