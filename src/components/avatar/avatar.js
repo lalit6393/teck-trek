@@ -29,9 +29,7 @@ const Avatar = () => {
 
   useEffect(() => {
     if (newUser?.email) {
-      console.log(newUser);
     } else {
-      console.log("navigate");
       navigate("/signup");
     }
   }, []);
@@ -40,7 +38,6 @@ const Avatar = () => {
     setNewUser((prev) => {
       return { ...prev, avatar_no: selectedId };
     });
-    console.log(newUser);
     setIsLoading(true);
     signup(selectedId)
       .then((res) => setIsLoading(false))

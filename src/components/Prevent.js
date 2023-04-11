@@ -12,7 +12,6 @@ const Prevent = ({ children }) => {
         navigate("/login");
       }
     } else {
-      console.log("navigating to story");
       navigate("/story");
     }
   }, [accessToken, loading]);

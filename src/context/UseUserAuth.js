@@ -46,14 +46,14 @@ export const UserAuthProvider = ({ children }) => {
 
   const signup = async (id) => {
     const user = { ...newUser, password2: newUser.password, avatar_no: id };
-    console.log(user);
+    // console.log(user);
     try {
       const response = await axios
         .post(`${backendUrl}/accounts/api/register/`, user)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (Math.floor(res.status / 100) === 2) {
-            console.log("navigate");
+            // console.log("navigate");
             setAccessToken(res.data.token.access);
             setRefreshToken(res.data.token.refresh);
             localStorage.setItem("user", JSON.stringify(res.data));
@@ -66,7 +66,7 @@ export const UserAuthProvider = ({ children }) => {
           return res;
         });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       console.log(
         (e.response.data.contact_no && e.response.data.contact_no[0]) ||
           (e.response.data.email && e.response.data.email[0]) ||

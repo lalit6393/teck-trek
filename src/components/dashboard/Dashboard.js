@@ -63,7 +63,6 @@ const Dashboard = () => {
       msg = errorMsg[index];
     }
     setDisplayMsg(msg);
-    console.log(displayMsg);
   }
 
   const getQuestion = () => {
