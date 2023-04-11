@@ -55,24 +55,48 @@ const Avatar = () => {
           <div></div>
           <p className={styles.a_text}>Select your avatar</p>
           <div className={styles.avatarGroup}>
-            {avatars.map((avatar) => {
-              return (
-                <img
-                  src={avatar.img}
-                  key={avatar.id}
-                  onClick={() => {
-                    setSelectedId(avatar.id);
-                  }}
-                  className={
-                    selectedId
-                      ? selectedId === avatar.id
-                        ? styles.selectedAvatar
-                        : styles.notSelectedAvatar
-                      : null
-                  }
-                ></img>
-              );
-            })}
+            {avatars
+              .filter((avatar) => avatar.id <= 3)
+              .map((avatar) => {
+                return (
+                  <img
+                    src={avatar.img}
+                    key={avatar.id}
+                    onClick={() => {
+                      setSelectedId(avatar.id);
+                    }}
+                    className={
+                      selectedId
+                        ? selectedId === avatar.id
+                          ? styles.selectedAvatar
+                          : styles.notSelectedAvatar
+                        : null
+                    }
+                  ></img>
+                );
+              })}
+          </div>
+          <div className={styles.avatarGroup}>
+            {avatars
+              .filter((avatar) => avatar.id > 3)
+              .map((avatar) => {
+                return (
+                  <img
+                    src={avatar.img}
+                    key={avatar.id}
+                    onClick={() => {
+                      setSelectedId(avatar.id);
+                    }}
+                    className={
+                      selectedId
+                        ? selectedId === avatar.id
+                          ? styles.selectedAvatar
+                          : styles.notSelectedAvatar
+                        : null
+                    }
+                  ></img>
+                );
+              })}
           </div>
           <div
             className={
