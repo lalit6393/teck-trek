@@ -90,7 +90,7 @@ const Signup = () => {
           }}
         >
           {({ errors, touched, isSubmitting }) => (
-            <Form className={styles.Form}>
+            <Form className={styles.Form} style={{ zIndex: "100" }}>
               <img className={styles.Image} src={signupImg} alt="login" />
               <div className={styles.Input}>
                 <Field
@@ -263,7 +263,15 @@ const Signup = () => {
           Designed & Developed by: <span>Nibble Computer Society</span>
         </div>
         <div>
-          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
+          Alumni & Faculty, Visit:{" "}
+          <span>
+            <a
+              href="https://www.instagram.com/hackncs/"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Forum for Trekking
+            </a>
+          </span>
         </div>
       </footer>
     </div>

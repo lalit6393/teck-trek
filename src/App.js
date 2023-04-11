@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
 import "./App.css";
 import Avatar from "./components/avatar/avatar";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -8,6 +9,7 @@ import Navbar from "./components/navbar/Navbar";
 import PageNotFound from "./components/page_not_found/PageNotFound";
 import Prevent from "./components/Prevent";
 import RulesPage from "./components/rules_page/RulePage";
+import audioMusic from "./audio/audio.mp3";
 import Signup from "./components/signup/Signup";
 import StoryPage from "./components/story_Page/StoryPage";
 import Timer from "./components/timer/timer";
@@ -15,6 +17,30 @@ import { UserAuthProvider } from "./context/UseUserAuth";
 import AlertMsg from "./components/alert/alert";
 
 function App() {
+  const audioRef = useRef(null);
+  const [music, setMusic] = useState(false);
+
+  const musicPlayer = () => {
+    var audio = audioRef.current;
+    if (music) {
+      setMusic(false);
+      audio.pause();
+    } else {
+      setMusic(true);
+      audio.play();
+    }
+  };
+
+  function musicPlay() {
+    var audio = audioRef.current;
+    audio.play();
+    setMusic(true);
+    document.removeEventListener("click", musicPlay);
+  }
+
+  useEffect(() => {
+    document.addEventListener("click", musicPlay);
+  }, []);
   return (
     <div className="App">
       <UserAuthProvider>
@@ -27,7 +53,11 @@ function App() {
             path="/"
             element={
               <Prevent>
-                <Navbar />
+                <Navbar
+                  musicPlayer={musicPlayer}
+                  music={music}
+                  setMusic={setMusic}
+                />
               </Prevent>
             }
           >
@@ -47,12 +77,10 @@ function App() {
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <audio src={audioMusic} ref={audioRef} autoPlay loop></audio>
       </UserAuthProvider>
     </div>
   );
 }
 
 export default App;
-
-
-

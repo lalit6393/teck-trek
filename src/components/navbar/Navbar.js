@@ -23,7 +23,7 @@ import axios from "axios";
 var isSameOrAfter = require("dayjs/plugin/isSameOrAfter");
 dayjs.extend(isSameOrAfter);
 
-const Navbar = () => {
+const Navbar = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const audioRef = useRef(null);
@@ -35,8 +35,7 @@ const Navbar = () => {
     filter: "blur(14px)",
   };
 
-  const { accessToken, backendUrl, user, setUser, startDate, music, setMusic } =
-    useUserAuth();
+  const { accessToken, backendUrl, user, setUser, startDate } = useUserAuth();
 
   const avatars = [
     { id: 1, img: avatar1 },
@@ -84,27 +83,9 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  const musicPlayer = () => {
-    var audio = audioRef.current;
-    if (music) {
-      setMusic(false);
-      audio.pause();
-    } else {
-      setMusic(true);
-      audio.play();
-    }
-  };
-
-  function musicPlay() {
-    var audio = audioRef.current;
-    audio.play();
-    setMusic(true);
-    document.removeEventListener("click", musicPlay);
-  }
-
-  useEffect(() => {
-    document.addEventListener("click", musicPlay);
-  }, []);
+  const musicPlayer = props.musicPlayer;
+  const music = props.music;
+  const setMusic = props.setMusic;
 
   if (!dayjs().isSameOrAfter(dayjs("April 13, 2023 00:00:00 AM"))) {
     return <Timer />;
@@ -346,7 +327,6 @@ const Navbar = () => {
           <Prevent>
             <Outlet />
           </Prevent>
-          <audio src={audioMusic} ref={audioRef} autoPlay loop></audio>
         </div>
       )
     );
