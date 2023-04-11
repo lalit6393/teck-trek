@@ -83,6 +83,10 @@
     font-size: 2.5vh;
 }
 
+.verify{
+    font-size: 20px;
+}
+
 .answer::placeholder{
     color: #A0A0A0;
     font-size: 2.5vh;
@@ -113,6 +117,10 @@
 .submit:active{
   background-color:#094B38;
   border-right: 1px solid #005435;
+}
+
+.submit:hover{
+    filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
 }
 
 .achievements{
@@ -189,6 +197,9 @@ hr{
     .inputbox{
         padding: 24px;
     }
+    .verify{
+        font-size: 16px;
+    }
     hr{
         margin:2.2vh 0;
     }
@@ -220,6 +231,9 @@ hr{
         font-size: 14px;
         padding: 0 8px;
         height: 48px;
+    }
+    .answer::placeholder{
+        font-size: 14px;
     }
     .progress{
         font-size: 12px;

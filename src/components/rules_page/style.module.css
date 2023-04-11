@@ -26,25 +26,25 @@
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #f78a20;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .MainContent{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   margin: auto;
   text-align: left;
   width: 95%;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .para{
 font-family: 'Avenir';
 font-style: normal;
 font-weight: 400;
-font-size: 16px;
+font-size: 18px;
 line-height: 140%;
 letter-spacing: 0.03em;
 color: #FDF3E7;
@@ -60,7 +60,7 @@ color: #FDF3E7;
   }
   
   .para{
-    font-size: 1.5rem;
+    font-size: 18px;
   }
 }
 

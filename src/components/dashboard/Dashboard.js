@@ -8,6 +8,9 @@ import stage3 from '../../static_files/stage3.svg'
 import stage4 from '../../static_files/stage4.svg'
 import stage5 from '../../static_files/stage5.svg'
 import stage6 from '../../static_files/stage6.svg'
+import { useNavigate } from 'react-router-dom';
+import VerifyEmail from './VerifyEmail';
+import Loader from '../Loader/Loader';
 
 const Dashboard = () => {
   const [level, setLevel] = useState();
@@ -16,12 +19,15 @@ const Dashboard = () => {
   const [question, setQuestion] = useState();
   const [displayMsg,setDisplayMsg] = useState();
   const [isCorrect, setIsCorrect] = useState();
-  const { backendUrl, accessToken} = useUserAuth();
+  const { backendUrl, accessToken, setIsCooldown, setCoolDownTimer} = useUserAuth();
+  const navigate = useNavigate();
+  const [verified, setVerified] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const successMsg = ['Bingo!!!','Amazing!',"True Warrior"];
-  const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing'];
+  const successMsg = ['Bingo!!!','Amazing!',"True Warrior",'Correct!'];
+  const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing','Incorrect'];
   function setMsg(success){
-    const index = Math.floor(Math.random()*3)
+    const index = Math.floor(Math.random()*(successMsg.length))
     let msg;
     if(success){
        msg = successMsg[index];
@@ -39,9 +45,30 @@ const Dashboard = () => {
          "Authorization" : `Bearer ${accessToken}`
       }
     }).then((res) => {
-      setQuestion(res.data.detail.question);
-      setLevel(res.data.player_info.current_question);
-      setScore(res.data.player_info.score);
+      setVerified(true)
+      setIsLoading(false)
+      if(res.data.detail.question){
+        setQuestion(res.data.detail.question);
+        setLevel(res.data.player_info.current_question);
+        setScore(res.data.player_info.score);
+        setIsCooldown(false)
+      }
+      else{
+        if(res.data.detail.time_left == 1)
+        setTimeout(()=>{
+          getQuestion()
+        },500)
+        else{
+          setIsCooldown(true)
+          setCoolDownTimer(res.data.detail.time_left)
+          navigate('/timer')
+        }
+      }
+    }).catch((e)=>{
+      if(e.response.status == 401){
+        setIsLoading(false)
+      }
+      
     })
   }
 
@@ -50,6 +77,7 @@ const Dashboard = () => {
   },[])
 
   const submitHandler = async () => {
+    if(answer){
     const res =  await axios.post(`${backendUrl}/questions/`,{answer:answer},{
       headers : {
         "Authorization" : `Bearer ${accessToken}`
@@ -72,6 +100,7 @@ const Dashboard = () => {
       },[4000])
     }
   }
+  }
 
   const achievements = [
     {
@@ -87,27 +116,29 @@ const Dashboard = () => {
     {
       id:3,
       stage:stage3,
-      achieved:score>=60
+      achieved:score>=80
     },
     {
       id:4,
       stage:stage4,
-      achieved:score>=80
+      achieved:score>=120
     },
     {
       id:5,
       stage:stage5,
-      achieved:score>=100
+      achieved:score>=160
     },
     {
       id:6,
       stage:stage6,
-      achieved:score>=120
+      achieved:score>=200
     }
   ]
 
   return (
-    <section className={styles.dashboard}>
+    (isLoading) ? <Loader/> : 
+    ( !verified ) ? <VerifyEmail/> : 
+    ( <section className={styles.dashboard}>
       <div className={styles.container}>
         <div className={styles.inputbox}>
           <div className={styles.heading}>Question</div>
@@ -142,6 +173,7 @@ const Dashboard = () => {
         </div>
       </div>
     </section>
+    )
   )
 }
 

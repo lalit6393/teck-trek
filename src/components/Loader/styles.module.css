@@ -1,0 +1,19 @@
+.container{
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: none;
+  position: relative;
+  background: #0a0a12;
+}
+
+.spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

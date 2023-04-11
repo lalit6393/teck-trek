@@ -1,184 +1,181 @@
-.Main {
-  display: flex;
+html,
+body {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.Main {
+  background-image: url("../../static_files/BG_darkg.svg");
+  background-size: cover;
+  min-height: 100vh;
   font-size: 50px;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-y: auto;
-  position: relative;
-  background: #0A0A12;
+
+  display: flex;
   justify-content: center;
-  min-height: 55rem;
+  align-items: center;
+  flex-direction: column;
+
+  overflow-y: scroll;
+  position: relative;
+  background: #0a0a12;
 }
 
 .Container2 {
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 1.4vmin;
+  min-height: 67vh;
   height: 100%;
-  width: 40%;
-  min-width: 30rem;
-  max-width: 38rem;
+  font-size: 1.4vmin;
+}
+.Image {
+  width: 100%;
+  margin-bottom: -29px;
 }
 
 .Form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  justify-content: center;
   align-items: center;
-  gap: 1.2rem;
-}
-
-.Form>img{
-  width: 100%;
+  padding-bottom: 70px;
+  height: 85vh;
 }
 
 input {
   width: 69%;
   padding: 16px;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.27);
 }
 input,
 select,
 textarea {
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 16px;
 }
 
 .Input {
-  position: relative;
-  display: flex;
-  align-items: center;
+  padding: 6px;
   color: #ffffff;
-  width: 100%;
-  flex-direction: row-reverse;
-}
-
-.Input>input{
-  width: 100%;
-  position: relative;
 }
 
 .login {
   text-decoration: none;
   color: #08ac70;
 }
+.pass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconDiv {
+  position: absolute;
+  /* float: right; */
+  font-size: 22px;
+  /* top: 50%; */
+  right: 70px;
+  transform: translateY(-50%);
+}
+
+.eye {
+  padding: 0 2rem;
+  /* float: right; */
+  cursor: pointer;
+}
+
+.inputWithBtn{
+  position: relative;
+}
+
+.inputBtn{
+  position : absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+}
 
 .buttonSubmit {
-  width: 100%;
   justify-content: center;
   align-items: center;
   padding: 16px 20px;
+  gap: 10px;
   cursor: pointer;
+  width: 74%;
+  height: 56px;
+  left: 512px;
+  top: 681.19px;
+  margin-top: 20px;
   background: #08ac70;
   font-family: "Avenir";
   font-style: normal;
   font-weight: 850;
-  font-size: 1.6rem;
+  font-size: 16px;
+  line-height: 16px;
   color: #ffffff;
   border-style: hidden;
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
 
-.buttonSubmit:hover {
-  background: #013421;
-  color: #e4ec9d;
+.buttonSubmit:hover{
+  filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
+}
+
+.buttonDisabled {
+  justify-content: center;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 10px;
+  cursor: pointer;
+  width: 74%;
+  height: 56px;
+  left: 512px;
+  top: 681.19px;
+  margin-top: 20px;
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 850;
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(108, 108, 113, 1);
+  border-style: hidden;
+  box-shadow: 0px 2px 0 rgba(6, 40, 32, 1), 1.5px 1.5px 0 rgba(16, 87, 66, 1);
+  background-color: rgba(9, 75, 56, 1);
+  cursor: not-allowed;
 }
 
 .paragraph {
   font-size: 16px;
   color: #ffffff;
+  padding-top: 10px;
+}
+.HaveAccount {
+  padding-bottom: 40px;
 }
 
-@media screen and (min-width: 2001px){
-  .Container2{
-   font-size: 2rem;
-    max-width: 55rem;
-  }
-  .Input>input{
-    font-size: 2rem;
-  }
-  .buttonSubmit{
-    font-size: 1.8rem;
-  }
-  .paragraph{
-    font-size: 1.8rem;
-  }
+.foot {
+  /* position: absolute; */
+  bottom: 0;
+  font-size: 2.3vmin;
+  padding: 0 0 0 0;
+}
+.errorText {
+  width: calc(69% + 32px);
+  color: rgba(217, 95, 95, 1);
+  text-align: left;
+  margin: 3px auto 0;
+  font-size: 13px;
 }
 
-
-@media screen and (min-width: 1800px) and (max-width:2000px){
-  .Container2{
-    max-width: 48rem;
-  }
-  .Input>input{
-    font-size: 2rem;
-  }
-  .buttonSubmit{
-    font-size: 1.8rem;
-  }
-  .paragraph{
-    font-size: 1.8rem;
-  }
-}
-
-
-
-@media screen and (max-width:560px) {
-  .Form{
-    gap: 1.2rem;
-  }
-  .Input>input{
-    padding: 13px;
-  }
-  .buttonSubmit{
-    padding: 13px 20px;
-  }
-}
-
-@media screen and (max-width:310px) {
-  .Container2{
-    min-width: auto;
-    width: 100%;
-    padding: 1rem;
-  }
-}
-
-@media screen and (min-width:561px) and (max-width:768px){
-  .Container2{
-    min-width: 34rem;
-  }
-  .Form{
-    gap: 1.5rem;
-  }
-}
-
-@media screen and (max-height:620px) {
-  .Form{
-    gap: 1rem;
-  }
-}
-
-@media screen and (max-height:570px) {
-  .Container2{
-    max-width: 30rem;
-    align-items: flex-start;
-  }
-}
-
-@media screen and (max-height:500px) {
-  .Container2{
-    min-width: auto;
-    width: 25rem;
-  }
-  .Input>input{
-    padding: 11px;
-  }
-  .buttonSubmit{
-    padding: 11px 20px;
-  }
+.errorInput {
+  border-color: rgba(217, 95, 95, 1);
+  color: rgba(217, 95, 95, 1);
 }
