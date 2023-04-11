@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Oval } from  'react-loader-spinner'
+import { Oval } from "react-loader-spinner";
 const Avatar = () => {
   const { newUser, setNewUser, setUser, signup } = useUserAuth();
   const [selectedId, setSelectedId] = useState();
@@ -27,23 +27,24 @@ const Avatar = () => {
     { id: 6, img: avatar6 },
   ];
 
-
-  useEffect(()=>{
-    if(newUser?.email){
+  useEffect(() => {
+    if (newUser?.email) {
       console.log(newUser);
-    }else{
-      console.log('navigate');
-      navigate('/signup')
+    } else {
+      console.log("navigate");
+      navigate("/signup");
     }
-  },[])
+  }, []);
 
   async function handlePayment() {
     setNewUser((prev) => {
       return { ...prev, avatar_no: selectedId };
     });
     console.log(newUser);
-    setIsLoading(true)
-    signup(selectedId).then((res)=>setIsLoading(false)).catch((e)=>setIsLoading(false));
+    setIsLoading(true);
+    signup(selectedId)
+      .then((res) => setIsLoading(false))
+      .catch((e) => setIsLoading(false));
   }
 
   return (
@@ -76,32 +77,41 @@ const Avatar = () => {
               );
             })}
           </div>
-          <div className={selectedId && newUser.email ? styles.paybtn : styles.paybtn +" " + styles.buttonDisabled}>
+          <div
+            className={
+              selectedId && newUser.email
+                ? styles.paybtn
+                : styles.paybtn + " " + styles.buttonDisabled
+            }
+          >
             <button
-              className={selectedId && newUser.email ? null : styles.buttonDisabled}
+              className={
+                selectedId && newUser.email ? null : styles.buttonDisabled
+              }
               disabled={selectedId && newUser.email ? false : true}
               onClick={handlePayment}
               style={{
-                position:"relative"
+                position: "relative",
               }}
             >
-              {
-                (!isLoading) ? 'Submit' : 
+              {!isLoading ? (
+                "Submit"
+              ) : (
                 <Oval
-                height = "30"
-                width = "30"
-                radius = "9"
-                color = 'white'
-                ariaLabel = 'three-dots-loading'     
-                wrapperStyle={{
-                position:"absolute",
-                top:"50%",
-                left:"50%",
-                transform:"translate(-50%,-50%)"
-            }}
-            wrapperClass
-              />
-              }
+                  height="30"
+                  width="30"
+                  radius="9"
+                  color="white"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%,-50%)",
+                  }}
+                  wrapperClass
+                />
+              )}
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>
