@@ -11,10 +11,11 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
+const emailRegex = RegExp(/^[a-zA-Z0-9._%+-]+@(gmail|yahoo|rediffmail|jssaten|outlook|[^.]+\.[^.]{2,})$/)
 
 const signupSchema = Yup.object().shape({
   username: Yup.string().required("Please fill this field").min(4),
-  email: Yup.string()
+  email: Yup.string().matches(emailRegex, "Invalid Email")
     .email("Enter valid email")
     .required("Please fill this field"),
   password: Yup.string().required("Please fill this field").min(10),
@@ -27,6 +28,12 @@ const signupSchema = Yup.object().shape({
       (val) => val.toString().length === 10
     )
     .required("Please fill this field"),
+  tezos_wallet_id: Yup.string()
+  .test(
+    'is-length-36',
+    'Tezos wallet Id must be exactly 36 characters',
+    (value) => !value || value.length === 36
+  )
 });
 
 const Signup = () => {
@@ -42,6 +49,7 @@ const Signup = () => {
   });
 
   const [records, setRecords] = useState([]);
+  const [showInfo, setShowInfo] = useState(false)
 
   const handleSubmit = (data) => {
     if(!data.tezos_wallet_id){
@@ -170,10 +178,15 @@ const Signup = () => {
                     name="tezos_wallet_id"
                     placeholder="Tezos wallet Id (optional)"
                   />
-                  <img src={info} className={styles.inputBtn}  />
+                  <span style={{position:"relative"}}>
+                    <img src={info} className={styles.inputBtn}  onMouseEnter={() => {setShowInfo(true)}} onClick={()=>{setShowInfo((prev)=>!prev)}} onMouseLeave={()=>{setShowInfo(false)}}/>
+                    {(showInfo) ? 
+                    <p className={styles.info}>It should be 36 digit long wallet number. <br/>  Eg: tz1Z3KCf8CLGAYfvVWPEr562jDDyWkwNF7sT</p> : ""
+                  }
+                  </span>
                 </span>
-                {errors.contact_no && touched.contact_no ? (
-                  <div className={styles.errorText}>{errors.contact_no}</div>
+                {errors.tezos_wallet_id && touched.tezos_wallet_id ? (
+                  <div className={styles.errorText}>{errors.tezos_wallet_id}</div>
                 ) : null}
               </div>
               <button
