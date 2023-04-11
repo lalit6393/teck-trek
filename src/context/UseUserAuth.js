@@ -4,24 +4,22 @@ import { useNavigate } from "react-router-dom";
 const UserAuthContext = createContext();
 
 export const UserAuthProvider = ({ children }) => {
-  const startDate = 'Thu Apr 09 2023 00:00:00 GMT+0530 (India Standard Time)'
+  const startDate = "Thu Apr 13 2023 00:00:00 GMT+0530 (India Standard Time)";
   const navigate = useNavigate();
   const [visited, setVisited] = useState(
     localStorage.getItem("visited") || null
   );
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
-  const backendUrl = "http://210.212.85.155:8073";
+  const backendUrl = "https://techtrek-api.hackncs.in";
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken") || null
   );
   const [refreshToken, setRefreshToken] = useState(
     localStorage.getItem("refreshToken") || null
   );
-  const [isCooldown, setIsCooldown]=useState(false)
+  const [isCooldown, setIsCooldown] = useState(false);
   const [cooldownTimer, setCoolDownTimer] = useState();
   const [alert, setAlert] = useState({
     isOpen: false,
@@ -47,15 +45,15 @@ export const UserAuthProvider = ({ children }) => {
   }, [accessToken, refreshToken]);
 
   const signup = async (id) => {
-    const user = { ...newUser, password2: newUser.password , avatar_no:id};
-    console.log(user);
+    const user = { ...newUser, password2: newUser.password, avatar_no: id };
+    // console.log(user);
     try {
       const response = await axios
         .post(`${backendUrl}/accounts/api/register/`, user)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (Math.floor(res.status / 100) === 2) {
-            console.log("navigate");
+            // console.log("navigate");
             setAccessToken(res.data.token.access);
             setRefreshToken(res.data.token.refresh);
             localStorage.setItem("user", JSON.stringify(res.data));
@@ -68,25 +66,35 @@ export const UserAuthProvider = ({ children }) => {
           return res;
         });
     } catch (e) {
-      console.log(e);
-      console.log(e.response.data.contact_no && e.response.data.contact_no[0] || e.response.data.email && e.response.data.email[0] || e.response.data.username && e.response.data.username[0] || e.message);
-      alertUser(e.response.data.contact_no && e.response.data.contact_no[0] || e.response.data.email && e.response.data.email[0] || e.response.data.username && e.response.data.username[0] || e.message);
+      // console.log(e);
+      console.log(
+        (e.response.data.contact_no && e.response.data.contact_no[0]) ||
+          (e.response.data.email && e.response.data.email[0]) ||
+          (e.response.data.username && e.response.data.username[0]) ||
+          e.message
+      );
+      alertUser(
+        (e.response.data.contact_no && e.response.data.contact_no[0]) ||
+          (e.response.data.email && e.response.data.email[0]) ||
+          (e.response.data.username && e.response.data.username[0]) ||
+          e.message
+      );
     }
   };
 
   const login = async (data) => {
-    try{
-    const res = await axios.post(`${backendUrl}/accounts/api/token/`, data);
-    if(Math.floor(res.status/100 ) == 2){
-      setAccessToken(res.data.access);
-      setRefreshToken(res.data.refresh);
-      alertUser("Login Succesful",200);
-      return res;
+    try {
+      const res = await axios.post(`${backendUrl}/accounts/api/token/`, data);
+      if (Math.floor(res.status / 100) == 2) {
+        setAccessToken(res.data.access);
+        setRefreshToken(res.data.refresh);
+        alertUser("Login Succesful", 200);
+        return res;
+      }
+    } catch (e) {
+      console.log(e);
+      alertUser(e.response.data.detail || e.message);
     }
-  }catch(e){
-    console.log(e);
-    alertUser(e.response.data.detail || e.message);
-  }
   };
 
   return (
@@ -113,7 +121,7 @@ export const UserAuthProvider = ({ children }) => {
         setCoolDownTimer,
         startDate,
         music,
-        setMusic
+        setMusic,
       }}
     >
       {children}
@@ -124,6 +132,3 @@ export const UserAuthProvider = ({ children }) => {
 export const useUserAuth = () => {
   return useContext(UserAuthContext);
 };
-
-
-

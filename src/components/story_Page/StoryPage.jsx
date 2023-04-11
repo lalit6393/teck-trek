@@ -59,17 +59,15 @@ const TypingButton = ({ text, show, clickFunction }) => {
 };
 
 const StoryPage = () => {
-
   const navigate = useNavigate();
-  const {setVisited, visited} = useUserAuth();
+  const { setVisited, visited } = useUserAuth();
   const [showContent, setShowContent] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
-  if(visited){
-    navigate('/');
+  if (visited) {
+    navigate("/");
   }
-
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -82,45 +80,42 @@ const StoryPage = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-
-  // Lalit Redirect function 
+  // Lalit Redirect function
   function handleClick() {
     setVisited(true);
-    localStorage.setItem('visited', true);
-    navigate('/signup');
-    console.log('Button clicked');
+    localStorage.setItem("visited", true);
+    navigate("/signup");
+    // console.log('Button clicked');
   }
-
-
 
   return (
     <div className={StoryStyle.outermostDiv}>
       <div className={StoryStyle.InnerPaddingDiv}>
-      <div className={StoryStyle.innermostContainer}>
-      <div className={StoryStyle.innermostDiv}>
-        <div className={StoryStyle.innerDiv}>
-          <h1 className={StoryStyle.heading}>
-            <Typewriter text="Can you be the wisest Minister out there?" />
-          </h1>
-          <div className={StoryStyle.para}>
-            <TypingContent
-              text="In the days of yore lived an old king looking for a new Minster. A series of challenges are made to choose the most suitable candidate for this post. The candidates are summoned and challenges are made in the form of questions divided into levels as we move up the castle floors. Each level, upon crossing, would award the candidate with a unique gem. Once you solve all the challenges and reach the final level, you get that special Ruby to swear as the new Minister under the king . "
-              show={showContent}
-              setIsAnimationFinished={setIsAnimationFinished}
-            />
-          </div>
+        <div className={StoryStyle.innermostContainer}>
+          <div className={StoryStyle.innermostDiv}>
+            <div className={StoryStyle.innerDiv}>
+              <h1 className={StoryStyle.heading}>
+                <Typewriter text="Can you be the wisest Minister out there?" />
+              </h1>
+              <div className={StoryStyle.para}>
+                <TypingContent
+                  text="In the days of yore lived an old king looking for a new Minster. A series of challenges are made to choose the most suitable candidate for this post. The candidates are summoned and challenges are made in the form of questions divided into levels as we move up the castle floors. Each level, upon crossing, would award the candidate with a unique gem. Once you solve all the challenges and reach the final level, you get that special Ruby to swear as the new Minister under the king . "
+                  show={showContent}
+                  setIsAnimationFinished={setIsAnimationFinished}
+                />
+              </div>
 
-          {isAnimationFinished && (
-              <TypingButton
-                text="Continue"
-                show={showButton}
-                clickFunction={handleClick}
-              />
-          )}
+              {isAnimationFinished && (
+                <TypingButton
+                  text="Continue"
+                  show={showButton}
+                  clickFunction={handleClick}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
     </div>
   );
 };

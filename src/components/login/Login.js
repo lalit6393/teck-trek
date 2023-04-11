@@ -29,7 +29,7 @@ const Login = () => {
     setallEntry([...allEntry, newEntry]);
     if (data.username && data.password) {
       setIsLoading(true);
-      console.log(newEntry);
+      // console.log(newEntry);
       login(newEntry)
         .then((res) => {
           setIsLoading(false);
@@ -39,7 +39,7 @@ const Login = () => {
         })
         .catch((err) => {
           setIsLoading(false);
-          console.log("login page error", err);
+          // console.log("login page error", err);
         });
     }
   };
