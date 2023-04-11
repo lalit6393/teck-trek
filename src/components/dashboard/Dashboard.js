@@ -11,6 +11,11 @@ import stage6 from '../../static_files/stage6.svg'
 import { useNavigate } from 'react-router-dom';
 import VerifyEmail from './VerifyEmail';
 import Loader from '../Loader/Loader';
+import dayjs from "dayjs";
+import Gameover from "./Gameover"
+import { Oval } from 'react-loader-spinner';
+var isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+dayjs.extend(isSameOrAfter);
 
 const Dashboard = () => {
   const [level, setLevel] = useState();
@@ -23,6 +28,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [verified, setVerified] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
 
   const successMsg = ['Bingo!!!','Amazing!',"True Warrior",'Correct!'];
   const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing','Incorrect'];
@@ -78,6 +84,7 @@ const Dashboard = () => {
 
   const submitHandler = async () => {
     if(answer){
+    setSubmitting(true)
     const res =  await axios.post(`${backendUrl}/questions/`,{answer:answer},{
       headers : {
         "Authorization" : `Bearer ${accessToken}`
@@ -85,6 +92,7 @@ const Dashboard = () => {
     })
     setAnswer('');
     const success = res.data.success;
+    setSubmitting(false)
     setIsCorrect(success);
     if(success){
       setMsg(success);
@@ -136,6 +144,7 @@ const Dashboard = () => {
   ]
 
   return (
+    (dayjs().isSameOrAfter(dayjs('April 14, 2023 06:00:00 PM'))) ? <Gameover /> :
     (isLoading) ? <Loader/> : 
     ( !verified ) ? <VerifyEmail/> : 
     ( <section className={styles.dashboard}>
@@ -148,7 +157,25 @@ const Dashboard = () => {
               <input className={styles.answer} placeholder="I seek answer" type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)}/>
               <span className={styles.errormsg} style={{color:"#F78A20"}}>{displayMsg}</span>
             </span>
-            <button className={styles.submit} onClick={submitHandler}>Submit</button>
+            <button className={styles.submit} onClick={submitHandler} style={{position:"relative"}}>
+            {
+                (!submitting) ? 'Submit' : 
+                <Oval
+                height = "30"
+                width = "30"
+                radius = "9"
+                color = 'white'
+                ariaLabel = 'three-dots-loading'     
+                wrapperStyle={{
+                position:"absolute",
+                top:"50%",
+                left:"50%",
+                transform:"translate(-50%,-50%)"
+            }}
+            wrapperClass
+              />
+              }
+            </button>
           </div>
         </div>
         <div className={styles.achievements}>
