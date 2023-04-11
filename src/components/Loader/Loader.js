@@ -6,8 +6,8 @@ const Loader = ( )=>{
     <>
     <div className={styles.container}>
         <Oval
-            height = "80"
-            width = "80"
+            height = "60"
+            width = "60"
             radius = "9"
             color = 'green'
             ariaLabel = 'three-dots-loading'     

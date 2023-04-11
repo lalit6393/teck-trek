@@ -12,9 +12,11 @@ import { useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import Cloud from "../clouds/Cloud";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Oval } from  'react-loader-spinner'
 const Avatar = () => {
   const { newUser, setNewUser, setUser, signup } = useUserAuth();
   const [selectedId, setSelectedId] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const avatars = [
     { id: 1, img: avatar1 },
@@ -40,7 +42,8 @@ const Avatar = () => {
       return { ...prev, avatar_no: selectedId };
     });
     console.log(newUser);
-    signup(selectedId);
+    setIsLoading(true)
+    signup(selectedId).then((res)=>setIsLoading(false)).catch((e)=>setIsLoading(false));
   }
 
   return (
@@ -49,7 +52,6 @@ const Avatar = () => {
         <Cloud />
         <div className={styles.avatarSelection}>
           <div className={styles.logo}>
-            <div></div>
             <img src={logo} alt="TechTrek" />
           </div>
           <div></div>
@@ -79,8 +81,27 @@ const Avatar = () => {
               className={selectedId && newUser.email ? null : styles.buttonDisabled}
               disabled={selectedId && newUser.email ? false : true}
               onClick={handlePayment}
+              style={{
+                position:"relative"
+              }}
             >
-              Submit
+              {
+                (!isLoading) ? 'Submit' : 
+                <Oval
+                height = "30"
+                width = "30"
+                radius = "9"
+                color = 'white'
+                ariaLabel = 'three-dots-loading'     
+                wrapperStyle={{
+                position:"absolute",
+                top:"50%",
+                left:"50%",
+                transform:"translate(-50%,-50%)"
+            }}
+            wrapperClass
+              />
+              }
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>

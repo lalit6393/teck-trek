@@ -7,6 +7,7 @@ import { useUserAuth } from "../../context/UseUserAuth";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { Oval } from "react-loader-spinner";
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
 
@@ -21,19 +22,22 @@ const Login = () => {
   const { login, setUser } = useUserAuth();
   const navigate = useNavigate();
   const [allEntry, setallEntry] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
   const submitForm = (data) => {
     const newEntry = {...data}
     setallEntry([...allEntry, newEntry]);
     if (data.username && data.password) {
+      setIsLoading(true)
       console.log(newEntry);
       login(newEntry)
         .then((res) => {
+          setIsLoading(false)
           if (res.status / 100 === 2) {
             navigate("/dashboard");
           }
         })
-        .catch((err) => console.log("login page error", err));
+        .catch((err) => {setIsLoading(false);console.log("login page error", err)});
     }
   };
   const [visible, setVisible] = useState(false);
@@ -115,7 +119,23 @@ const Login = () => {
                   style={{marginTop: '20px', paddingTop: '11px', paddingBottom: '11px', paddingLeft: '20px', paddingRight: '20px'}}
                   disabled={errors.username || errors.password ? true : false}
                 >
-                  Continue &rarr;
+                  {
+                (!isLoading) ? 'Login' : 
+                <Oval
+                height = "30"
+                width = "30"
+                radius = "9"
+                color = 'white'
+                ariaLabel = 'three-dots-loading'     
+                wrapperStyle={{
+                position:"absolute",
+                top:"50%",
+                left:"50%",
+                transform:"translate(-50%,-50%)"
+            }}
+            wrapperClass
+              />
+              }
                 </button>
                 <div className={styles.noAccount}>
                   <p className={styles.para}>

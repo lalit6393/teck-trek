@@ -79,8 +79,9 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("accessToken");
-    navigate("/login");
-  };
+    localStorage.removeItem("token")
+    navigate('/login');
+  }
 
   const musicPlayer = () => {
     music ? setMusic(false) : setMusic(true);
