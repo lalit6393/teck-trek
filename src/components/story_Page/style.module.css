@@ -4,10 +4,10 @@
   background-size: cover;
   height: 100%;
 }
-.InnerPaddingDiv{
+.InnerPaddingDiv {
   padding-top: 60px;
 }
-.innermostContainer{
+.innermostContainer {
   width: 75%;
   margin: auto;
 }
@@ -16,9 +16,10 @@
   box-sizing: border-box;
   max-width: 1280px;
   height: 75vh;
-  background: rgba(128, 130, 188, 0.06) ;
-  border: 3.60383px solid rgba(255, 255, 255, 0.03) ;
-  backdrop-filter: blur(16.2173px) ;
+  max-height: 485px;
+  background: rgba(128, 130, 188, 0.06);
+  border: 3.60383px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16.2173px);
   border-radius: 14.4153px;
   width: 90%;
 }
@@ -69,113 +70,107 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
-.text{
-font-family: 'Avenir';
-font-style: normal;
-font-weight: 900;
-font-size: 20px;
-line-height: 16px;
-display: flex;
-align-items: center;
-letter-spacing: 0.2px;
-color: #FFFFFF;
-mix-blend-mode: normal;
-flex: none;
-order: 2;
-flex-grow: 0;
-z-index: 2;
+.text {
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  mix-blend-mode: normal;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  z-index: 2;
 }
-.link{
-    text-decoration: none;
+.link {
+  text-decoration: none;
 }
 
-
-
-@media screen and (max-width:1200px) and (min-width:993px) {
-  .heading{
+@media screen and (max-width: 1200px) and (min-width: 993px) {
+  .heading {
     font-size: 2.75em;
   }
-  .para{
+  .para {
     font-size: 2.25em;
-  } 
+  }
   .innermostDiv {
     width: 90%;
   }
 }
 
-
-@media screen and (max-width:992px) and (min-width:769px){
+@media screen and (max-width: 992px) and (min-width: 769px) {
   .innermostDiv {
     width: 90%;
     /* height: 92.5vh; */
   }
-  .heading{
+  .heading {
     font-size: 2.25em;
   }
-  .para{
+  .para {
     font-size: 1.75em;
     line-height: 175%;
   }
-  .InnerPaddingDiv{
+  .InnerPaddingDiv {
     padding-top: 50px;
   }
 }
 
-
-@media screen and (max-width:768px) and (min-width:609px){
-
+@media screen and (max-width: 768px) and (min-width: 609px) {
   .innermostDiv {
     width: 95%;
     /* height: 80vh; */
   }
-  .heading{
+  .heading {
     font-size: 2.25em;
   }
-  .para{
+  .para {
     font-size: 1.75em;
   }
-  .InnerPaddingDiv{
+  .InnerPaddingDiv {
     padding-top: 50px;
-  } 
+  }
 }
 
-@media screen and (max-width:609px) and (min-width:481px){
+@media screen and (max-width: 609px) and (min-width: 481px) {
   .innermostDiv {
     width: 95%;
     /* height: 70vh; */
   }
-  .heading{
+  .heading {
     font-size: 2em;
   }
-  .para{
+  .para {
     font-size: 1.5em;
     line-height: 180%;
   }
-  .InnerPaddingDiv{
+  .InnerPaddingDiv {
     padding-top: 90px;
   }
-
 }
 @media screen and (max-width: 480px) {
   .innermostDiv {
     width: 90%;
   }
-  .heading{
+  .heading {
     font-size: 1.75em;
   }
-  .para{
+  .para {
     font-size: 1.25em;
     line-height: 200%;
   }
-  .InnerPaddingDiv{
+  .InnerPaddingDiv {
     padding-top: 40px;
   }
-  .button{
-padding: 0px;
-width: 140px;
-height: 40px;
+  .button {
+    padding: 0px;
+    width: 140px;
+    height: 40px;
   }
-  .innermostContainer{
+  .innermostContainer {
     width: 90%;
   }
 }

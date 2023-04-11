@@ -107,7 +107,7 @@
   box-shadow: 0px 2px 0 #013421, 1.5px 1.5px 0 #19cb8a;
 }
 
-.paybtn button:hover{
+.paybtn button:hover {
   filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
 }
 
@@ -115,7 +115,7 @@
   background-color: #094b38;
 }
 
-.buttonDisabled button{
+.buttonDisabled button {
   box-shadow: 0px 2px 0 rgba(6, 40, 32, 1), 1.5px 1.5px 0 rgba(16, 87, 66, 1);
   background-color: rgba(9, 75, 56, 1);
   color: rgba(108, 108, 113, 1);
@@ -190,7 +190,7 @@ footer {
   justify-content: space-between;
   color: #f78a20;
   font-size: 14px;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 footer span {
