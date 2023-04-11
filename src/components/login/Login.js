@@ -104,11 +104,6 @@ const Login = () => {
                   </div>
                   </div>
                 </div>
-                <div className={styles.forgot}>
-                  <a className={styles.a2} href="/login">
-                    Forgot Password?
-                  </a>
-                </div>
                 <button
                   type="submit"
                   className={
