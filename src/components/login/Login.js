@@ -22,22 +22,25 @@ const Login = () => {
   const { login, setUser } = useUserAuth();
   const navigate = useNavigate();
   const [allEntry, setallEntry] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitForm = (data) => {
-    const newEntry = {...data}
+    const newEntry = { ...data };
     setallEntry([...allEntry, newEntry]);
     if (data.username && data.password) {
-      setIsLoading(true)
+      setIsLoading(true);
       console.log(newEntry);
       login(newEntry)
         .then((res) => {
-          setIsLoading(false)
+          setIsLoading(false);
           if (res.status / 100 === 2) {
             navigate("/dashboard");
           }
         })
-        .catch((err) => {setIsLoading(false);console.log("login page error", err)});
+        .catch((err) => {
+          setIsLoading(false);
+          console.log("login page error", err);
+        });
     }
   };
   const [visible, setVisible] = useState(false);
@@ -76,61 +79,73 @@ const Login = () => {
                   ) : null}
                 </div>
 
-                  <div style={{ position: 'relative' }}>
-                <div className={styles.Pass + " " + styles.input}>
-
-                  <Field
-                    autocomplete="off"
-                    type={visible ? "text" : "password"}
-                    className={
-                      errors.password &&
-                      touched.password &&
-                      styles.errorInput &&
-                      styles.passInput
-                    }
-                    name="password"
-                    placeholder="Password"
-                  />
-                  {errors.password && touched.password ? (
-                    <div className={styles.errorText}>{errors.password}</div>
-                  ) : null}
-                  <div className={styles.iconDiv} style={{top: errors.password && touched.password ? "40%" : "50%"}}>
-                    <span
-                      className={styles.eye}
-                      onClick={() => setVisible(!visible)}
+                <div style={{ position: "relative" }}>
+                  <div className={styles.Pass + " " + styles.input}>
+                    <Field
+                      autocomplete="off"
+                      type={visible ? "text" : "password"}
+                      className={
+                        errors.password &&
+                        touched.password &&
+                        styles.errorInput &&
+                        styles.passInput
+                      }
+                      name="password"
+                      placeholder="Password"
+                    />
+                    {errors.password && touched.password ? (
+                      <div className={styles.errorText}>{errors.password}</div>
+                    ) : null}
+                    <div
+                      className={styles.iconDiv}
+                      style={{
+                        top:
+                          errors.password && touched.password ? "40%" : "50%",
+                      }}
                     >
-                      {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                    </span>
-                  </div>
+                      <span
+                        className={styles.eye}
+                        onClick={() => setVisible(!visible)}
+                      >
+                        {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <button
                   type="submit"
                   className={
                     errors.username || errors.password
-                      ? styles.buttonDisabled 
-                      : styles.buttonSubmit 
+                      ? styles.buttonDisabled
+                      : styles.buttonSubmit
                   }
-                  style={{marginTop: '20px', paddingTop: '11px', paddingBottom: '11px', paddingLeft: '20px', paddingRight: '20px'}}
+                  style={{
+                    marginTop: "20px",
+                    paddingTop: "11px",
+                    paddingBottom: "11px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                  }}
                   disabled={errors.username || errors.password ? true : false}
                 >
-                  {
-                (!isLoading) ? 'Login' : 
-                <Oval
-                height = "30"
-                width = "30"
-                radius = "9"
-                color = 'white'
-                ariaLabel = 'three-dots-loading'     
-                wrapperStyle={{
-                position:"absolute",
-                top:"50%",
-                left:"50%",
-                transform:"translate(-50%,-50%)"
-            }}
-            wrapperClass
-              />
-              }
+                  {!isLoading ? (
+                    "Login"
+                  ) : (
+                    <Oval
+                      height="30"
+                      width="30"
+                      radius="9"
+                      color="white"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%,-50%)",
+                      }}
+                      wrapperClass
+                    />
+                  )}
                 </button>
                 <div className={styles.noAccount}>
                   <p className={styles.para}>
