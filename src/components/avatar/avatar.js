@@ -52,7 +52,6 @@ const Avatar = () => {
         <Cloud />
         <div className={styles.avatarSelection}>
           <div className={styles.logo}>
-            <div></div>
             <img src={logo} alt="TechTrek" />
           </div>
           <div></div>
