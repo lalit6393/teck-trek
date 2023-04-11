@@ -103,6 +103,19 @@ textarea {
   cursor: pointer;
 }
 
+.info{
+  background-color: #1E1E1E;
+  padding: 8px;
+  color: white;
+  font-size: 12px;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(96%,-127%);
+}
+
 .buttonSubmit {
   justify-content: center;
   align-items: center;
@@ -178,4 +191,15 @@ textarea {
 .errorInput {
   border-color: rgba(217, 95, 95, 1);
   color: rgba(217, 95, 95, 1);
+}
+
+@media (max-width : 1000px) {
+  .info{
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    font-size: 10px;
+    top: 0;
+    right: 0;
+    transform: translate(-10%,-127%);
+  }
 }
