@@ -75,7 +75,7 @@ const Dashboard = () => {
     }).catch((e)=>{
       if(e.response.status == 401){
         setIsLoading(false)
-        setVerified(true)
+        setVerified(false)
       }
       
     })
