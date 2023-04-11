@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useEffect, useState } from "react";
 import navStyle from "./style.module.css";
 import { Avatar, Drawer } from "@mui/material";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -25,7 +25,6 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const backgroundBlur = {
     background:
@@ -33,7 +32,7 @@ const Navbar = () => {
     filter: "blur(14px)",
   };
 
-  const {accessToken, backendUrl} = useUserAuth();
+  const {accessToken, backendUrl, user, setUser, startDate} = useUserAuth();
 
   const avatars = [
     { id: 1, img: avatar1 },
@@ -45,13 +44,19 @@ const Navbar = () => {
   ];
 
   useEffect(()=>{
+    try{
       axios.get(`${backendUrl}/accounts/api`,{
         headers : {
           "Authorization" : `Bearer ${accessToken}`
         }
-      }).then((res) => {setUser(res.data);setIsLoading(false);});
+      }).then((res) => {setUser(res.data);setIsLoading(false);}).catch((e)=>{setIsLoading(false)});
+    }catch(e){
+      setIsLoading(false)
+      console.log(e);
+      // navigate('/login')
+    }
     
-  },[setUser])
+  },[])
   
   console.log(user);
   const handleClickOpen = () => {
@@ -63,11 +68,12 @@ const Navbar = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
     navigate('/login');
   }
 
-  if(!dayjs().isSameOrAfter(dayjs('February 22, 2023 10:37 AM'))){
+  if(!dayjs().isSameOrAfter(dayjs('April 9, 2023 00:00:00 AM'))){
     return <Timer/>
   }else{
   return (
@@ -245,7 +251,7 @@ const Navbar = () => {
                     location.pathname.match("/")) &&
                   !location.pathname.match("/rules") &&
                   !location.pathname.match("/leaderboard")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/dashboard")}
@@ -255,7 +261,7 @@ const Navbar = () => {
               <li
                 style={
                   location.pathname.match("/rules")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/rules")}
@@ -265,7 +271,7 @@ const Navbar = () => {
               <li
                 style={
                   location.pathname.match("/leaderboard")
-                    ? { background: "#08AC70" }
+                    ? { background: "#08AC70" , borderLeft:"8px solid #005435"}
                     : null
                 }
                 onClick={() => navigate("/leaderboard")}
