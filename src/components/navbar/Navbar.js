@@ -80,8 +80,9 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("accessToken");
-    navigate("/login");
-  };
+    localStorage.removeItem("token")
+    navigate('/login');
+  }
 
   const musicPlayer = () => {
     var audio = audioRef.current;

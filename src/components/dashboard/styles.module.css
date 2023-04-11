@@ -87,6 +87,11 @@
     font-size: 20px;
 }
 
+.gameOver{
+    color: #f78a20;
+    font-size: 44px;
+}
+
 .answer::placeholder{
     color: #A0A0A0;
     font-size: 2.5vh;
