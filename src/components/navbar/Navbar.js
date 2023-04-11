@@ -80,9 +80,9 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("token")
-    navigate('/login');
-  }
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const musicPlayer = () => {
     var audio = audioRef.current;
@@ -106,7 +106,7 @@ const Navbar = () => {
     document.addEventListener("click", musicPlay);
   }, []);
 
-  if (!dayjs().isSameOrAfter(dayjs("April 9, 2023 00:00:00 AM"))) {
+  if (!dayjs().isSameOrAfter(dayjs("April 13, 2023 00:00:00 AM"))) {
     return <Timer />;
   } else {
     return (

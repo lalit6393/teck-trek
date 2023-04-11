@@ -33,12 +33,25 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
-  const successMsg = ["Bingo!!!", "Amazing!", "True Warrior", "Correct!"];
+  const successMsg = [
+    "Bingo!!!",
+    "Amazing!",
+    "True Warrior",
+    "Correct!",
+    "Bravo, correct!",
+    "You nailed it!",
+    "You got it!",
+    "Spot on, Correct!",
+  ];
   const errorMsg = [
     "Far from Bingo",
     "Try Try Try",
     "Keep Guessing",
     "Incorrect",
+    "Almost there, try again",
+    "Wrong answer",
+    "Keep Fighting, Warrior",
+    "Not quite right",
   ];
   function setMsg(success) {
     const index = Math.floor(Math.random() * successMsg.length);
