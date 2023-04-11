@@ -14,7 +14,7 @@ export const UserAuthProvider = ({ children }) => {
   );
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
-  const backendUrl = "http://210.212.85.155:8073";
+  const backendUrl = "https://techtrek-api.hackncs.in";
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken") || null
   );
@@ -68,6 +68,8 @@ export const UserAuthProvider = ({ children }) => {
           return res;
         });
     } catch (e) {
+      console.log(e);
+      console.log(e.response.data.contact_no && e.response.data.contact_no[0] || e.response.data.email && e.response.data.email[0] || e.response.data.username && e.response.data.username[0] || e.message);
       alertUser(e.response.data.contact_no && e.response.data.contact_no[0] || e.response.data.email && e.response.data.email[0] || e.response.data.username && e.response.data.username[0] || e.message);
     }
   };
