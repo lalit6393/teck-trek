@@ -12,6 +12,7 @@ import * as Yup from "yup";
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
 const emailRegex = RegExp(/^[a-zA-Z0-9._%+-]+@(gmail|yahoo|rediffmail|jssaten|outlook|[^.]+\.[^.]{2,})$/)
+const admissionRegex = RegExp(/^(21|22)/)
 
 const signupSchema = Yup.object().shape({
   username: Yup.string().required("Please fill this field").min(4),
@@ -19,7 +20,7 @@ const signupSchema = Yup.object().shape({
     .email("Enter valid email")
     .required("Please fill this field"),
   password: Yup.string().required("Please fill this field").min(10),
-  admission_no: Yup.string().required("Please fill this field"),
+  admission_no: Yup.string().matches(/^(21|22)/, "Only for 1st and 2nd year students").required("Please fill this field"),
   contact_no: Yup.string()
     .matches(phoneRegex, "Invalid phone no.")
     .test(
@@ -172,16 +173,16 @@ const Signup = () => {
                   <Field
                     autocomplete="off"
                     className={
-                      errors.contact_no && touched.contact_no && styles.errorInput
+                      errors.tezos_wallet_id && touched.tezos_wallet_id && styles.errorInput
                     }
                     type="text"
                     name="tezos_wallet_id"
-                    placeholder="Tezos wallet Id (optional)"
+                    placeholder="Tezos wallet address (optional)"
                   />
                   <span style={{position:"relative"}}>
                     <img src={info} className={styles.inputBtn}  onMouseEnter={() => {setShowInfo(true)}} onClick={()=>{setShowInfo((prev)=>!prev)}} onMouseLeave={()=>{setShowInfo(false)}}/>
                     {(showInfo) ? 
-                    <p className={styles.info}>It should be 36 digit long wallet number. <br/>  Eg: tz1Z3KCf8CLGAYfvVWPEr562jDDyWkwNF7sT</p> : ""
+                    <p className={styles.info}>You can win NCS's NFT by entering Your tezos wallet address Eg: tz1Z3KCf8CLGAYfvVWPEr562jDDyWkwNF7sT</p> : ""
                   }
                   </span>
                 </span>
