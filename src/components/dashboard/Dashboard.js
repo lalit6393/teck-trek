@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [score, setScore] = useState();
   const [answer, setAnswer] = useState('');
   const [question, setQuestion] = useState();
+  const [badge, setBadge] = useState();
   const [displayMsg,setDisplayMsg] = useState();
   const [isCorrect, setIsCorrect] = useState();
   const { backendUrl, accessToken, setIsCooldown, setCoolDownTimer} = useUserAuth();
@@ -55,6 +56,7 @@ const Dashboard = () => {
       setIsLoading(false)
       if(res.data.detail.question){
         setQuestion(res.data.detail.question);
+        setBadge(res.data.badges[0].badge)
         setLevel(res.data.player_info.current_question);
         setScore(res.data.player_info.score);
         setIsCooldown(false)
@@ -73,6 +75,7 @@ const Dashboard = () => {
     }).catch((e)=>{
       if(e.response.status == 401){
         setIsLoading(false)
+        setVerified(true)
       }
       
     })
@@ -112,34 +115,28 @@ const Dashboard = () => {
 
   const achievements = [
     {
+      id:0,
+      stage:stage1
+    },
+    {
       id:1,
-      stage:stage1,
-      achieved:score>=20
+      stage:stage2
     },
     {
       id:2,
-      stage:stage2,
-      achieved:score>=40
+      stage:stage3
     },
     {
       id:3,
-      stage:stage3,
-      achieved:score>=80
+      stage:stage4
     },
     {
       id:4,
-      stage:stage4,
-      achieved:score>=120
+      stage:stage5
     },
     {
       id:5,
-      stage:stage5,
-      achieved:score>=160
-    },
-    {
-      id:6,
-      stage:stage6,
-      achieved:score>=200
+      stage:stage6
     }
   ]
 
@@ -188,7 +185,7 @@ const Dashboard = () => {
             {
               achievements.map((achievement,i)=>{
                 return (
-                  <div style={{opacity: (achievement.achieved)? '1': '0.4'}} key={i} >
+                  <div style={{opacity: (achievement.id <= badge)? '1': '0.4'}} key={i} >
                     <img src={achievement.stage}/>
                     <span style={{marginTop:"7px"}}>stage {i+1}</span>
                   </div>
