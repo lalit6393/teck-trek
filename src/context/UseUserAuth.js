@@ -14,7 +14,7 @@ export const UserAuthProvider = ({ children }) => {
   );
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
-  const backendUrl = "https://techtrek-api.hackncs.in";
+  const backendUrl = "http://210.212.85.155:8073";
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken") || null
   );
