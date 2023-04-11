@@ -4,6 +4,7 @@ import background from "../../static_files/BG_Main_Dark.svg";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import signupImg from "../../static_files/signup.svg";
 import Cloud from "../clouds/Cloud";
+import info from "../../static_files/Info.svg"
 import { useUserAuth } from "../../context/UseUserAuth";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
@@ -43,22 +44,15 @@ const Signup = () => {
   const [records, setRecords] = useState([]);
 
   const handleSubmit = (data) => {
+    if(!data.tezos_wallet_id){
+      data.tezos_wallet_id = "none"
+    }
     setNewUser(data);
     navigate("/avatar");
     const newRecord = {
       ...userRegistration,
       id: new Date().getTime().toString(),
     };
-    // signup(newRecord)
-    // .then((res) => {
-    //   if(res.status/100 === 2){
-    //     setUser({username: newRecord.username});
-    //     navigate('/dashboard');
-    //   }
-    // })
-    // .catch((err) => {
-    //  console.log(err);
-    // });
     setRecords([...records, newRecord]);
   };
   const [visible, setVisible] = useState(false);
@@ -74,6 +68,7 @@ const Signup = () => {
             password: "",
             contact_no: "",
             admission_no: "",
+            tezos_wallet_id: ""
           }}
           validationSchema={signupSchema}
           onSubmit={(values, { setSubmitting }) => {
@@ -110,9 +105,9 @@ const Signup = () => {
                   <div className={styles.errorText}>{errors.email}</div>
                 ) : null}
               </div>
-              <div style={{ position: 'relative' }}>
                 {/* <div className={styles.Pass + " " + styles.input}> */}
-              <div className={styles.Pass + " " + styles.Input}>
+              <div className={styles.Input}>
+                <span className={styles.inputWithBtn}>
                 <Field
                   autocomplete="off"
                   className={
@@ -122,19 +117,18 @@ const Signup = () => {
                   name="password"
                   placeholder="Password"
                 />
+                 <span
+                      className={styles.inputBtn}
+                      onClick={() => setVisible(!visible)}
+                    >
+                      {visible ? <EyeOutlined style={{fontSize:"22px"}}/> : <EyeInvisibleOutlined style={{fontSize:"22px"}}/>}
+                    </span>
+                </span>
                 {errors.password && touched.password ? (
                   <div className={styles.errorText}>{errors.password}</div>
                 ) : null}
-                <div className={styles.iconDiv} style={{top: errors.password && touched.password ? "40%" : "50%"}}>
-                    <span
-                      className={styles.eye}
-                      onClick={() => setVisible(!visible)}
-                    >
-                      {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                    </span>
                   </div>
-                  </div>
-              </div>
+
               <div className={styles.Input}>
                 <Field
                   autocomplete="off"
@@ -161,6 +155,23 @@ const Signup = () => {
                   name="contact_no"
                   placeholder="Phone no"
                 />
+                {errors.contact_no && touched.contact_no ? (
+                  <div className={styles.errorText}>{errors.contact_no}</div>
+                ) : null}
+              </div>
+              <div className={styles.Input}>
+                <span className={styles.inputWithBtn}>
+                  <Field
+                    autocomplete="off"
+                    className={
+                      errors.contact_no && touched.contact_no && styles.errorInput
+                    }
+                    type="text"
+                    name="tezos_wallet_id"
+                    placeholder="Tezos wallet Id (optional)"
+                  />
+                  <img src={info} className={styles.inputBtn}  />
+                </span>
                 {errors.contact_no && touched.contact_no ? (
                   <div className={styles.errorText}>{errors.contact_no}</div>
                 ) : null}

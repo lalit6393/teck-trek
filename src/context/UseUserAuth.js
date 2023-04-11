@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 const UserAuthContext = createContext();
 
 export const UserAuthProvider = ({ children }) => {
-  const startDate = 'Thu Apr 9 2023 00:00:00 GMT+0530 (India Standard Time)'
+  const startDate = 'Thu Apr 09 2023 00:00:00 GMT+0530 (India Standard Time)'
   const navigate = useNavigate();
   const [visited, setVisited] = useState(
     localStorage.getItem("visited") || null
   );
   const [user, setUser] = useState(
-    { username: localStorage.getItem("username") } || null
+    JSON.parse(localStorage.getItem("user"))
   );
   const [newUser, setNewUser] = useState();
   const [loading, setLoading] = useState(false);
-  const backendUrl = "https://techtrek-api.hackncs.in";
+  const backendUrl = "http://210.212.85.155:8073";
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("accessToken") || null
   );
@@ -60,7 +60,7 @@ export const UserAuthProvider = ({ children }) => {
             localStorage.setItem("user", JSON.stringify(res.data));
             localStorage.setItem("accessToken", res.data.token.access);
             localStorage.setItem("refreshToken", res.data.token.refresh);
-            setUser({ username: newUser.username });
+            setUser(res.data);
             alertUser("Succesfully created account", 200);
             navigate("/dashboard");
           }

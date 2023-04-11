@@ -91,6 +91,18 @@ textarea {
   cursor: pointer;
 }
 
+.inputWithBtn{
+  position: relative;
+}
+
+.inputBtn{
+  position : absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+}
+
 .buttonSubmit {
   justify-content: center;
   align-items: center;
