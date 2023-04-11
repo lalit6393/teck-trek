@@ -96,6 +96,7 @@ const StoryPage = () => {
   return (
     <div className={StoryStyle.outermostDiv}>
       <div className={StoryStyle.InnerPaddingDiv}>
+      <div className={StoryStyle.innermostContainer}>
       <div className={StoryStyle.innermostDiv}>
         <div className={StoryStyle.innerDiv}>
           <h1 className={StoryStyle.heading}>
@@ -117,6 +118,7 @@ const StoryPage = () => {
               />
           )}
         </div>
+      </div>
       </div>
     </div>
     </div>
