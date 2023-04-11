@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useUserAuth } from "../../context/UseUserAuth";
 import axios from "axios";
 import styles from "./styles.module.css";
-import stage1 from "../../static_files/stage1.svg";
-import stage2 from "../../static_files/stage2.svg";
-import stage3 from "../../static_files/stage3.svg";
-import stage4 from "../../static_files/stage4.svg";
-import stage5 from "../../static_files/stage5.svg";
-import stage6 from "../../static_files/stage6.svg";
+import stage2 from "../../static_files/stage1.svg";
+import stage3 from "../../static_files/stage2.svg";
+import stage4 from "../../static_files/stage3.svg";
+import stage5 from "../../static_files/stage4.svg";
+import stage6 from "../../static_files/stage5.svg";
+import stage1 from "../../static_files/stage6.svg";
 import { useNavigate } from "react-router-dom";
 import VerifyEmail from "./VerifyEmail";
 import Loader from "../Loader/Loader";
@@ -23,6 +23,7 @@ const Dashboard = () => {
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState();
   const [badge, setBadge] = useState();
+  const [isLeader, setIsLeader] = useState(false);
   const [displayMsg, setDisplayMsg] = useState();
   const [isCorrect, setIsCorrect] = useState();
   const { backendUrl, accessToken, setIsCooldown, setCoolDownTimer } =
@@ -63,6 +64,9 @@ const Dashboard = () => {
         setVerified(true);
         setIsLoading(false);
         if (res.data.detail.question) {
+          if (res.data.badges[res.data.badges.length - 1].badge == 0) {
+            setIsLeader(true);
+          }
           setQuestion(res.data.detail.question);
           setBadge(res.data.badges[0].badge);
           setLevel(res.data.player_info.current_question);
@@ -218,11 +222,22 @@ const Dashboard = () => {
             {achievements.map((achievement, i) => {
               return (
                 <div
-                  style={{ opacity: achievement.id <= badge ? "1" : "0.4" }}
+                  style={{
+                    opacity:
+                      i === 0
+                        ? isLeader
+                          ? "1"
+                          : "0.4"
+                        : achievement.id <= badge
+                        ? "1"
+                        : "0.4",
+                  }}
                   key={i}
                 >
                   <img src={achievement.stage} />
-                  <span style={{ marginTop: "7px" }}>stage {i + 1}</span>
+                  <span style={{ marginTop: "7px" }}>
+                    {i === 0 ? "Leader" : `stage ${i}`}
+                  </span>
                 </div>
               );
             })}
