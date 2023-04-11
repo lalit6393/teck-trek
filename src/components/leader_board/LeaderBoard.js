@@ -9,6 +9,13 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
+import stage1 from '../../static_files/stage1.svg'
+import stage2 from '../../static_files/stage2.svg'
+import stage3 from '../../static_files/stage3.svg'
+import stage4 from '../../static_files/stage4.svg'
+import stage5 from '../../static_files/stage5.svg'
+import stage6 from '../../static_files/stage6.svg'
+import Loader from "../Loader/Loader";
 
 
 const LeaderBoard = () => {
@@ -29,6 +36,33 @@ const LeaderBoard = () => {
     { id: 5, img: avatar5 },
     { id: 6, img: avatar6 },
   ];
+
+  const achievements = [
+    {
+      id:0,
+      stage:stage1
+    },
+    {
+      id:1,
+      stage:stage2
+    },
+    {
+      id:2,
+      stage:stage3
+    },
+    {
+      id:3,
+      stage:stage4
+    },
+    {
+      id:4,
+      stage:stage5
+    },
+    {
+      id:5,
+      stage:stage6
+    }
+  ]
 
 
   // const [limit, setLimit] = useState(0);
@@ -58,6 +92,9 @@ const LeaderBoard = () => {
           'Authorization' : `Bearer ${accessToken}`
         }
       })
+      if(Math.floor(res.status / 100) == 2){
+        setIsLoading(false)
+      }
       const sortedArr = res.data.sort((a,b) => b.score - a.score);
       setIsLoading((res.data)? false : true);
       setData(sortedArr);
@@ -66,7 +103,7 @@ const LeaderBoard = () => {
   }, []);
 
   return (
-    !isLoading &&
+    (!isLoading) &&
     <div className={LeaderStyle.outermostDiv}>
       <div className={LeaderStyle.innermostDiv}>
         <div className={LeaderStyle.mainHeading}>LeaderBoard</div>
@@ -89,7 +126,7 @@ const LeaderBoard = () => {
               badge
             </div>
           </div>
-          {slicedData.map((entry, index) => {
+          { slicedData.map((entry, index) => {
             return (
               <div
                 className={LeaderStyle.headerRow}
@@ -99,7 +136,7 @@ const LeaderBoard = () => {
                   background: index % 2 === 0 ? "" : "rgba(15, 48, 53, 0.4)",
                 }}
               >
-                <div className={LeaderStyle.rank}>{index+1}</div>
+                <div className={LeaderStyle.rank}>{(index+1)+(page-1)*slicedData.length}</div>
                 <div className={LeaderStyle.name}>
                   <Avatar
                     sx={{
@@ -119,19 +156,9 @@ const LeaderBoard = () => {
                 </div>
                 <div className={LeaderStyle.score}>{entry.score}</div>
                 <div className={LeaderStyle.badge}>
-                  <Avatar
-                    sx={{
-                      bgcolor: "grey",
-                      cursor: "pointer",
-                      fontWeight: "bold",
-                      width: "35px",
-                      height: "35px",
-                      fontFamily: "Avenir",
-                    }}
-                    src="#"
-                  >
-                    {"White fang".slice(0, 1)}
-                  </Avatar>
+                  
+                    {(entry.best_badge) && <img style={{height:"100%"}} src={achievements[entry.best_badge].stage}></img>}
+                 
                 </div>
               </div>
             );

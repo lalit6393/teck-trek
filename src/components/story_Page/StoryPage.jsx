@@ -10,7 +10,7 @@ const TypingContent = ({ text, show, setIsAnimationFinished }) => {
     if (show) {
       const interval = setInterval(() => {
         setIndex((prev) => prev + 1);
-      }, 90);
+      }, 60);
       return () => clearInterval(interval);
     } else {
       setIsAnimationFinished(true);
@@ -27,7 +27,7 @@ const Typewriter = ({ text }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => prev + 1);
-    }, 90);
+    }, 60);
     return () => clearInterval(interval);
   }, []);
   return <span>{text.slice(0, index)}</span>;
@@ -76,9 +76,9 @@ const StoryPage = () => {
       setShowContent(true);
       const timeout2 = setTimeout(() => {
         setShowButton(true);
-      }, 45000);
+      }, 30000);
       return () => clearTimeout(timeout2);
-    }, 4000);
+    }, 3000);
     return () => clearTimeout(timeout);
   }, []);
 
