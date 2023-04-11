@@ -25,7 +25,6 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const backgroundBlur = {
     background:
@@ -33,7 +32,7 @@ const Navbar = () => {
     filter: "blur(14px)",
   };
 
-  const {accessToken, backendUrl, startDate} = useUserAuth();
+  const {accessToken, backendUrl, user, setUser, startDate} = useUserAuth();
 
   const avatars = [
     { id: 1, img: avatar1 },
@@ -50,13 +49,14 @@ const Navbar = () => {
         headers : {
           "Authorization" : `Bearer ${accessToken}`
         }
-      }).then((res) => {setUser(res.data);setIsLoading(false);}).catch((e)=>{navigate('/login')});
+      }).then((res) => {setUser(res.data);setIsLoading(false);}).catch((e)=>{setIsLoading(false)});
     }catch(e){
+      setIsLoading(false)
       console.log(e);
-      navigate('/login')
+      // navigate('/login')
     }
     
-  },[setUser])
+  },[])
   
   console.log(user);
   const handleClickOpen = () => {

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UseUserAuth";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import VerifyEmail from "../dashboard/VerifyEmail";
 
 const Timer = () => {
   const {isCooldown, cooldownTimer,setCoolDownTimer, setIsCooldown, backendUrl, accessToken, startDate} = useUserAuth();
@@ -17,6 +18,7 @@ const Timer = () => {
     timeLeft(cooldownTime.current, isCooldown)
   );
   const isLoading = useRef(true)
+  const [verified, setVerified] = useState(false)
 
   if(time.seconds == 0 && time.hours == 0 && time.minutes == 0 && !isLoading.current){
     navigate('/dashboard')
@@ -29,6 +31,7 @@ const Timer = () => {
          "Authorization" : `Bearer ${accessToken}`
       }
     }).then((res) => {
+      setVerified(true)
       if(res.data.detail?.question || res.data.detail?.time_left == 1){
         setIsCooldown(false)
         isLoading.current=false
@@ -41,6 +44,10 @@ const Timer = () => {
           cooldownTime.current = new Date().getTime() + res.data.detail.time_left*1000 + 5000
           isLoading.current = false
         }
+      }
+    }).catch((e)=>{
+      if(e.response.status){
+        isLoading.current = false
       }
     })
 
@@ -57,6 +64,7 @@ const Timer = () => {
   };
 
   return (
+    
     <section className={styles.container}>
       <Cloud />
       <button onClick={logout} className={styles.logout}>
@@ -65,6 +73,7 @@ const Timer = () => {
       </button>
       {
         isLoading.current ? (<Loader />) : (
+          (!verified) ? <VerifyEmail/> : 
           <div className={styles.timer}>
         <img src={timeImg} alt="" />
         <div className={styles.time}>

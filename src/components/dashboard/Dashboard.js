@@ -9,6 +9,8 @@ import stage4 from '../../static_files/stage4.svg'
 import stage5 from '../../static_files/stage5.svg'
 import stage6 from '../../static_files/stage6.svg'
 import { useNavigate } from 'react-router-dom';
+import VerifyEmail from './VerifyEmail';
+import Loader from '../Loader/Loader';
 
 const Dashboard = () => {
   const [level, setLevel] = useState();
@@ -19,6 +21,8 @@ const Dashboard = () => {
   const [isCorrect, setIsCorrect] = useState();
   const { backendUrl, accessToken, setIsCooldown, setCoolDownTimer} = useUserAuth();
   const navigate = useNavigate();
+  const [verified, setVerified] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const successMsg = ['Bingo!!!','Amazing!',"True Warrior",'Correct!'];
   const errorMsg = ['Far from Bingo','Try Try Try','Keep Guessing','Incorrect'];
@@ -41,6 +45,8 @@ const Dashboard = () => {
          "Authorization" : `Bearer ${accessToken}`
       }
     }).then((res) => {
+      setVerified(true)
+      setIsLoading(false)
       if(res.data.detail.question){
         setQuestion(res.data.detail.question);
         setLevel(res.data.player_info.current_question);
@@ -58,6 +64,11 @@ const Dashboard = () => {
           navigate('/timer')
         }
       }
+    }).catch((e)=>{
+      if(e.response.status == 401){
+        setIsLoading(false)
+      }
+      
     })
   }
 
@@ -105,27 +116,29 @@ const Dashboard = () => {
     {
       id:3,
       stage:stage3,
-      achieved:score>=60
+      achieved:score>=80
     },
     {
       id:4,
       stage:stage4,
-      achieved:score>=80
+      achieved:score>=120
     },
     {
       id:5,
       stage:stage5,
-      achieved:score>=100
+      achieved:score>=160
     },
     {
       id:6,
       stage:stage6,
-      achieved:score>=120
+      achieved:score>=200
     }
   ]
 
   return (
-    <section className={styles.dashboard}>
+    (isLoading) ? <Loader/> : 
+    ( !verified ) ? <VerifyEmail/> : 
+    ( <section className={styles.dashboard}>
       <div className={styles.container}>
         <div className={styles.inputbox}>
           <div className={styles.heading}>Question</div>
@@ -160,6 +173,7 @@ const Dashboard = () => {
         </div>
       </div>
     </section>
+    )
   )
 }
 
