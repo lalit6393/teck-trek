@@ -49,6 +49,7 @@
   margin-bottom: -29px;
 }
 
+.form {
   position: relative;
   justify-content: center;
   align-items: center;
@@ -111,7 +112,7 @@
 input {
   width: 69%;
   padding: 16px;
-
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.27);
 }
@@ -250,8 +251,8 @@ textarea {
   }
 }
 
-@media screen and (max-height:500px) {
-  .container2{
+@media screen and (max-height: 500px) {
+  .container2 {
     min-width: auto;
     width: 25rem;
   }

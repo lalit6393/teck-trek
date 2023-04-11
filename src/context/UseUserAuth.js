@@ -28,6 +28,7 @@ export const UserAuthProvider = ({ children }) => {
     msg: "",
     status: "",
   });
+  const [music, setMusic] = useState(false);
 
   const alertUser = (msg, status) => {
     setAlert((prev) => {
@@ -108,7 +109,9 @@ export const UserAuthProvider = ({ children }) => {
         isCooldown,
         cooldownTimer,
         setCoolDownTimer,
-        startDate
+        startDate,
+        music,
+        setMusic
       }}
     >
       {children}
