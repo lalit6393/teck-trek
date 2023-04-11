@@ -203,3 +203,9 @@ textarea {
     transform: translate(-10%,-127%);
   }
 }
+
+@media screen and (max-width: 560px) {
+  .Input  input {
+    padding: 13px;
+  }
+}
