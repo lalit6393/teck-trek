@@ -113,7 +113,7 @@ const LeaderBoard = () => {
                 Rank
               </div>
               <div
-                className={(LeaderStyle.headerColumn, LeaderStyle.name)}
+                className={(LeaderStyle.headerColumn, LeaderStyle.nameMain)}
                 style={{ justifyContent: "center", paddingLeft: "0rem" }}
               >
                 name

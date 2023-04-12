@@ -44,6 +44,7 @@
   line-height: 160%;
   color: #ffffff;
   text-align: left;
+  text-align: justify;
 }
 
 .buttonContainer {
@@ -181,10 +182,10 @@
     width: 150px;
     height: 55px;
   }
-  .innermostDiv{
-    /* max-height: 650px; */
-    /* height: 85vh; */
-  }
+  /* .innermostDiv{
+    max-height: 650px;
+    height: 85vh;
+  } */
 }
 
 @media screen and (max-width: 432px){
