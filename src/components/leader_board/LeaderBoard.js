@@ -9,12 +9,12 @@ import avatar3 from "../../static_files/avatar3.svg";
 import avatar4 from "../../static_files/avatar4.svg";
 import avatar5 from "../../static_files/avatar5.svg";
 import avatar6 from "../../static_files/avatar6.svg";
-import stage2 from "../../static_files/stage1.svg";
-import stage3 from "../../static_files/stage2.svg";
-import stage4 from "../../static_files/stage3.svg";
-import stage5 from "../../static_files/stage4.svg";
-import stage6 from "../../static_files/stage5.svg";
-import stage1 from "../../static_files/stage6.svg";
+import stage2 from "../../static_files/stage-1-np.svg";
+import stage3 from "../../static_files/stage-2-np.svg";
+import stage4 from "../../static_files/stage-3-np.svg";
+import stage5 from "../../static_files/stage-4-np.svg";
+import stage6 from "../../static_files/stage-5-np.svg";
+import stage1 from "../../static_files/stage-6-np.svg";
 import Loader from "../Loader/Loader";
 
 const LeaderBoard = () => {
@@ -162,7 +162,7 @@ const LeaderBoard = () => {
                   <div className={LeaderStyle.badge}>
                     {entry.best_badge && (
                       <img
-                        style={{ height: "100%" }}
+                        style={{ height: "85%" }}
                         src={achievements[entry.best_badge].stage}
                       ></img>
                     )}

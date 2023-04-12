@@ -126,6 +126,10 @@
   cursor: not-allowed;
 }
 
+.buttonDisabled button:hover {
+  filter: none;
+}
+
 .terms {
   color: white;
   display: flex;
