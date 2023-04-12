@@ -15,6 +15,9 @@ const Verified = () => {
 
   const logout = () => {
     localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
