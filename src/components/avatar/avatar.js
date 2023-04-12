@@ -16,6 +16,7 @@ import { Oval } from "react-loader-spinner";
 const Avatar = () => {
   const { newUser, setNewUser, setUser, signup } = useUserAuth();
   const [selectedId, setSelectedId] = useState();
+  const [isChecked, setIsChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const avatars = [
@@ -55,37 +56,63 @@ const Avatar = () => {
           <div></div>
           <p className={styles.a_text}>Select your avatar</p>
           <div className={styles.avatarGroup}>
-            {avatars.map((avatar) => {
-              return (
-                <img
-                  src={avatar.img}
-                  key={avatar.id}
-                  onClick={() => {
-                    setSelectedId(avatar.id);
-                  }}
-                  className={
-                    selectedId
-                      ? selectedId === avatar.id
-                        ? styles.selectedAvatar
-                        : styles.notSelectedAvatar
-                      : null
-                  }
-                ></img>
-              );
-            })}
+            {avatars
+              .filter((avatar) => avatar.id <= 3)
+              .map((avatar) => {
+                return (
+                  <img
+                    src={avatar.img}
+                    key={avatar.id}
+                    onClick={() => {
+                      setSelectedId(avatar.id);
+                    }}
+                    className={
+                      selectedId
+                        ? selectedId === avatar.id
+                          ? styles.selectedAvatar
+                          : styles.notSelectedAvatar
+                        : null
+                    }
+                  ></img>
+                );
+              })}
+          </div>
+          <div className={styles.avatarGroup}>
+            {avatars
+              .filter((avatar) => avatar.id > 3)
+              .map((avatar) => {
+                return (
+                  <img
+                    src={avatar.img}
+                    key={avatar.id}
+                    onClick={() => {
+                      setSelectedId(avatar.id);
+                    }}
+                    className={
+                      selectedId
+                        ? selectedId === avatar.id
+                          ? styles.selectedAvatar
+                          : styles.notSelectedAvatar
+                        : null
+                    }
+                  ></img>
+                );
+              })}
           </div>
           <div
             className={
-              selectedId && newUser.email
+              selectedId && newUser.email && isChecked
                 ? styles.paybtn
                 : styles.paybtn + " " + styles.buttonDisabled
             }
           >
             <button
               className={
-                selectedId && newUser.email ? null : styles.buttonDisabled
+                selectedId && isChecked && newUser.email
+                  ? null
+                  : styles.buttonDisabled
               }
-              disabled={selectedId && newUser.email ? false : true}
+              disabled={selectedId && isChecked && newUser.email ? false : true}
               onClick={handlePayment}
               style={{
                 position: "relative",
@@ -112,7 +139,12 @@ const Avatar = () => {
             </button>
             <div className={styles.terms}>
               <div className={styles.input}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    setIsChecked((prev) => !prev);
+                  }}
+                />
                 <span>
                   <img src={check} alt="" />
                 </span>

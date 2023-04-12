@@ -12,6 +12,9 @@
   box-sizing: border-box;
   position: relative;
   background: #0a0a12;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .avatarSelection {
@@ -65,10 +68,9 @@
 
 .avatarGroup {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 15px;
-  place-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
 }
 
 .selectedAvatar {
@@ -83,6 +85,8 @@
   height: 90%;
   box-sizing: border-box;
   border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   height: 100%;
   border: 4px solid transparent;
   cursor: pointer;
