@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LeaderStyle from "./style.module.css";
 import { Avatar } from "@mui/material";
 import axios from "axios";
@@ -26,6 +26,7 @@ const LeaderBoard = () => {
   const start = (page - 1) * itemsPerPage;
   const end = page * itemsPerPage;
   const slicedData = data.slice(start, end);
+  const pageSize = useRef(slicedData.length);
 
   const avatars = [
     { id: 1, img: avatar1 },
@@ -135,7 +136,7 @@ const LeaderBoard = () => {
                   }}
                 >
                   <div className={LeaderStyle.rank}>
-                    {index + 1 + (page - 1) * slicedData.length}
+                    {index + 1 + (page - 1) * itemsPerPage}
                   </div>
                   <div className={LeaderStyle.name}>
                     <Avatar

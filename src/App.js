@@ -15,6 +15,7 @@ import StoryPage from "./components/story_Page/StoryPage";
 import Timer from "./components/timer/timer";
 import { UserAuthProvider } from "./context/UseUserAuth";
 import AlertMsg from "./components/alert/alert";
+import Verified from "./components/timer/verify";
 
 function App() {
   const audioRef = useRef(null);
@@ -67,6 +68,7 @@ function App() {
             <Route path="rules" element={<RulesPage />} />
           </Route>
           <Route path="avatar" element={<Avatar />} />
+          <Route path="verified" element={<Verified />} />
           <Route
             path="timer"
             element={
