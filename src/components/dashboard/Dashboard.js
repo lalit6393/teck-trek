@@ -32,7 +32,7 @@ const Dashboard = () => {
   const [verified, setVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-
+  console.log(question);
   const successMsg = [
     "Bingo!!!",
     "Amazing!",
@@ -76,11 +76,24 @@ const Dashboard = () => {
         setVerified(true);
         setIsLoading(false);
         if (res.data.detail.question) {
-          if (res.data.badges[res.data.badges.length - 1].badge == 0) {
+          console.log(res);
+          console.log(res.data.detail.question);
+          setQuestion(res.data.detail.question);
+          if (
+            res.data.badges[0].badge == 0 ||
+            res.data.badges[1].badge == 0 ||
+            res.data.badges[2].badge == 0 ||
+            res.data.badges[3].badge == 0 ||
+            res.data.badges[4].badge == 0 ||
+            res.data.badges[5].badge == 0
+          ) {
             setIsLeader(true);
           }
-          setQuestion(res.data.detail.question);
-          setBadge(res.data.badges[0].badge);
+          if (res.data.badges[res.data.badges.length - 1].badge == 0) {
+            setBadge(res.data.badges[res.data.badges.length - 2].badge);
+          } else {
+            setBadge(res.data.badges[res.data.badges.length - 1].badge);
+          }
           setLevel(res.data.player_info.current_question);
           setScore(res.data.player_info.score);
           setIsCooldown(false);
