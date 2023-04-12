@@ -179,7 +179,7 @@ const Dashboard = () => {
     },
   ];
 
-  return dayjs().isSameOrAfter(dayjs("April 14, 2023 06:00:00 PM")) ? (
+  return dayjs().isSameOrAfter(dayjs("April 14, 2023 04:00:00 PM")) ? (
     <Gameover />
   ) : isLoading ? (
     <Loader />
