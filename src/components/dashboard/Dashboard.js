@@ -79,6 +79,9 @@ const Dashboard = () => {
           console.log(res);
           console.log(res.data.detail.question);
           setQuestion(res.data.detail.question);
+          setLevel(res.data.player_info.current_question);
+          setScore(res.data.player_info.score);
+          setIsCooldown(false);
           if (
             res.data.badges[0].badge == 0 ||
             res.data.badges[1].badge == 0 ||
@@ -94,9 +97,6 @@ const Dashboard = () => {
           } else {
             setBadge(res.data.badges[res.data.badges.length - 1].badge);
           }
-          setLevel(res.data.player_info.current_question);
-          setScore(res.data.player_info.score);
-          setIsCooldown(false);
         } else {
           if (res.data.detail.time_left == 1)
             setTimeout(() => {
