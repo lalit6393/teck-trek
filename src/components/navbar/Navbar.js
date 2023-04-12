@@ -188,11 +188,11 @@ const Navbar = (props) => {
                     bgcolor: "grey",
                     fontWeight: "bold",
                     width: "3.7rem",
-                    height: "3.7rem",
+                    height: "3.rem",
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
                   }}
-                  src={avatars[user.avatar_no - 1].img}
+                  src={ user?.avatar_no ? avatars[user.avatar_no - 1].img : avatars[1].img}
                 >
                 </Avatar>
                 <div className={navStyle.icons}>
