@@ -114,15 +114,6 @@ const Timer = () => {
           </div>
         </div>
       )}
-
-      <footer>
-        <div>
-          Designed & Developed by: <span>Nibble Computer Society</span>
-        </div>
-        <div>
-          Alumni & Faculty, Visit: <span>Forum for Trekking</span>
-        </div>
-      </footer>
     </section>
   );
 };
