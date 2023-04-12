@@ -33,7 +33,6 @@ body {
   min-height: 67vh;
   height: 100%;
   font-size: 1.4vmin;
-  flex-direction: column;
 }
 .Image {
   width: 100%;
@@ -44,6 +43,8 @@ body {
   position: relative;
   justify-content: center;
   align-items: center;
+  padding-bottom: 70px;
+  height: 85vh;
 }
 
 input {
