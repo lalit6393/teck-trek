@@ -44,6 +44,7 @@
   line-height: 160%;
   color: #ffffff;
   text-align: left;
+  text-align: justify;
 }
 
 .buttonContainer {
@@ -70,6 +71,11 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
+
+.button:hover {
+  filter: drop-shadow(6px 6px 7px rgba(8, 172, 112, 0.25));
+}
+
 .text {
   font-family: "Avenir";
   font-style: normal;
@@ -173,21 +179,21 @@
   .innermostContainer {
     width: 90%;
   }
-  .text{
+  .text {
     font-size: 16px;
     /* wi */
   }
-  .button{
+  .button {
     width: 150px;
     height: 55px;
   }
-  .innermostDiv{
-    /* max-height: 650px; */
-    /* height: 85vh; */
-  }
+  /* .innermostDiv{
+    max-height: 650px;
+    height: 85vh;
+  } */
 }
 
-@media screen and (max-width: 432px){
+@media screen and (max-width: 432px) {
   .innermostDiv {
     width: 90%;
   }
@@ -209,15 +215,15 @@
   .innermostContainer {
     width: 90%;
   }
-  .text{
+  .text {
     font-size: 16px;
     /* wi */
   }
-  .button{
+  .button {
     width: 150px;
     height: 55px;
   }
-  .innermostDiv{
+  .innermostDiv {
     max-height: 650px;
     height: 85vh;
   }

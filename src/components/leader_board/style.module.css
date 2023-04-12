@@ -72,6 +72,22 @@
   justify-content: center;
   align-items: center;
 }
+.nameMain{
+  flex: 3;
+  gap: 10px;
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fdf3e7;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* padding-left: 2rem; */
+}
 .name {
   flex: 3;
   gap: 10px;
@@ -86,7 +102,7 @@
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
 }
 .score {
   flex: 1.5;
@@ -222,7 +238,11 @@
   cursor: pointer;
   color: #ffffff;
 }
-
+.name::before{
+  content: "";
+        display: block;
+        width: 80px;
+}
 
 @media screen and (max-width:1200px) and (min-width:993px) {
   .mainHeading{
@@ -275,10 +295,41 @@
   .next{
     font-size: 16px;
   }
+  .name::before{
+          width: 65px;
+  }
+}
+@media screen and (max-width:768px) and (min-width:628px){
+  .innermostDiv {
+    width: 90%;
+  }
+  .mainHeading{
+    font-size: 22px;
+  }
+  .rank{
+    font-size: 15px;
+  }
+  .score{
+    font-size: 15px;
+  }
+  .name{
+    font-size: 15px;
+  }
+  .badge{
+    font-size: 15px;
+  }
+  .prev{
+    font-size: 15px;
+  }
+  .next{
+    font-size: 15px;
+  }
+  .name::before{
+    width: 40px;
+}
 }
 
-
-@media screen and (max-width:768px) and (min-width:481px){
+@media screen and (max-width:627px) and (min-width:481px){
 
   .innermostDiv {
     width: 90%;
@@ -304,6 +355,9 @@
   .next{
     font-size: 15px;
   }
+  .name::before{
+    width: 20px;
+}
 
 
   
@@ -344,5 +398,10 @@
   }
   .LeaderBoard{
     width: 90%;
+  }
+  .name::before{
+    content: none;
+          /* display: block; */
+          width: 0px;
   }
 }

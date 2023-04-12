@@ -8,6 +8,12 @@ import stage4 from "../../static_files/stage3.svg";
 import stage5 from "../../static_files/stage4.svg";
 import stage6 from "../../static_files/stage5.svg";
 import stage1 from "../../static_files/stage6.svg";
+import stage2np from "../../static_files/stage-1-np.svg";
+import stage3np from "../../static_files/stage-2-np.svg";
+import stage4np from "../../static_files/stage-3-np.svg";
+import stage5np from "../../static_files/stage-4-np.svg";
+import stage6np from "../../static_files/stage-5-np.svg";
+import stage1np from "../../static_files/stage-6-np.svg";
 import { useNavigate } from "react-router-dom";
 import VerifyEmail from "./VerifyEmail";
 import Loader from "../Loader/Loader";
@@ -32,7 +38,7 @@ const Dashboard = () => {
   const [verified, setVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  console.log(question);
+  // console.log(question);
   const successMsg = [
     "Bingo!!!",
     "Amazing!",
@@ -77,24 +83,20 @@ const Dashboard = () => {
         setIsLoading(false);
         if (res.data.detail.question) {
           console.log(res);
-          console.log(res.data.detail.question);
           setQuestion(res.data.detail.question);
           setLevel(res.data.player_info.current_question);
           setScore(res.data.player_info.score);
           setIsCooldown(false);
-          if (
-            res.data.badges[0].badge == 0 ||
-            res.data.badges[1].badge == 0 ||
-            res.data.badges[2].badge == 0 ||
-            res.data.badges[3].badge == 0 ||
-            res.data.badges[4].badge == 0 ||
-            res.data.badges[5].badge == 0
-          ) {
-            setIsLeader(true);
-          }
+          res.data.badges.map((badge) => {
+            if (badge.badge == 0) {
+              setIsLeader(true);
+            }
+          });
           if (res.data.badges[res.data.badges.length - 1].badge == 0) {
+            console.log(res.data.badges[res.data.badges.length - 2].badge);
             setBadge(res.data.badges[res.data.badges.length - 2].badge);
           } else {
+            console.log(res.data.badges[res.data.badges.length - 1].badge);
             setBadge(res.data.badges[res.data.badges.length - 1].badge);
           }
         } else {
@@ -110,7 +112,7 @@ const Dashboard = () => {
         }
       })
       .catch((e) => {
-        if (e.response.status == 401) {
+        if (e.response?.status == 401) {
           setIsLoading(false);
           setVerified(false);
         }
@@ -142,12 +144,12 @@ const Dashboard = () => {
         setTimeout(() => {
           setDisplayMsg();
           getQuestion();
-        }, [4000]);
+        }, [500]);
       } else {
         setMsg(success);
         setTimeout(() => {
           setDisplayMsg();
-        }, [4000]);
+        }, [500]);
       }
     }
   };
@@ -156,26 +158,32 @@ const Dashboard = () => {
     {
       id: 0,
       stage: stage1,
+      stagenp: stage1np,
     },
     {
       id: 1,
       stage: stage2,
+      stagenp: stage2np,
     },
     {
       id: 2,
       stage: stage3,
+      stagenp: stage3np,
     },
     {
       id: 3,
       stage: stage4,
+      stagenp: stage4np,
     },
     {
       id: 4,
       stage: stage5,
+      stagenp: stage5np,
     },
     {
       id: 5,
       stage: stage6,
+      stagenp: stage6np,
     },
   ];
 
@@ -205,7 +213,7 @@ const Dashboard = () => {
               </span>
             </span>
             <button
-              className={styles.submit}
+              className={answer ? styles.submit : styles.buttonDisabled}
               onClick={submitHandler}
               style={{ position: "relative" }}
             >
@@ -233,13 +241,13 @@ const Dashboard = () => {
         <div className={styles.achievements}>
           <div className={styles.progress}>
             <pre style={{ margin: 0 }}>
-              LEVEL: {level} - SCORE: {score}
+              LEVEL: {level} &nbsp;&nbsp; - &nbsp;&nbsp; SCORE: {score}
             </pre>
           </div>
           <hr />
           <div
             className={styles.heading}
-            style={{ color: "#F78A20", textAlign: "center" }}
+            style={{ color: "#F78A20", textAlign: "center", fontWeight: "800" }}
           >
             ACHIEVEMENTS
           </div>
@@ -259,9 +267,28 @@ const Dashboard = () => {
                   }}
                   key={i}
                 >
-                  <img src={achievement.stage} />
+                  <img
+                    src={
+                      i === 0
+                        ? isLeader
+                          ? achievement.stage
+                          : achievement.stagenp
+                        : achievement.id <= badge
+                        ? achievement.stage
+                        : achievement.stagenp
+                    }
+                    className={
+                      i === 0
+                        ? isLeader
+                          ? ""
+                          : styles.notAchieved
+                        : achievement.id <= badge
+                        ? ""
+                        : styles.notAchieved
+                    }
+                  />
                   <span style={{ marginTop: "7px" }}>
-                    {i === 0 ? "Leader" : `stage ${i}`}
+                    {i === 0 ? "Leader" : `Stage ${i}`}
                   </span>
                 </div>
               );
