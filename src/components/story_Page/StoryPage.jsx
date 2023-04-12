@@ -84,7 +84,12 @@ const StoryPage = () => {
   function handleClick() {
     setVisited(true);
     localStorage.setItem("visited", true);
-    navigate("/signup");
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      navigate("/dashboard");
+    } else {
+      navigate("/signup");
+    }
     // console.log('Button clicked');
   }
 

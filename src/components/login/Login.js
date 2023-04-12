@@ -9,8 +9,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Oval } from "react-loader-spinner";
 
-const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
-
 const loginSchema = Yup.object().shape({
   username: Yup.string().required("Please fill this field").min(4),
 
@@ -151,16 +149,13 @@ const Login = () => {
             )}
           </Formik>
           <div className={styles.noAccount}>
-                  <p className={styles.para}>
-                    Don't Have an account?{" "}
-                    <a
-                      className={styles.register + " " + styles.a2}
-                      href="/Signup"
-                    >
-                      Register
-                    </a>
-                  </p>
-                </div>
+            <p className={styles.para}>
+              Don't Have an account?{" "}
+              <a className={styles.register + " " + styles.a2} href="/Signup">
+                Register
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 

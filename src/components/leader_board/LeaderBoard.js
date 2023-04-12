@@ -175,6 +175,9 @@ const LeaderBoard = () => {
                 disabled={page === 1}
                 onClick={() => setPage(page - 1)}
                 className={LeaderStyle.prev}
+                style={{
+                  opacity: page === 1 ? "0" : "1",
+                }}
               >
                 Previous
               </button>
@@ -182,6 +185,9 @@ const LeaderBoard = () => {
                 disabled={end >= data.length}
                 onClick={() => setPage(page + 1)}
                 className={LeaderStyle.next}
+                style={{
+                  opacity: end >= data.length ? "0" : "1",
+                }}
               >
                 Next
               </button>
