@@ -182,7 +182,7 @@ const Navbar = (props) => {
               </div>
               <div style={{ flex: "1" }} />
               <div className={navStyle.userProfile}>
-                <p>{user?.username?.toUpperCase()}</p>
+                <p>{user?.username ? user?.username : "TECH"}</p>
                 <Avatar
                   sx={{
                     bgcolor: "grey",
@@ -192,9 +192,12 @@ const Navbar = (props) => {
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
                   }}
-                  src={ user?.avatar_no ? avatars[user.avatar_no - 1].img : avatars[1].img}
-                >
-                </Avatar>
+                  src={
+                    user?.avatar_no
+                      ? avatars[user.avatar_no - 1].img
+                      : avatars[1].img
+                  }
+                ></Avatar>
                 <div className={navStyle.icons}>
                   <img
                     onClick={() => navigate("/login")}
@@ -233,22 +236,13 @@ const Navbar = (props) => {
                         fontSize: "1.4rem",
                         fontWeight: "600",
                       }}
-                      src="#"
-                    >
-                      <img
-                        style={{ width: "100%" }}
-                        src={avatars[user.avatar_no - 1].img}
-                      ></img>
-                    </Avatar>
-                    <p>
-                      {user.username
-                        .split(" ")
-                        .map(
-                          (w) =>
-                            w[0].toUpperCase() + w.substring(1).toLowerCase()
-                        )
-                        .join(" ")}
-                    </p>
+                      src={
+                        user?.avatar_no
+                          ? avatars[user.avatar_no - 1].img
+                          : avatars[1].img
+                      }
+                    />
+                    <p>{user?.username ? user?.username : "TECH"}</p>
                   </div>
                 </div>
                 <div style={{ flex: "1" }} />
