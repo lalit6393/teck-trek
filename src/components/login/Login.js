@@ -147,7 +147,10 @@ const Login = () => {
                     />
                   )}
                 </button>
-                <div className={styles.noAccount}>
+              </Form>
+            )}
+          </Formik>
+          <div className={styles.noAccount}>
                   <p className={styles.para}>
                     Don't Have an account?{" "}
                     <a
@@ -158,9 +161,6 @@ const Login = () => {
                     </a>
                   </p>
                 </div>
-              </Form>
-            )}
-          </Formik>
         </div>
       </div>
 

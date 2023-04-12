@@ -245,17 +245,17 @@ const Signup = () => {
               >
                 Continue &rarr;
               </button>
-              <div className={styles.HaveAccount}>
-                <p className={styles.paragraph}>
-                  Already have an account?{" "}
-                  <a className={styles.login} href="/login">
-                    Login
-                  </a>
-                </p>
-              </div>
             </Form>
           )}
         </Formik>
+        <div className={styles.HaveAccount}>
+          <p className={styles.paragraph}>
+            Already have an account?{" "}
+            <a className={styles.login} href="/login">
+              Login
+            </a>
+          </p>
+        </div>
       </div>
 
       <footer className={styles.foot3}>
