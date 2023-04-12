@@ -87,7 +87,7 @@ const Navbar = (props) => {
   const music = props.music;
   const setMusic = props.setMusic;
 
-  if (!dayjs().isSameOrAfter(dayjs("April 13, 2023 00:00:00 AM"))) {
+  if (!dayjs().isSameOrAfter(dayjs("April 09, 2023 00:00:00 AM"))) {
     return <Timer />;
   } else {
     return (
@@ -186,19 +186,14 @@ const Navbar = (props) => {
                 <Avatar
                   sx={{
                     bgcolor: "grey",
-                    cursor: "pointer",
                     fontWeight: "bold",
-                    width: "3.8rem",
-                    height: "3.8rem",
+                    width: "3.7rem",
+                    height: "3.7rem",
                     fontFamily: "Avenir",
                     fontSize: "1.4rem",
                   }}
-                  src="#"
+                  src={avatars[user.avatar_no - 1].img}
                 >
-                  <img
-                    style={{ width: "100%" }}
-                    src={avatars[user.avatar_no - 1].img}
-                  ></img>
                 </Avatar>
                 <div className={navStyle.icons}>
                   <img
