@@ -12,9 +12,8 @@ import * as Yup from "yup";
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
 const emailRegex = RegExp(
-  /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|rediffmail|jssaten|outlook|[^.]+\.[^.]{2,})$/
+  /^(?:[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*)@(?:gmail|yahoo|rediff)\.(?:com)$/
 );
-const admissionRegex = RegExp(/^(21|22)/);
 
 const signupSchema = Yup.object().shape({
   username: Yup.string().required("Please fill this field").min(4),
