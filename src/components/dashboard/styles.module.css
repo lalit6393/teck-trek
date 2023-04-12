@@ -115,6 +115,7 @@
   background-color: #08ac70;
   color: #ffffff;
   border: none;
+  cursor: pointer;
   border-right: 1px solid #19cb8a;
   border-bottom: 1px solid #005435;
 }

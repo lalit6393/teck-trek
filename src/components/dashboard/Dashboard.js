@@ -144,12 +144,12 @@ const Dashboard = () => {
         setTimeout(() => {
           setDisplayMsg();
           getQuestion();
-        }, [1000]);
+        }, [500]);
       } else {
         setMsg(success);
         setTimeout(() => {
           setDisplayMsg();
-        }, [1000]);
+        }, [500]);
       }
     }
   };
@@ -241,7 +241,7 @@ const Dashboard = () => {
         <div className={styles.achievements}>
           <div className={styles.progress}>
             <pre style={{ margin: 0 }}>
-              LEVEL: {level} - SCORE: {score}
+              LEVEL: {level} &nbsp;&nbsp; - &nbsp;&nbsp; SCORE: {score}
             </pre>
           </div>
           <hr />
