@@ -87,7 +87,7 @@ const Navbar = (props) => {
   const music = props.music;
   const setMusic = props.setMusic;
 
-  if (!dayjs().isSameOrAfter(dayjs("April 13, 2023 00:00:00 AM"))) {
+  if (!dayjs().isSameOrAfter(dayjs("April 09, 2023 00:00:00 AM"))) {
     return <Timer />;
   } else {
     return (
