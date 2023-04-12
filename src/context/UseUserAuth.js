@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const UserAuthContext = createContext();
 
 export const UserAuthProvider = ({ children }) => {
-  const startDate = "Thu Apr 13 2023 00:00:00 GMT+0530 (India Standard Time)";
+  const startDate = "Thu Apr 09 2023 00:00:00 GMT+0530 (India Standard Time)";
   const navigate = useNavigate();
   const [visited, setVisited] = useState(
     localStorage.getItem("visited") || null
